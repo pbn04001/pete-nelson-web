@@ -2,11 +2,13 @@
   <div class="one-page-scroll" ref="pageScroll">
     <div class="section intro">
       <h3>Section 1</h3>
-      <svg-icon ref="introMountains" name="mountains" title="mountains" class="intro__mountains" />
+      <!--<svg ref="introMountains" class="intro__mountains" xmlns="http://www.w3.org/2000/svg">
+        <use :xlink:href="mountains" />
+      </svg>-->
     </div>
     <div class="section next">
       <h3>Section 2</h3>
-      <svg-icon ref="nextSun" name="sun" title="sun" class="next__sun" />
+
     </div>
     <div class="section third">
       <h3>Section 3</h3>
@@ -16,13 +18,9 @@
 
 <script>
 import anime from 'animejs';
-import SvgIcon from '@/components/SvgIcon.vue';
 
 export default {
   name: 'HomeScrollCustom',
-  components: {
-    SvgIcon,
-  },
   data() {
     return {
       currentSection: 1,
