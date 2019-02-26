@@ -6,7 +6,7 @@
     </div>
     <div class="section next">
       <h3>Section 2</h3>
-
+      <SunSVG ref="nextSun" class="next__sun" />
     </div>
     <div class="section third">
       <h3>Section 3</h3>
@@ -16,26 +16,30 @@
 
 <script>
 import anime from 'animejs';
-import MountainsSVG from '../assets/icons/mountains.svg';
+import MountainsSVG from '../assets/images/mountains.svg';
+import SunSVG from '../assets/images/sun.svg';
 
 export default {
   name: 'HomeScrollCustom',
   components: {
     MountainsSVG,
+    SunSVG,
   },
   data() {
     return {
       currentSection: 1,
       introVisible: false,
+      nextVisible: false,
     };
   },
   mounted() {
     this.sections = this.$refs.pageScroll.querySelectorAll('.section');
     this.sections.forEach((section, index) => {
-      if (index > 0) {
-        this.sections[index].style.visibility = 'hidden';
+      if (index + 1 !== this.currentSection) {
+        this.hideSection(index);
       }
     });
+    this.$refs.pageScroll.style.height = 'auto';
     this.calculatePositions();
     this.showIntroBackground(true);
     this.onScroll = window.addEventListener('scroll', this.onScroll);
@@ -65,6 +69,9 @@ export default {
           if (lastSection !== 1) {
             this.showIntroBackground(false);
           }
+          if (lastSection === 2 && this.nextVisible) {
+            this.hideNextBackground()
+          }
           if (position.offset > 0.5) {
             anime({
               targets: this.$refs.introMountains,
@@ -73,7 +80,10 @@ export default {
           }
           break;
         case 2:
-          if (lastSection === 1) {
+          if (lastSection !== 2) {
+            this.showNextBackground();
+          }
+          if (lastSection === 1 && this.introVisible) {
             this.hideIntroBackground();
           }
           break;
@@ -86,8 +96,20 @@ export default {
       const position = this.calculatePosition();
       this.performAnimations(section, position);
     },
+    hideSection(section) {
+      switch (section) {
+        case 0:
+          this.$refs.nextSun.style.translateY = (-1 * (this.$refs.nextSun.clientHeight + (window.innerHeight * 0.05) + 50));
+          break;
+        case 1:
+          this.hideNextBackground();
+          break;
+        default:
+          break;
+      }
+    },
     showIntroBackground(top) {
-      this.sections[0].style.visibility = 'visible';
+      //this.sections[0].style.visibility = 'visible';
       this.introVisible = true;
       anime({
         targets: this.$refs.introMountains,
@@ -101,10 +123,31 @@ export default {
         translateY: this.$refs.introMountains.clientHeight + 50,
       }).finished.then(() => {
         if (!this.introVisible) {
-          this.sections[0].style.visibility = 'hidden';
+          //this.sections[0].style.visibility = 'hidden';
         }
       });
     },
+    showNextBackground() {
+      console.log('show next background');
+      //this.sections[1].style.visibility = 'visible';
+      this.nextVisible = true;
+      anime({
+        targets: this.$refs.nextSun,
+        translateY: 0,
+      });
+    },
+    hideNextBackground() {
+      console.log('hide next background', (-1 * (this.$refs.nextSun.clientHeight + (window.innerHeight * 0.05) + 50)));
+      this.nextVisible = false;
+      anime({
+        targets: this.$refs.nextSun,
+        translateY: (-1 * (this.$refs.nextSun.clientHeight + (window.innerHeight * 0.05) + 50)),
+      }).finished.then(() => {
+        if (!this.nextVisible) {
+          //this.sections[1].style.visibility = 'hidden';
+        }
+      });
+    }
   },
 };
 </script>
@@ -114,9 +157,11 @@ export default {
   @import "@/styles/_globals.scss";
   .one-page-scroll {
     background-color: darkgray;
+    height: 0;
+    overflow: hidden;
   }
   .section {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100vw;
     height: 100vh;
@@ -136,7 +181,12 @@ export default {
   }
   .next {
     &__sun {
-      & svg {
+      position: absolute;
+      width: 10%;
+      right: 10%;
+      top: 5%;
+
+      & path {
         fill: yellow;
       }
     }
