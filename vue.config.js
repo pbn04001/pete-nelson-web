@@ -1,35 +1,11 @@
 module.exports = {
-  lintOnSave: false,
-  configureWebpack: {
-    module: {
-      rules: [
-        {
-          test: /\.svg$/,
-          include: /src(\/|\\)assets(\/|\\)icons/,
-          use: [
-            { loader: 'svg-sprite-loader' },
-            {
-              loader: 'svgo-loader',
-              options: {
-                plugins: [
-                  { removeTitle: false },
-                ],
-              },
-            },
-          ],
-        },
-      ],
-    },
-    plugins: [
-      new SpriteLoaderPlugin({
-        plainSprite: true,
-      }),
-    ],
-  },
-  chainWebpack: config => {
-    config.module
-      .rule('svg')
-      .use('file-loader')
-      .loader('svg-sprite-loader');
+  chainWebpack: (config) => {
+    const svgRule = config.module.rule('svg');
+
+    svgRule.uses.clear();
+
+    svgRule
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader');
   },
 };

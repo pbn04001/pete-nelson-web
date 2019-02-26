@@ -2,9 +2,7 @@
   <div class="one-page-scroll" ref="pageScroll">
     <div class="section intro">
       <h3>Section 1</h3>
-      <!--<svg ref="introMountains" class="intro__mountains" xmlns="http://www.w3.org/2000/svg">
-        <use :xlink:href="mountains" />
-      </svg>-->
+      <MountainsSVG ref="introMountains" class="intro__mountains"/>
     </div>
     <div class="section next">
       <h3>Section 2</h3>
@@ -18,9 +16,13 @@
 
 <script>
 import anime from 'animejs';
+import MountainsSVG from '../assets/icons/mountains.svg';
 
 export default {
   name: 'HomeScrollCustom',
+  components: {
+    MountainsSVG,
+  },
   data() {
     return {
       currentSection: 1,
@@ -127,7 +129,7 @@ export default {
       bottom: 0;
       width: 60%;
 
-      & svg {
+      & path {
         fill: black;
       }
     }
