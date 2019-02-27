@@ -27,6 +27,9 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
 }
+body {
+  background-color: darkgray;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 16px;

@@ -1,6 +1,5 @@
 <template>
   <div ref="section" class="section intro">
-    <h3>Section 1</h3>
     <MountainsSVG ref="mountains" class="intro__mountains"/>
   </div>
 </template>
@@ -42,10 +41,10 @@ export default {
     reset() {
       this.visible = false;
       this.$refs.mountains.style.translateY = this.mountainsOffScreen();
-      this.$refs.section.style.visibility = 'hidden';
+      this.$refs.section.style.display = 'none';
     },
     showAnimated(offset) {
-      this.$refs.section.style.visibility = 'visible';
+      this.$refs.section.style.display = 'block';
       this.visible = true;
       anime({
         targets: this.$refs.mountains,
@@ -59,7 +58,7 @@ export default {
         translateY: this.mountainsOffScreen(),
       }).finished.then(() => {
         if (!this.visible) {
-          this.$refs.section.style.visibility = 'hidden';
+          this.$refs.section.style.display = 'none';
         }
       });
     },

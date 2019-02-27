@@ -74,7 +74,6 @@ export default {
 <style scoped lang="scss">
   @import "@/styles/_globals.scss";
   .one-page-scroll {
-    background-color: darkgray;
     height: 0;
     overflow: hidden;
   }

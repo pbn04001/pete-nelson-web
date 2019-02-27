@@ -1,6 +1,5 @@
 <template>
   <div ref="section" class="section developer">
-    <h3>Section 1</h3>
     <SunSVG ref="sun" class="developer__sun"/>
   </div>
 </template>
@@ -42,11 +41,10 @@ export default {
     reset() {
       this.visible = false;
       this.$refs.sun.style.translateY = this.sunOffScreen();
-      this.$refs.section.style.visibility = 'hidden';
+      this.$refs.section.style.display = 'none';
     },
     showAnimated(offset) {
-      console.log('show', offset);
-      this.$refs.section.style.visibility = 'visible';
+      this.$refs.section.style.display = 'block';
       this.visible = true;
       anime({
         targets: this.$refs.sun,
@@ -54,14 +52,13 @@ export default {
       });
     },
     hideAnimated() {
-      console.log('hide')
       this.visible = false;
       anime({
         targets: this.$refs.sun,
         translateY: this.sunOffScreen(),
       }).finished.then(() => {
         if (!this.visible) {
-          this.$refs.section.style.visibility = 'hidden';
+          this.$refs.section.style.display = 'none';
         }
       });
     },
@@ -92,7 +89,7 @@ export default {
       right: 10%;
       top: 5%;
 
-      & path {
+      & circle {
         fill: yellow;
       }
     }
