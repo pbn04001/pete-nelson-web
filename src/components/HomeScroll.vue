@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       currentSection: 0,
+      firstLoad: true,
       viewHeight: this.getViewHeight(),
     };
   },
@@ -36,6 +37,7 @@ export default {
     });
     this.$refs.pageScroll.style.height = 'auto';
     this.calculatePositions();
+    this.sections[this.currentSection].load();
     this.onScroll = window.addEventListener('scroll', this.onScroll);
   },
   beforeDestroy() {
@@ -65,8 +67,9 @@ export default {
     },
     performAnimations(lastSection, position) {
       if (lastSection !== position.section) {
-        this.sections[position.section].show(lastSection > position.section);
+        this.sections[position.section].show(lastSection > position.section, this.firstLoad);
         this.sections[lastSection].hide();
+        this.firstLoad = false;
       }
       this.sections[position.section].adjust(position.offset);
     },

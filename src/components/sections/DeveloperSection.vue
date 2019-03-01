@@ -38,6 +38,7 @@ export default {
     adjust(offset) {
       this.adjustAnimated(offset);
     },
+    load() {},
     reset() {
       this.visible = false;
       this.$refs.sun.style.translateY = this.sunOffScreen();

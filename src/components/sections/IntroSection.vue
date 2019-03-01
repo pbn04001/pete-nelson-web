@@ -1,5 +1,8 @@
 <template>
   <div ref="section" class="section intro">
+    <div class="intro__card">
+      <PeteNelson ref="peteNelson" class="intro__pete-nelson"/>
+    </div>
     <Cloud1 ref="cloud1" class="intro__cloud intro__cloud--1"/>
     <Cloud2 ref="cloud2" class="intro__cloud intro__cloud--2"/>
     <img src="/img/moon.svg" ref="moon" alt="Moon" class="intro__moon"/>
@@ -17,6 +20,7 @@ import SkyLine2 from '@/assets/images/skyline_2.svg';
 import SkyLine3 from '@/assets/images/skyline_3.svg';
 import Cloud1 from '@/assets/images/cloud_1.svg';
 import Cloud2 from '@/assets/images/cloud_2.svg';
+import PeteNelson from '@/assets/images/pete_nelson.svg';
 
 export default {
   name: 'IntroSection',
@@ -32,6 +36,7 @@ export default {
     SkyLine3,
     Cloud1,
     Cloud2,
+    PeteNelson,
   },
   data() {
     return {
@@ -45,13 +50,16 @@ export default {
         this.hideAnimated();
       }
     },
-    show(top) {
+    show(top, firstLoad) {
       if (!this.visible) {
-        this.showAnimated(top ? 0 : 1);
+        this.showAnimated(top ? 0 : 1, firstLoad);
       }
     },
     adjust(offset) {
       this.adjustAnimated(offset);
+    },
+    load() {
+      this.animatePeteNelson();
     },
     reset() {
       this.visible = false;
@@ -63,10 +71,15 @@ export default {
       this.$refs.moon_back.classList.remove('intro__moon_back--show');
       this.$refs.moon_back.classList.add('intro__moon_back--hide');
     },
-    showAnimated(offset) {
+    showAnimated(offset, firstLoad) {
       this.$refs.section.style.display = 'block';
       this.visible = true;
       this.showing = true;
+
+      if (firstLoad) {
+        this.animatePeteNelson();
+      }
+
       this.$refs.moon_back.classList.remove('intro__moon_back--hide');
       setTimeout(() => {
         this.$refs.moon_back.classList.add('intro__moon_back--show');
@@ -197,6 +210,42 @@ export default {
         duration: 20,
       });
     },
+    animatePeteNelson() {
+      anime({
+        targets: document.getElementById('name-p'),
+        loop: false,
+        direction: 'normal',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 700,
+      });
+      anime({
+        targets: document.getElementById('name-n1'),
+        loop: false,
+        direction: 'normal',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 200,
+      });
+      anime({
+        targets: document.getElementById('name-n2'),
+        loop: false,
+        direction: 'normal',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        delay: 200,
+        duration: 300,
+      });
+      anime({
+        targets: document.getElementById('name-n3'),
+        loop: false,
+        direction: 'normal',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        delay: 500,
+        duration: 200,
+      });
+    },
     skyLine1OffScreen() {
       return this.$refs.skyLine1.clientHeight + 50;
     },
@@ -238,6 +287,29 @@ export default {
 <style scoped lang="scss">
   @import "@/styles/_globals.scss";
   .intro {
+    &__card {
+      position: absolute;
+      top: 8rem;
+      left: 8rem;
+      text-align: left;
+    }
+
+    &__pete-nelson {
+      height: 13rem;
+
+      .cls-1{
+        fill: $light-gray;
+      }
+      .cls-2,.cls-3,.cls-4{
+        fill: none;
+        stroke: $light-gray;
+        stroke-miterlimit: 10;
+      }
+      .cls-2{stroke-width:1.25rem;}
+      .cls-3{stroke-width:1rem;}
+      .cls-4{stroke-width:1.125rem}
+    }
+
     &__cloud {
       z-index: 2;
       position: absolute;
