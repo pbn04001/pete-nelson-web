@@ -1,5 +1,7 @@
 <template>
   <div ref="section" class="section intro">
+    <Cloud1 ref="cloud1" class="intro__cloud intro__cloud--1"/>
+    <Cloud2 ref="cloud2" class="intro__cloud intro__cloud--2"/>
     <img src="/img/moon.svg" ref="moon" alt="Moon" class="intro__moon"/>
     <img src="/img/moon_back.svg" ref="moon_back" alt="Moon Glow" class="intro__moon_back intro__moon_back--show"/>
     <SkyLine1 ref="skyLine1" class="intro__sky_line intro__sky_line--1"/>
@@ -28,6 +30,8 @@ export default {
     SkyLine1,
     SkyLine2,
     SkyLine3,
+    Cloud1,
+    Cloud2,
   },
   data() {
     return {
@@ -74,6 +78,20 @@ export default {
         duration: 300,
       });
       anime({
+        targets: this.$refs.cloud1,
+        translateY: this.cloud1Movement(offset),
+        opacity: 0.6,
+        easing: 'easeOutSine',
+        duration: 1000,
+      });
+      anime({
+        targets: this.$refs.cloud2,
+        translateY: this.cloud2Movement(offset),
+        opacity: 0.6,
+        easing: 'easeOutSine',
+        duration: 1000,
+      });
+      anime({
         targets: this.$refs.skyLine3,
         translateY: this.skyLine3Movement(offset),
         easing: 'easeOutBack',
@@ -108,6 +126,24 @@ export default {
         duration: 400,
       });
       anime({
+        targets: this.$refs.cloud1,
+        translateY: this.cloud1OffScreen(),
+        opacity: 0,
+        easing: 'easeOutSine',
+        duration: 1000,
+      });
+      anime({
+        targets: this.$refs.cloud2,
+        translateY: this.cloud2OffScreen(),
+        opacity: 0,
+        easing: 'easeOutSine',
+        duration: 1000,
+      }).finished.then(() => {
+        if (!this.visible) {
+          this.$refs.section.style.display = 'none';
+        }
+      });
+      anime({
         targets: this.$refs.skyLine1,
         translateY: this.skyLine1OffScreen(),
         easing: 'easeInOutSine',
@@ -126,14 +162,22 @@ export default {
         easing: 'easeInOutSine',
         duration: 400,
         delay: 150,
-      }).finished.then(() => {
-        if (!this.visible) {
-          this.$refs.section.style.display = 'none';
-        }
       });
     },
     adjustAnimated(offset) {
       if (this.showing) return;
+
+      anime({
+        targets: this.$refs.cloud1,
+        translateY: this.cloud1Movement(offset),
+        duration: 20,
+      });
+
+      anime({
+        targets: this.$refs.cloud2,
+        translateY: this.cloud2Movement(offset),
+        duration: 20,
+      });
 
       anime({
         targets: this.$refs.skyLine1,
@@ -162,6 +206,15 @@ export default {
     skyLine3OffScreen() {
       return this.$refs.skyLine3.clientHeight + 50;
     },
+    moonOffScreen() {
+      return -1 * ((this.viewHeight * 0.10) + this.$refs.moon.clientHeight + 50);
+    },
+    cloud1OffScreen() {
+      return -1 * (this.$refs.moon.clientHeight + 100);
+    },
+    cloud2OffScreen() {
+      return -1 * ((this.viewHeight * 0.19) + this.$refs.moon.clientHeight + 50);
+    },
     skyLine1Movement(offset) {
       return offset * (this.viewHeight / 15);
     },
@@ -171,8 +224,11 @@ export default {
     skyLine3Movement(offset) {
       return offset * (this.viewHeight / 11);
     },
-    moonOffScreen() {
-      return -1 * ((this.viewHeight * 0.10) + this.$refs.moon.clientHeight + 50);
+    cloud1Movement(offset) {
+      return -1 * offset * (this.viewHeight / 25);
+    },
+    cloud2Movement(offset) {
+      return -1 * offset * (this.viewHeight / 10);
     },
   },
 };
@@ -182,6 +238,25 @@ export default {
 <style scoped lang="scss">
   @import "@/styles/_globals.scss";
   .intro {
+    &__cloud {
+      z-index: 2;
+      position: absolute;
+      width: 25%;
+      height: 25%;
+      opacity: .6;
+
+      & path {
+        fill: $dark-blue;
+      }
+
+      &--1 {
+        right: 25%;
+      }
+      &--2 {
+        top: 19%;
+        right: -3%;
+      }
+    }
     &__moon {
       z-index: 1;
       position: absolute;
@@ -214,20 +289,20 @@ export default {
       width: 100%;
     }
     &__sky_line--1 {
-      z-index: 3;
+      z-index: 13;
       & path {
         fill: $dark-blue;
       }
     }
     &__sky_line--2 {
-      z-index: 2;
+      z-index: 12;
       bottom: -5.5vw;
       & path {
         fill: $darker-blue;
       }
     }
     &__sky_line--3 {
-      z-index: 1;
+      z-index: 11;
       bottom: -5vw;
       & path {
         fill: $darkest-blue;

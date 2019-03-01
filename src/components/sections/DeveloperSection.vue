@@ -63,7 +63,6 @@ export default {
       });
     },
     adjustAnimated(offset) {
-      console.log('adjust', offset);
       anime({
         targets: this.$refs.sun,
         translateY: this.sunMovement(offset),
