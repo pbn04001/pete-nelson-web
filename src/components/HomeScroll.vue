@@ -31,9 +31,7 @@ export default {
       this.$refs.developerSection,
     ];
     this.sections.forEach((section, index) => {
-      if (index !== this.currentSection) {
-        this.sections[index].reset();
-      }
+      this.sections[index].reset();
     });
     this.$refs.pageScroll.style.height = 'auto';
     this.calculatePositions();

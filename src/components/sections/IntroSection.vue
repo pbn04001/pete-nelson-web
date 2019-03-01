@@ -6,7 +6,7 @@
     <Cloud1 ref="cloud1" class="intro__cloud intro__cloud--1"/>
     <Cloud2 ref="cloud2" class="intro__cloud intro__cloud--2"/>
     <img src="/img/moon.svg" ref="moon" alt="Moon" class="intro__moon"/>
-    <img src="/img/moon_back.svg" ref="moon_back" alt="Moon Glow" class="intro__moon_back intro__moon_back--show"/>
+    <img src="/img/moon_back.svg" ref="moon_back" alt="Moon Glow" class="intro__moon_back"/>
     <SkyLine1 ref="skyLine1" class="intro__sky_line intro__sky_line--1"/>
     <SkyLine2 ref="skyLine2" class="intro__sky_line intro__sky_line--2"/>
     <SkyLine3 ref="skyLine3" class="intro__sky_line intro__sky_line--3"/>
@@ -50,26 +50,27 @@ export default {
         this.hideAnimated();
       }
     },
-    show(top, firstLoad) {
+    show(top = true) {
       if (!this.visible) {
-        this.showAnimated(top ? 0 : 1, firstLoad);
+        this.showAnimated(top ? 0 : 1, false);
       }
     },
     adjust(offset) {
       this.adjustAnimated(offset);
     },
     load() {
-      this.animatePeteNelson();
+      this.showAnimated(0, true);
     },
     reset() {
+
       this.visible = false;
-      this.$refs.skyline1.style.translateY = this.skyLine1OffScreen();
-      this.$refs.skyline2.style.translateY = this.skyLine2OffScreen();
-      this.$refs.skyline3.style.translateY = this.skyLine3OffScreen();
-      this.$refs.moon.style.translateY = this.moonOffScreen();
+      this.$refs.skyLine1.style.transform = `translateY(${this.skyLine1OffScreen()}px)`;
+      this.$refs.skyLine2.style.transform = `translateY(${this.skyLine2OffScreen()}px)`;
+      this.$refs.skyLine3.style.transform = `translateY(${this.skyLine3OffScreen()}px)`;
+      this.$refs.moon.style.transform = `translateY(${this.moonOffScreen()}px)`;
+      this.$refs.cloud1.style.transform = `translateY(${this.cloud1OffScreen()}px)`;
+      this.$refs.cloud2.style.transform = `translateY(${this.cloud2OffScreen()}px)`;
       this.$refs.section.style.display = 'none';
-      this.$refs.moon_back.classList.remove('intro__moon_back--show');
-      this.$refs.moon_back.classList.add('intro__moon_back--hide');
     },
     showAnimated(offset, firstLoad) {
       this.$refs.section.style.display = 'block';
@@ -78,8 +79,14 @@ export default {
 
       if (firstLoad) {
         this.animatePeteNelson();
+        setTimeout(() => {
+          this.animateRest(offset);
+        }, 700);
+      } else {
+        this.animateRest(offset);
       }
-
+    },
+    animateRest(offset) {
       this.$refs.moon_back.classList.remove('intro__moon_back--hide');
       setTimeout(() => {
         this.$refs.moon_back.classList.add('intro__moon_back--show');
