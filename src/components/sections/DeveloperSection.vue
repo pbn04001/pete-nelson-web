@@ -90,7 +90,7 @@ export default {
       top: 5%;
 
       & circle {
-        fill: yellow;
+        fill: black;
       }
     }
   }

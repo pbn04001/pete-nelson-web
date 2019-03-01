@@ -10,6 +10,8 @@
 
 
 <style lang="scss">
+@import "@/styles/_globals.scss";
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,7 +30,7 @@ time, mark, audio, video {
   border: 0;
 }
 body {
-  background-color: darkgray;
+  background-color: $black;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
