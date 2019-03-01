@@ -84,6 +84,7 @@ export default {
   @import "@/styles/_globals.scss";
   .developer {
     &__sun {
+      display: none;
       position: absolute;
       width: 10%;
       right: 10%;

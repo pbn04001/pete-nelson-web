@@ -1,78 +1,80 @@
 <template>
-  <div class="pinContainer" ref="pinContainer">
-    <section class="panel intro">
-      Intro
-    </section>
-    <section class="panel next">
-      Next
-    </section>
-    <section class="panel third">
-      Third
-    </section>
-    <section class="panel fourth">
-      Forth
-    </section>
+  <div class="one-page-scroll" ref="pageScroll">
+    <IntroSection ref="introSection" :view-height="viewHeight" />
+    <DeveloperSection ref="developerSection" :view-height="viewHeight" />
   </div>
 </template>
 
 <script>
+import IntroSection from './sections/IntroSection.vue';
+import DeveloperSection from './sections/DeveloperSection.vue';
+
 export default {
-  name: 'HomeScroll',
+  name: 'HomeScrollCustom',
+  components: {
+    IntroSection,
+    DeveloperSection,
+  },
+  data() {
+    return {
+      currentSection: 0,
+      viewHeight: this.getViewHeight(),
+    };
+  },
   created() {
-    this.$nextTick(this.pinContainerScene);
+    window.addEventListener('resize', this.setViewHeight);
   },
   mounted() {
-    this.panels = this.$refs.pinContainer.querySelectorAll('.panel');
-    this.panels.forEach((panel, index) => {
-      panel.classList.add(`panel-${index}`);
+    this.sections = [
+      this.$refs.introSection,
+      this.$refs.developerSection,
+    ];
+    this.sections.forEach((section, index) => {
+      if (index !== this.currentSection) {
+        this.sections[index].reset();
+      }
     });
+    this.$refs.pageScroll.style.height = 'auto';
+    this.calculatePositions();
+    this.onScroll = window.addEventListener('scroll', this.onScroll);
   },
-  destroyed() {
-    // Destroy ScrollMagic when our component is removed from DOM
-    this.$ksvuescr.$emit('destroy')
+  beforeDestroy() {
+    window.removeEventListener('resize', this.setViewHeight);
   },
   methods: {
-    pinContainerScene() {
-      const Length = this.panels.length
-
-      // Create a new Timeline (equivalent to new TimelineMax())
-      const tl = new this.$gsap.TimelineMax()
-
-      for (var i = 0; i < Length; i++) { // For each panel in this.panels array:
-        let animFrom, animOutLetters;
-        console.log(i)
-        switch (i) { // Set animFrom value, depending on the index i of the item
-          case 0:
-            break; // First panel is already visible on page load, so no animation
-          case 1:
-            animFrom = {x: '-100%'} // Second panel comes from the left
-            break;
-          case 2:
-            animFrom = {x: '100%'} // Third one comes from the right
-            break;
-          case 3:
-            animFrom = {y: '-100%'} // Finally, the last one comes from the top
-            break;
-        }
-        if (i !== 0) { // For each panel except the one whom index is 0, create the tween and add it to the tl timeline
-          tl.fromTo(`section.panel-${i}`, 1.5, animFrom, {x: '0%', y: '0%', ease: Linear.easeNone})
-        }
+    setViewHeight() {
+      this.viewHeight = this.getViewHeight();
+    },
+    getViewHeight() {
+      return window.innerHeight;
+    },
+    calculatePositions() {
+      this.$refs.pageScroll.style.height = `${(this.sections.length * this.getViewHeight()) + this.getViewHeight()}px`;
+    },
+    calculatePosition() {
+      const offset = window.pageYOffset / (this.getViewHeight() + 1);
+      let section = Math.ceil(offset) || 1;
+      if (section > this.sections.length) {
+        section = this.sections.length;
       }
-
-      // create scene and set its params
-      const scene = new this.$scrollmagic.Scene({
-        triggerElement: '.pinContainer',
-        triggerHook: 'onLeave',
-        duration: `${Length * 100}%`
-      })
-        .setPin('.pinContainer')
-        .setTween(tl)
-
-      // Add scene to ScrollMagic controller by emiting an 'addScene' event on vm.$ksvuescr (which is our global event bus)
-      this.$ksvuescr.$emit('addScene', 'pinContainerScene', scene)
-
-      // TAAAAAAADAAAAAAAAAAAA
-    }
+      this.currentSection = section - 1;
+      return {
+        section: section - 1,
+        offset: (offset % 1),
+      };
+    },
+    performAnimations(lastSection, position) {
+      if (lastSection !== position.section) {
+        this.sections[position.section].show(lastSection > position.section);
+        this.sections[lastSection].hide();
+      }
+      this.sections[position.section].adjust(position.offset);
+    },
+    onScroll() {
+      const section = this.currentSection;
+      const position = this.calculatePosition();
+      this.performAnimations(section, position);
+    },
   },
 };
 </script>
@@ -80,33 +82,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "@/styles/_globals.scss";
-  .pinContainer {
-    width: 100%;
+  .one-page-scroll {
+    height: 0;
+    overflow: hidden;
+  }
+  .section {
+    position: fixed;
+    top: 0;
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
-    position: relative;
-  }
-  .panel {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left:0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-  .intro {
-    background-color: blue;
-  }
-  .next {
-    background-color: red;
-  }
-  .third {
-    background-color: green;
-  }
-  .fourth {
-    background-color: gray;
   }
 </style>

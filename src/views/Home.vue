@@ -1,15 +1,15 @@
 <template>
-  <HomeScrollCustom />
+  <HomeScroll />
 </template>
 
 <script>
 // @ is an alias to /src
-import HomeScrollCustom from '@/components/HomeScrollCustom.vue';
+import HomeScroll from '@/components/HomeScroll.vue';
 
 export default {
   name: 'home',
   components: {
-    HomeScrollCustom,
+    HomeScroll,
   },
 };
 </script>

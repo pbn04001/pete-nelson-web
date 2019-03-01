@@ -1,5 +1,7 @@
 <template>
   <div ref="section" class="section intro">
+    <img src="/img/moon.svg" ref="moon" alt="Moon" class="intro__moon"/>
+    <img src="/img/moon_back.svg" ref="moon_back" alt="Moon Glow" class="intro__moon_back"/>
     <SkyLine1 ref="skyLine1" class="intro__sky_line intro__sky_line--1"/>
     <SkyLine2 ref="skyLine2" class="intro__sky_line intro__sky_line--2"/>
     <SkyLine3 ref="skyLine3" class="intro__sky_line intro__sky_line--3"/>
@@ -50,12 +52,21 @@ export default {
       this.$refs.skyline1.style.translateY = this.skyLine1OffScreen();
       this.$refs.skyline2.style.translateY = this.skyLine2OffScreen();
       this.$refs.skyline3.style.translateY = this.skyLine3OffScreen();
+      this.$refs.moon.style.translateY = this.moonOffScreen();
       this.$refs.section.style.display = 'none';
+      this.$refs.moon_back.classList.add('intro__moon_back--hidden');
     },
     showAnimated(offset) {
       this.$refs.section.style.display = 'block';
       this.visible = true;
       this.showing = true;
+      this.$refs.moon_back.classList.remove('intro__moon_back--hidden');
+      anime({
+        targets: this.$refs.moon,
+        translateY: 0,
+        easing: 'easeOutSine',
+        duration: 300,
+      });
       anime({
         targets: this.$refs.skyLine3,
         translateY: this.skyLine3Movement(offset),
@@ -81,6 +92,13 @@ export default {
     },
     hideAnimated() {
       this.visible = false;
+      this.$refs.moon_back.classList.add('intro__moon_back--hidden');
+      anime({
+        targets: this.$refs.moon,
+        translateY: this.moonOffScreen(),
+        easing: 'easeInOutSine',
+        duration: 400,
+      });
       anime({
         targets: this.$refs.skyLine1,
         translateY: this.skyLine1OffScreen(),
@@ -145,6 +163,9 @@ export default {
     skyLine3Movement(offset) {
       return offset * (this.viewHeight / 11);
     },
+    moonOffScreen() {
+      return -1 * ((this.viewHeight * 0.10) + this.$refs.moon.clientHeight + 50);
+    },
   },
 };
 </script>
@@ -153,10 +174,30 @@ export default {
 <style scoped lang="scss">
   @import "@/styles/_globals.scss";
   .intro {
+    &__moon {
+      z-index: 1;
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      width: 20%;
+      height: 20%;
+    }
+    &__moon_back {
+      position: absolute;
+      width: 95%;
+      height: 95%;
+      top: -27.5%;
+      right: -22.5%;
+
+      &--hidden {
+        opacity: 0;
+        transition: opacity 500ms;
+      }
+    }
     &__sky_line {
       position: absolute;
       right: 0;
-      bottom: -6rem;
+      bottom: -6vw;
       width: 100%;
     }
     &__sky_line--1 {
@@ -167,12 +208,14 @@ export default {
     }
     &__sky_line--2 {
       z-index: 2;
+      bottom: -5.5vw;
       & path {
         fill: $darker-blue;
       }
     }
     &__sky_line--3 {
       z-index: 1;
+      bottom: -5vw;
       & path {
         fill: $darkest-blue;
       }
