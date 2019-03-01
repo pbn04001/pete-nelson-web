@@ -62,7 +62,6 @@ export default {
       this.showAnimated(0, true);
     },
     reset() {
-
       this.visible = false;
       this.$refs.skyLine1.style.transform = `translateY(${this.skyLine1OffScreen()}px)`;
       this.$refs.skyLine2.style.transform = `translateY(${this.skyLine2OffScreen()}px)`;
@@ -79,14 +78,8 @@ export default {
 
       if (firstLoad) {
         this.animatePeteNelson();
-        setTimeout(() => {
-          this.animateRest(offset);
-        }, 700);
-      } else {
-        this.animateRest(offset);
       }
-    },
-    animateRest(offset) {
+
       this.$refs.moon_back.classList.remove('intro__moon_back--hide');
       setTimeout(() => {
         this.$refs.moon_back.classList.add('intro__moon_back--show');
@@ -224,33 +217,37 @@ export default {
         direction: 'normal',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
-        duration: 700,
+        duration: 500,
       });
       anime({
         targets: document.getElementById('name-n1'),
-        loop: false,
         direction: 'normal',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
-        duration: 200,
+        duration: 150,
       });
       anime({
         targets: document.getElementById('name-n2'),
-        loop: false,
         direction: 'normal',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
-        delay: 200,
-        duration: 300,
+        delay: 150,
+        duration: 200,
       });
       anime({
         targets: document.getElementById('name-n3'),
-        loop: false,
         direction: 'normal',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
+        delay: 350,
+        duration: 150,
+      });
+      anime({
+        targets: document.getElementById('name-mask-rectangle'),
+        width: '100%',
+        easing: 'easeInOutSine',
         delay: 500,
-        duration: 200,
+        duration: 500,
       });
     },
     skyLine1OffScreen() {
