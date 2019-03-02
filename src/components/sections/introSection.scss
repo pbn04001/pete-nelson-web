@@ -98,22 +98,13 @@
   }
   &__sky_line--1 {
     z-index: 13;
-    & path {
-      fill: $dark-blue;
-    }
   }
   &__sky_line--2 {
     z-index: 12;
     bottom: -5.5vw;
-    & path {
-      fill: $darker-blue;
-    }
   }
   &__sky_line--3 {
     z-index: 11;
     bottom: -5vw;
-    & path {
-      fill: $darkest-blue;
-    }
   }
 }
