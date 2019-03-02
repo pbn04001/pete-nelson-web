@@ -1,7 +1,8 @@
 <template>
   <div ref="section" class="section mountains">
-    <Mountains1 ref="mountains1" alt="Mountains" class="mountains__mountains mountains__mountains--1" />
-    <Mountains2 ref="mountains2" alt="Mountains" class="mountains__mountains mountains__mountains--2" />
+    <Mountains1 ref="mountains1" class="mountains__mountains mountains__mountains--1" />
+    <Mountains2 ref="mountains2" class="mountains__mountains mountains__mountains--2" />
+    <Clouds ref="clouds" class="mountains__clouds" />
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 import anime from 'animejs';
 import Mountains1 from '@/assets/images/mountains_1.svg';
 import Mountains2 from '@/assets/images/mountains_2.svg';
+import Clouds from '@/assets/images/mountain_clouds.svg';
 
 export default {
   name: 'MountainsSection',
   components: {
     Mountains1,
     Mountains2,
+    Clouds,
   },
   props: {
     viewHeight: {
@@ -48,31 +51,48 @@ export default {
 
       this.$refs.mountains1.style.transform = `translateY(${this.mountains1Offscreen()}px)`;
       this.$refs.mountains2.style.transform = `translateY(${this.mountains2Offscreen()}px)`;
-      this.$refs.section.style.display = 'none';
+      this.$refs.clouds.style.transform = `translateY(${this.cloudsOffscreen()}px)`;
     },
     showAnimated(offset) {
-      this.$refs.section.style.display = 'block';
       this.visible = true;
       this.showing = true;
+
+      anime({
+        targets: this.$refs.clouds,
+        translateY: 0, //this.mountains2Movement(offset),
+        easing: 'easeOutSine',
+        opacity: 1,
+        duration: 700,
+      });
 
       anime({
         targets: this.$refs.mountains2,
         translateY: 0, //this.mountains2Movement(offset),
         easing: 'easeOutSine',
-        duration: 700,
+        delay: 200,
+        duration: 500,
       });
 
       anime({
         targets: this.$refs.mountains1,
         translateY: 0, //this.mountains1Movement(offset),
         easing: 'easeOutSine',
-        duration: 500,
+        delay: 200,
+        duration: 300,
       }).finished.then(() => {
         this.showing = false;
       });
     },
     hideAnimated() {
       this.visible = false;
+
+      anime({
+        targets: this.$refs.clouds,
+        translateY: this.cloudsOffscreen(),
+        easing: 'easeInOutSine',
+        duration: 700,
+        opacity: 0,
+      });
 
       anime({
         targets: this.$refs.mountains2,
@@ -85,11 +105,7 @@ export default {
         targets: this.$refs.mountains1,
         translateY: this.mountains1Offscreen(),
         easing: 'easeInOutSine',
-        duration: 500,
-      }).finished.then(() => {
-        if (!this.visible) {
-          this.$refs.section.style.display = 'none';
-        }
+        duration: 300,
       });
     },
     adjustAnimated(offset) {
@@ -100,10 +116,13 @@ export default {
       });
     },
     mountains1Offscreen() {
-      return this.$refs.mountains1.clientHeight + 50;
+      return this.$refs.mountains1.clientHeight;
     },
     mountains2Offscreen() {
-      return this.$refs.mountains2.clientHeight + 50;
+      return this.$refs.mountains2.clientHeight;
+    },
+    cloudsOffscreen() {
+      return this.$refs.clouds.clientHeight;
     },
     mountains1Movement(offset) {
       return offset * (this.viewHeight / 30);
@@ -123,7 +142,7 @@ export default {
     &__mountains {
       position: absolute;
       width: 100%;
-      bottom: 0;
+      bottom: -6vw;
       left: 0;
 
       &--1 {
@@ -132,6 +151,15 @@ export default {
       &--2 {
         z-index: 2;
       }
+    }
+
+    &__clouds {
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      bottom: -6vw;
+      left: 0;
+      opacity: 0;
     }
   }
 </style>

@@ -22,7 +22,7 @@ export default {
     };
   },
   created() {
-    window.addEventListener('resize', this.setViewHeight);
+    window.addEventListener('resize', this.onResize);
   },
   mounted() {
     this.sections = [
@@ -38,11 +38,16 @@ export default {
     this.onScroll = window.addEventListener('scroll', this.onScroll);
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.setViewHeight);
+    window.removeEventListener('resize', this.onResize);
   },
   methods: {
-    setViewHeight() {
+    onResize() {
       this.viewHeight = this.getViewHeight();
+      this.sections.forEach((section, index) => {
+        if (index !== this.currentSection) {
+          this.sections[index].reset();
+        }
+      });
     },
     getViewHeight() {
       return window.innerHeight;

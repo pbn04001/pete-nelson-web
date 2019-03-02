@@ -9,8 +9,8 @@
     </div>
     <Cloud1 ref="cloud1" class="intro__cloud intro__cloud--1"/>
     <Cloud2 ref="cloud2" class="intro__cloud intro__cloud--2"/>
-    <img src="/img/moon.svg" ref="moon" alt="Moon" class="intro__moon"/>
-    <img src="/img/moon_back.svg" ref="moon_back" alt="Moon Glow" class="intro__moon_back"/>
+    <Moon ref="moon" class="intro__moon"/>
+    <MoonBack ref="moon_back" class="intro__moon_back"/>
     <SkyLine1 ref="skyLine1" class="intro__sky_line intro__sky_line--1"/>
     <SkyLine2 ref="skyLine2" class="intro__sky_line intro__sky_line--2"/>
     <SkyLine3 ref="skyLine3" class="intro__sky_line intro__sky_line--3"/>
@@ -24,6 +24,8 @@ import SkyLine2 from '@/assets/images/skyline_2.svg';
 import SkyLine3 from '@/assets/images/skyline_3.svg';
 import Cloud1 from '@/assets/images/cloud_1.svg';
 import Cloud2 from '@/assets/images/cloud_2.svg';
+import Moon from '@/assets/images/moon.svg';
+import MoonBack from '@/assets/images/moon_back.svg';
 import PeteNelson from '@/assets/images/pete_nelson.svg';
 
 export default {
@@ -40,6 +42,8 @@ export default {
     SkyLine3,
     Cloud1,
     Cloud2,
+    Moon,
+    MoonBack,
     PeteNelson,
   },
   data() {
@@ -75,10 +79,8 @@ export default {
       this.$refs.moon.style.transform = `translateY(${this.moonOffScreen()}px)`;
       this.$refs.cloud1.style.transform = `translateY(${this.cloud1OffScreen()}px)`;
       this.$refs.cloud2.style.transform = `translateY(${this.cloud2OffScreen()}px)`;
-      this.$refs.section.style.display = 'none';
     },
     showAnimated(offset, firstLoad) {
-      this.$refs.section.style.display = 'block';
       this.visible = true;
       this.showing = true;
 
@@ -176,10 +178,6 @@ export default {
         opacity: 0,
         easing: 'easeOutSine',
         duration: 1000,
-      }).finished.then(() => {
-        if (!this.visible) {
-          this.$refs.section.style.display = 'none';
-        }
       });
       anime({
         targets: this.$refs.skyLine1,
