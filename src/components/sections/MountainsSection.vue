@@ -39,6 +39,7 @@ export default {
     },
     show(top) {
       if (!this.visible) {
+        window.location.hash = 'developer';
         this.showAnimated(top ? 0 : 1);
       }
     },
@@ -46,6 +47,7 @@ export default {
       //  this.adjustAnimated(offset);
     },
     load() {
+      this.showAnimated(0);
       return new Promise((resolve) => resolve());
     },
     reset() {

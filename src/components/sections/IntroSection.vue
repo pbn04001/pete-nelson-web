@@ -60,6 +60,7 @@ export default {
     },
     show(top = true) {
       if (!this.visible) {
+        window.location.hash = '';
         this.showAnimated(top ? 0 : 1, false);
       }
     },
@@ -76,6 +77,7 @@ export default {
     },
     reset() {
       this.visible = false;
+      this.$refs.introCard.style.transform = `translateX(${this.introCardOffScreen()}px)`;
       this.$refs.skyLine1.style.transform = `translateY(${this.skyLine1OffScreen()}px)`;
       this.$refs.skyLine2.style.transform = `translateY(${this.skyLine2OffScreen()}px)`;
       this.$refs.skyLine3.style.transform = `translateY(${this.skyLine3OffScreen()}px)`;
@@ -95,6 +97,7 @@ export default {
               .then(resolve);
           }, 700);
         } else {
+          this.showPeteNelson();
           this.$refs.introCardSub.classList.add('intro__card_sub--show');
           anime({
             targets: this.$refs.introCard,
@@ -251,6 +254,7 @@ export default {
       });
     },
     animatePeteNelson() {
+      this.$refs.introCard.style.transform = `translateX(0px)`;
       anime({
         targets: document.getElementById('name-p'),
         loop: false,
@@ -293,6 +297,9 @@ export default {
       setTimeout(() => {
         this.$refs.introCardSub.classList.add('intro__card_sub--show');
       }, 1000);
+    },
+    showPeteNelson() {
+
     },
     skyLine1OffScreen() {
       return this.$refs.skyLine1.clientHeight + 50;

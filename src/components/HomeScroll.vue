@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      currentSection: 0,
+      currentSection: this.getCurrentSection(),
       viewHeight: this.getViewHeight(),
     };
   },
@@ -38,15 +38,24 @@ export default {
     });
     this.sections[this.currentSection].load()
       .then(() => {
+        window.scrollTo(0, this.currentSection * this.getViewHeight());
         document.body.style.overflow = 'auto';
+        this.onScroll = window.addEventListener('scroll', this.onScroll);
         // TODO: Show scroll indicator to user
       });
-    this.onScroll = window.addEventListener('scroll', this.onScroll);
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
+    getCurrentSection() {
+      console.log(window.location.hash)
+      if (window.location.hash === '#developer') {
+        return 1;
+      }
+
+      return 0;
+    },
     onResize() {
       this.viewHeight = this.getViewHeight();
       this.sections.forEach((section, index) => {
