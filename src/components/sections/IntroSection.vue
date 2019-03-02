@@ -60,7 +60,9 @@ export default {
       }
     },
     adjust(offset) {
-      this.adjustAnimated(offset);
+      if (this.visible) {
+        this.adjustAnimated(offset);
+      }
     },
     load() {
       this.showAnimated(0, true);
@@ -96,7 +98,7 @@ export default {
       setTimeout(() => {
         this.$refs.moon_back.classList.add('intro__moon_back--show');
       }, 300);
-      console.log('showMoon', this.visible)
+
       anime({
         targets: this.$refs.moon,
         translateY: 0,

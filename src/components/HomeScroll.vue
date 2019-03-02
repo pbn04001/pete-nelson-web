@@ -1,24 +1,23 @@
 <template>
   <div class="one-page-scroll" ref="pageScroll">
     <IntroSection ref="introSection" :view-height="viewHeight" />
-    <DeveloperSection ref="developerSection" :view-height="viewHeight" />
+    <MountainsSection ref="mountainSection" :view-height="viewHeight" />
   </div>
 </template>
 
 <script>
 import IntroSection from './sections/IntroSection.vue';
-import DeveloperSection from './sections/DeveloperSection.vue';
+import MountainsSection from './sections/MountainsSection.vue';
 
 export default {
   name: 'HomeScrollCustom',
   components: {
     IntroSection,
-    DeveloperSection,
+    MountainsSection,
   },
   data() {
     return {
       currentSection: 0,
-      firstLoad: true,
       viewHeight: this.getViewHeight(),
     };
   },
@@ -28,13 +27,13 @@ export default {
   mounted() {
     this.sections = [
       this.$refs.introSection,
-      this.$refs.developerSection,
+      this.$refs.mountainSection,
     ];
+    this.$refs.pageScroll.style.height = 'auto';
+    this.calculatePositions();
     this.sections.forEach((section, index) => {
       this.sections[index].reset();
     });
-    this.$refs.pageScroll.style.height = 'auto';
-    this.calculatePositions();
     this.sections[this.currentSection].load();
     this.onScroll = window.addEventListener('scroll', this.onScroll);
   },
@@ -65,9 +64,10 @@ export default {
     },
     performAnimations(lastSection, position) {
       if (lastSection !== position.section) {
-        this.sections[position.section].show(lastSection > position.section, this.firstLoad);
         this.sections[lastSection].hide();
-        this.firstLoad = false;
+        setTimeout(() => {
+          this.sections[position.section].show(lastSection > position.section);
+        }, 400);
       }
       this.sections[position.section].adjust(position.offset);
     },
