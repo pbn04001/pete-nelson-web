@@ -19,6 +19,11 @@ time, mark, audio, video {
 }
 body {
   background-color: $black;
+  transition: background-color linear 600ms;
+}
+.body--mountains {
+  background-color: $light-blue;
+  transition: background-color linear 600ms;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

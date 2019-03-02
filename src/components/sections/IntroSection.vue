@@ -69,7 +69,10 @@ export default {
       }
     },
     load() {
-      this.showAnimated(0, true);
+      return new Promise((resolve) => {
+        this.showAnimated(0, true)
+          .then(resolve);
+      });
     },
     reset() {
       this.visible = false;
@@ -84,64 +87,78 @@ export default {
       this.visible = true;
       this.showing = true;
 
-      if (firstLoad) {
-        this.animatePeteNelson();
-      } else {
-        this.$refs.introCardSub.classList.add('intro__card_sub--show');
+      return new Promise((resolve) => {
+        if (firstLoad) {
+          this.animatePeteNelson();
+          setTimeout(() => {
+            this.showRemainingAnimated(offset)
+              .then(resolve);
+          }, 700);
+        } else {
+          this.$refs.introCardSub.classList.add('intro__card_sub--show');
+          anime({
+            targets: this.$refs.introCard,
+            translateX: 0,
+            easing: 'easeOutSine',
+            duration: 400,
+          });
+          this.showRemainingAnimated(offset)
+            .then(resolve);
+        }
+      })
+    },
+    showRemainingAnimated(offset) {
+      return new Promise((resolve) => {
+        this.$refs.moon_back.classList.remove('intro__moon_back--hide');
+        setTimeout(() => {
+          this.$refs.moon_back.classList.add('intro__moon_back--show');
+        }, 300);
+
         anime({
-          targets: this.$refs.introCard,
-          translateX: 0,
+          targets: this.$refs.moon,
+          translateY: 0,
           easing: 'easeOutSine',
-          duration: 400,
+          duration: 300,
         });
-      }
-
-      this.$refs.moon_back.classList.remove('intro__moon_back--hide');
-      setTimeout(() => {
-        this.$refs.moon_back.classList.add('intro__moon_back--show');
-      }, 300);
-
-      anime({
-        targets: this.$refs.moon,
-        translateY: 0,
-        easing: 'easeOutSine',
-        duration: 300,
-      });
-      anime({
-        targets: this.$refs.cloud1,
-        translateY: this.cloud1Movement(offset),
-        opacity: 0.6,
-        easing: 'easeOutSine',
-        duration: 1000,
-      });
-      anime({
-        targets: this.$refs.cloud2,
-        translateY: this.cloud2Movement(offset),
-        opacity: 0.6,
-        easing: 'easeOutSine',
-        duration: 1000,
-      });
-      anime({
-        targets: this.$refs.skyLine3,
-        translateY: this.skyLine3Movement(offset),
-        easing: 'easeOutBack',
-        duration: 500,
-      });
-      anime({
-        targets: this.$refs.skyLine2,
-        translateY: this.skyLine2Movement(offset),
-        easing: 'easeOutBack',
-        duration: 500,
-        delay: 100,
-      });
-      anime({
-        targets: this.$refs.skyLine1,
-        translateY: this.skyLine1Movement(offset),
-        easing: 'easeOutBack',
-        duration: 500,
-        delay: 100,
-      }).finished.then(() => {
-        this.showing = false;
+        anime({
+          targets: this.$refs.cloud1,
+          translateY: this.cloud1Movement(offset),
+          opacity: 0.6,
+          easing: 'easeOutSine',
+          duration: 1000,
+        });
+        anime({
+          targets: this.$refs.cloud2,
+          translateY: this.cloud2Movement(offset),
+          opacity: 0.6,
+          easing: 'easeOutSine',
+          duration: 1000,
+        });
+        anime({
+          targets: this.$refs.skyLine3,
+          translateY: this.skyLine3Movement(offset),
+          easing: 'easeOutBack',
+          duration: 500,
+        });
+        anime({
+          targets: this.$refs.skyLine2,
+          translateY: this.skyLine2Movement(offset),
+          easing: 'easeOutBack',
+          duration: 500,
+          delay: 100,
+        });
+        anime({
+          targets: this.$refs.skyLine1,
+          translateY: this.skyLine1Movement(offset),
+          easing: 'easeOutBack',
+          duration: 500,
+          delay: 100,
+        })
+          .finished
+          .then(() => {
+            this.showing = false;
+            resolve();
+          });
       });
     },
     hideAnimated() {
@@ -247,6 +264,7 @@ export default {
         direction: 'normal',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
+        delay: 500,
         duration: 150,
       });
       anime({
@@ -254,7 +272,7 @@ export default {
         direction: 'normal',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
-        delay: 150,
+        delay: 650,
         duration: 200,
       });
       anime({
@@ -262,19 +280,19 @@ export default {
         direction: 'normal',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
-        delay: 350,
+        delay: 850,
         duration: 150,
       });
       anime({
         targets: document.getElementById('name-mask-rectangle'),
         width: ['0%', '100%'],
         easing: 'easeInOutSine',
-        delay: 500,
+        delay: 1000,
         duration: 500,
       });
       setTimeout(() => {
         this.$refs.introCardSub.classList.add('intro__card_sub--show');
-      }, 500);
+      }, 1000);
     },
     skyLine1OffScreen() {
       return this.$refs.skyLine1.clientHeight + 50;

@@ -22,6 +22,8 @@ export default {
     };
   },
   created() {
+    // Preventing scrolling until first animating is complete
+    document.body.style.overflow = 'hidden';
     window.addEventListener('resize', this.onResize);
   },
   mounted() {
@@ -34,7 +36,11 @@ export default {
     this.sections.forEach((section, index) => {
       this.sections[index].reset();
     });
-    this.sections[this.currentSection].load();
+    this.sections[this.currentSection].load()
+      .then(() => {
+        document.body.style.overflow = 'auto';
+        // TODO: Show scroll indicator to user
+      });
     this.onScroll = window.addEventListener('scroll', this.onScroll);
   },
   beforeDestroy() {

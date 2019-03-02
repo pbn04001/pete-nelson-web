@@ -45,7 +45,9 @@ export default {
     adjust(offset) {
       //  this.adjustAnimated(offset);
     },
-    load() {},
+    load() {
+      return new Promise((resolve) => resolve());
+    },
     reset() {
       this.visible = false;
 
@@ -56,6 +58,7 @@ export default {
     showAnimated(offset) {
       this.visible = true;
       this.showing = true;
+      document.body.classList.add('body--mountains');
 
       anime({
         targets: this.$refs.clouds,
@@ -85,6 +88,8 @@ export default {
     },
     hideAnimated() {
       this.visible = false;
+      document.body.classList.remove('body--mountains');
+
 
       anime({
         targets: this.$refs.clouds,
