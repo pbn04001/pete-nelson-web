@@ -77,7 +77,9 @@ export default {
       if (lastSection !== position.section) {
         this.sections[lastSection].hide();
         setTimeout(() => {
-          this.sections[position.section].show(lastSection > position.section);
+          if (this.currentSection === position.section) {
+            this.sections[position.section].show(lastSection > position.section);
+          }
         }, 400);
       }
       this.sections[position.section].adjust(position.offset);
