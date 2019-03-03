@@ -7,10 +7,11 @@
 
 <script>
 import { mapState } from 'vuex';
+import debounce from 'debounce';
 import { SCREEN_SIZE, getScreenSizeMax } from '@/utils/sizes';
 // Sections
-import IntroSection from './sections/IntroSection.vue';
-import MountainsSection from './sections/MountainsSection.vue';
+import IntroSection from './sections/intro/IntroSection.vue';
+import MountainsSection from './sections/mountains/MountainsSection.vue';
 
 export default {
   name: 'HomeScrollCustom',
@@ -43,7 +44,8 @@ export default {
     },
   },
   created() {
-    if (!this.isMobile()) {
+    this.isMobile = this.getIsMobile();
+    if (!this.isMobile) {
       // Preventing scrolling until first animating is complete
       window.scrollTo(0, 0);
       document.body.style.overflow = 'hidden';
@@ -55,10 +57,10 @@ export default {
       this.$refs.introSection,
       this.$refs.mountainSection,
     ];
-    if (!this.isMobile()) {
+    if (!this.isMobile) {
       this.calculatePositions();
       this.sections.forEach((section, index) => {
-        this.sections[index].reset();
+        this.sections[index].reset(false);
       });
       this.setHash();
       this.sections[this.currentSection].load()
@@ -74,8 +76,8 @@ export default {
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
-    isMobile() {
-      return true; //window.innerWidth < getScreenSizeMax(SCREEN_SIZE.SM);
+    getIsMobile() {
+      return window.innerWidth < getScreenSizeMax(SCREEN_SIZE.SM);
     },
     getCurrentSection(section) {
       if (this.sections) {
@@ -87,10 +89,23 @@ export default {
       return 0;
     },
     onResize() {
+      const isMobile = this.getIsMobile();
       this.viewHeight = this.getViewHeight();
+      if (!isMobile) {
+        this.calculatePositions();
+        debounce(this.resetNoVisibleSections(), 200);
+      } else if (!this.isMobile) { // Only run once when first viewing mobile
+        this.$refs.pageScroll.style.height = 'auto';
+        this.sections.forEach((section, index) => {
+          this.sections[index].reset();
+        });
+      }
+      this.isMobile = isMobile;
+    },
+    resetNoVisibleSections() {
       this.sections.forEach((section, index) => {
         if (index !== this.currentSection) {
-          this.sections[index].reset();
+          this.sections[index].reset(false);
         }
       });
     },

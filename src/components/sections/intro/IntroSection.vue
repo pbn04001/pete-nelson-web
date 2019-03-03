@@ -1,7 +1,7 @@
 <template>
   <div ref="section" class="section intro">
     <div ref="introCard" class="intro__card">
-      <PeteNelson ref="peteNelson" class="intro__pete-nelson"/>
+      <h1><PeteNelson ref="peteNelson" class="intro__pete-nelson"/></h1>
       <div ref="introCardSub" class="intro__card_sub">
         <hr class="intro__card_bar" />
         <span class="intro__card_text">Developer & Designer</span>
@@ -77,15 +77,15 @@ export default {
     getHash() {
       return 'intro';
     },
-    reset() {
+    reset(visible = true) {
       this.visible = false;
-      this.$refs.introCard.style.transform = `translateX(${this.introCardOffScreen()}px)`;
-      this.$refs.skyLine1.style.transform = `translateY(${this.skyLine1OffScreen()}px)`;
-      this.$refs.skyLine2.style.transform = `translateY(${this.skyLine2OffScreen()}px)`;
-      this.$refs.skyLine3.style.transform = `translateY(${this.skyLine3OffScreen()}px)`;
-      this.$refs.moon.style.transform = `translateY(${this.moonOffScreen()}px)`;
-      this.$refs.cloud1.style.transform = `translateY(${this.cloud1OffScreen()}px)`;
-      this.$refs.cloud2.style.transform = `translateY(${this.cloud2OffScreen()}px)`;
+      this.$refs.introCard.style.transform = `translateX(${visible ? 0 : this.introCardOffScreen()}px)`;
+      this.$refs.skyLine1.style.transform = `translateY(${visible ? 0 : this.skyLine1OffScreen()}px)`;
+      this.$refs.skyLine2.style.transform = `translateY(${visible ? 0 : this.skyLine2OffScreen()}px)`;
+      this.$refs.skyLine3.style.transform = `translateY(${visible ? 0 : this.skyLine3OffScreen()}px)`;
+      this.$refs.moon.style.transform = `translateY(${visible ? 0 : this.moonOffScreen()}px)`;
+      this.$refs.cloud1.style.transform = `translateY(${visible ? 0 : this.cloud1OffScreen()}px)`;
+      this.$refs.cloud2.style.transform = `translateY(${visible ? 0 : this.cloud2OffScreen()}px)`;
     },
     showAnimated(offset, firstLoad) {
       this.visible = true;

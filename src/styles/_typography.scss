@@ -1,7 +1,7 @@
 
 @mixin font-alpha {
-  font-size: 3rem;
-  line-height: 2.5rem;
+  font-size: 3.5rem;
+  line-height: 3rem;
 }
 
 @mixin font-beta {
@@ -15,11 +15,19 @@
 }
 
 @mixin font-delta {
-  font-size: 1.5rem;
-  line-height: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.35rem;
 }
 
 @mixin font-epsilon {
   font-size: 1rem;
   line-height: 1rem;
+}
+
+h1 {
+  @include font-alpha;
+}
+
+h2 {
+  @include font-gamma;
 }

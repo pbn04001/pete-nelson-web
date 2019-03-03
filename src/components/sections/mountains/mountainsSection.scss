@@ -1,0 +1,61 @@
+@import "@/styles/_globals.scss";
+.mountains {
+  background-color: $light-blue;
+
+  &__card {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &_sub {
+      @include font-delta;
+      color: $black;
+      background-color: $transparent-white;
+      padding: $spacing-unit-x4;
+      margin: $spacing-unit-x4;
+    }
+  }
+  &__title {
+    color: $dark-teal;
+    display: block;
+    width: 100%;
+    flex: 0 0 100%;
+    text-align: center;
+    margin: $spacing-unit-x4 0 0 0;
+  }
+  &__mountains {
+    position: absolute;
+    width: 100%;
+    bottom: -6vw;
+    left: 0;
+
+    &--1 {
+      z-index: 3
+    }
+    &--2 {
+      z-index: 2;
+    }
+  }
+
+  &__clouds {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    bottom: -6vw;
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  .mountains {
+    background-color: transparent;
+
+    &__clouds {
+      opacity: 0;
+    }
+  }
+
+}
