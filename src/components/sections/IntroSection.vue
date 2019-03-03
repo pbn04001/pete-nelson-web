@@ -60,7 +60,6 @@ export default {
     },
     show(top = true) {
       if (!this.visible) {
-        window.location.hash = '';
         this.showAnimated(top ? 0 : 1, false);
       }
     },
@@ -75,6 +74,9 @@ export default {
           .then(resolve);
       });
     },
+    getHash() {
+      return '';
+    },
     reset() {
       this.visible = false;
       this.$refs.introCard.style.transform = `translateX(${this.introCardOffScreen()}px)`;
@@ -88,6 +90,8 @@ export default {
     showAnimated(offset, firstLoad) {
       this.visible = true;
       this.showing = true;
+      document.body.classList.add('body--intro');
+      this.$refs.section.style.zIndex = '100';
 
       return new Promise((resolve) => {
         if (firstLoad) {
@@ -108,7 +112,7 @@ export default {
           this.showRemainingAnimated(offset)
             .then(resolve);
         }
-      })
+      });
     },
     showRemainingAnimated(offset) {
       return new Promise((resolve) => {
@@ -168,6 +172,9 @@ export default {
       this.visible = false;
       this.$refs.moon_back.classList.remove('intro__moon_back--show');
       this.$refs.moon_back.classList.add('intro__moon_back--hide');
+      document.body.classList.remove('body--intro');
+      this.$refs.section.style.zIndex = '0';
+
       anime({
         targets: this.$refs.introCard,
         translateX: this.introCardOffScreen(),

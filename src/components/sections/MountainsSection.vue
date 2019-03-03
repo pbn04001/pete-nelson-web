@@ -39,7 +39,6 @@ export default {
     },
     show(top) {
       if (!this.visible) {
-        window.location.hash = 'developer';
         this.showAnimated(top ? 0 : 1);
       }
     },
@@ -49,6 +48,9 @@ export default {
     load() {
       this.showAnimated(0);
       return new Promise((resolve) => resolve());
+    },
+    getHash() {
+      return 'developer';
     },
     reset() {
       this.visible = false;
@@ -61,6 +63,7 @@ export default {
       this.visible = true;
       this.showing = true;
       document.body.classList.add('body--mountains');
+      this.$refs.section.style.zIndex = '100';
 
       anime({
         targets: this.$refs.clouds,
@@ -91,7 +94,7 @@ export default {
     hideAnimated() {
       this.visible = false;
       document.body.classList.remove('body--mountains');
-
+      this.$refs.section.style.zIndex = '0';
 
       anime({
         targets: this.$refs.clouds,

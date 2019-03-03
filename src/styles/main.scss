@@ -17,30 +17,28 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
 }
+html{
+  height: 100%;
+  overflow: auto;
+}
 body {
-  background-color: $black;
-  transition: background-color linear 600ms;
-}
-.body--mountains {
-  background-color: $light-blue;
-  transition: background-color linear 600ms;
-}
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  color: $white;
+  background-color: $black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: white;
-  width: 100%;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.body {
+  &--intro {
+    background-color: $black;
+    transition: background-color linear 600ms;
+  }
+  &--mountains {
+    background-color: $light-blue;
+    transition: background-color linear 600ms;
+  }
+  #app {
+    width: 100%;
   }
 }

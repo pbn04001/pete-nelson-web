@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import IntroSection from './sections/IntroSection.vue';
 import MountainsSection from './sections/MountainsSection.vue';
 
@@ -15,14 +16,33 @@ export default {
     IntroSection,
     MountainsSection,
   },
+  computed: {
+    ...mapState({
+      currentHomeSection: state => state.currentHomeSection,
+    }),
+  },
   data() {
     return {
       currentSection: this.getCurrentSection(),
       viewHeight: this.getViewHeight(),
+      stopSectionSelect: false,
     };
+  },
+  watch: {
+    currentHomeSection: function currentHomeSection(val) {
+      if (this.stopSectionSelect) {
+        this.stopSectionSelect = false;
+        return;
+      }
+      const newSection = this.getCurrentSection(val);
+      if (newSection !== this.currentSection) {
+        this.scrollToNewSection(newSection);
+      }
+    },
   },
   created() {
     // Preventing scrolling until first animating is complete
+    window.scrollTo(0, 0);
     document.body.style.overflow = 'hidden';
     window.addEventListener('resize', this.onResize);
   },
@@ -36,10 +56,11 @@ export default {
     this.sections.forEach((section, index) => {
       this.sections[index].reset();
     });
+    this.setHash();
     this.sections[this.currentSection].load()
       .then(() => {
-        window.scrollTo(0, this.currentSection * this.getViewHeight());
-        document.body.style.overflow = 'auto';
+        this.scrollToNewSection(this.currentSection);
+        document.body.style.overflow = null;
         this.onScroll = window.addEventListener('scroll', this.onScroll);
         // TODO: Show scroll indicator to user
       });
@@ -48,12 +69,13 @@ export default {
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
-    getCurrentSection() {
-      console.log(window.location.hash)
+    getCurrentSection(section) {
+      if (this.sections) {
+        return this.sections.findIndex(curSection => curSection.getHash() === section.replace('#', ''));
+      }
       if (window.location.hash === '#developer') {
         return 1;
       }
-
       return 0;
     },
     onResize() {
@@ -63,6 +85,11 @@ export default {
           this.sections[index].reset();
         }
       });
+    },
+    scrollToNewSection(newSection) {
+      setTimeout(() => {
+        window.scrollTo(0, newSection * this.getViewHeight());
+      }, 1);
     },
     getViewHeight() {
       return window.innerHeight;
@@ -82,8 +109,13 @@ export default {
         offset: (offset % 1),
       };
     },
+    setHash() {
+      this.stopSectionSelect = true;
+      window.location.hash = this.sections[this.currentSection].getHash();
+    },
     performAnimations(lastSection, position) {
       if (lastSection !== position.section) {
+        this.setHash();
         this.sections[lastSection].hide();
         setTimeout(() => {
           if (this.currentSection === position.section) {
@@ -94,9 +126,9 @@ export default {
       this.sections[position.section].adjust(position.offset);
     },
     onScroll() {
-      const section = this.currentSection;
+      const lastSection = this.currentSection;
       const position = this.calculatePosition();
-      this.performAnimations(section, position);
+      this.performAnimations(lastSection, position);
     },
   },
 };

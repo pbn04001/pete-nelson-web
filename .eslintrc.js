@@ -24,7 +24,9 @@ module.exports = {
     "import/no-unresolved": "off",
     "no-prototype-builtins": "off",
     "no-underscore-dangle": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-param-reassign": "off",
+    "object-shorthand": "off",
   },
   parserOptions: {
     parser: 'babel-eslint',
