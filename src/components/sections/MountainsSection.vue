@@ -39,7 +39,7 @@ export default {
     },
     show(top) {
       if (!this.visible) {
-        this.showAnimated(top ? 1 : 0);
+        this.showAnimated(top ? 0 : 1);
       }
     },
     adjust(offset) {

@@ -88,7 +88,7 @@ export default {
     },
     scrollToNewSection(newSection) {
       setTimeout(() => {
-        window.scrollTo(0, newSection * this.getViewHeight());
+        window.scrollTo(0, (newSection * this.getViewHeight() + (this.getViewHeight() / 2)));
       }, 1);
     },
     getViewHeight() {
@@ -119,7 +119,7 @@ export default {
         this.sections[lastSection].hide();
         setTimeout(() => {
           if (this.currentSection === position.section) {
-            this.sections[position.section].show(lastSection > position.section);
+            this.sections[position.section].show(position.section > lastSection);
           }
         }, 400);
       }
