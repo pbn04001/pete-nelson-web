@@ -233,31 +233,31 @@ export default {
       anime({
         targets: this.$refs.cloud1,
         translateY: this.cloud1Movement(offset),
-        duration: 20,
+        duration: 200,
       });
 
       anime({
         targets: this.$refs.cloud2,
         translateY: this.cloud2Movement(offset),
-        duration: 20,
+        duration: 200,
       });
 
       anime({
         targets: this.$refs.skyLine1,
         translateY: this.skyLine1Movement(offset),
-        duration: 20,
+        duration: 200,
       });
 
       anime({
         targets: this.$refs.skyLine2,
         translateY: this.skyLine2Movement(offset),
-        duration: 20,
+        duration: 200,
       });
 
       anime({
         targets: this.$refs.skyLine3,
         translateY: this.skyLine3Movement(offset),
-        duration: 20,
+        duration: 200,
       });
     },
     animatePeteNelson() {

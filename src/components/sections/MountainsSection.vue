@@ -124,12 +124,12 @@ export default {
       anime({
         targets: this.$refs.mountains2,
         translateY: this.mountains2Movement(offset),
-        duration: 20,
+        duration: 200,
       });
       anime({
         targets: this.$refs.mountains1,
         translateY: this.mountains1Movement(offset),
-        duration: 20,
+        duration: 200,
       });
     },
     mountains1Offscreen() {
