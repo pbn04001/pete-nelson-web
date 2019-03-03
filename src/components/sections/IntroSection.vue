@@ -64,7 +64,7 @@ export default {
       }
     },
     adjust(offset) {
-      if (this.visible) {
+      if (this.visible && !this.showing) {
         this.adjustAnimated(offset);
       }
     },
@@ -75,7 +75,7 @@ export default {
       });
     },
     getHash() {
-      return '';
+      return 'intro';
     },
     reset() {
       this.visible = false;

@@ -39,15 +39,17 @@ export default {
     },
     show(top) {
       if (!this.visible) {
-        this.showAnimated(top ? 0 : 1);
+        this.showAnimated(top ? 1 : 0);
       }
     },
     adjust(offset) {
-      //  this.adjustAnimated(offset);
+      if (this.visible && !this.showing) {
+        this.adjustAnimated(offset);
+      }
     },
     load() {
       this.showAnimated(0);
-      return new Promise((resolve) => resolve());
+      return new Promise(resolve => resolve());
     },
     getHash() {
       return 'developer';
@@ -67,7 +69,7 @@ export default {
 
       anime({
         targets: this.$refs.clouds,
-        translateY: 0, //this.mountains2Movement(offset),
+        translateY: 0,
         easing: 'easeOutSine',
         opacity: 1,
         duration: 700,
@@ -75,7 +77,7 @@ export default {
 
       anime({
         targets: this.$refs.mountains2,
-        translateY: 0, //this.mountains2Movement(offset),
+        translateY: this.mountains2Movement(offset),
         easing: 'easeOutSine',
         delay: 200,
         duration: 500,
@@ -83,7 +85,7 @@ export default {
 
       anime({
         targets: this.$refs.mountains1,
-        translateY: 0, //this.mountains1Movement(offset),
+        translateY: this.mountains1Movement(offset),
         easing: 'easeOutSine',
         delay: 200,
         duration: 300,
@@ -119,6 +121,11 @@ export default {
       });
     },
     adjustAnimated(offset) {
+      anime({
+        targets: this.$refs.mountains2,
+        translateY: this.mountains2Movement(offset),
+        duration: 20,
+      });
       anime({
         targets: this.$refs.mountains1,
         translateY: this.mountains1Movement(offset),
