@@ -3,10 +3,9 @@ import App from './App.vue';
 import createRouter from './router';
 import store from './store';
 import './registerServiceWorker';
+import 'modernizr';
 
 Vue.config.productionTip = false;
-// Vue.use(KsVueScrollmagic);
-// Vue.use(VueFullPage);
 
 const router = createRouter(store);
 

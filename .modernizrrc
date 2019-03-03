@@ -1,0 +1,10 @@
+module.exports = {
+  minify: true,
+  options: [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/css/cssgrid",
+    "test/css/positionsticky"
+  ]
+};

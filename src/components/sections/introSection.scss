@@ -2,11 +2,11 @@
 
 .intro {
   &__card {
-    position: absolute;
-    top: 6rem;
-    left: 8rem;
+    position: relative;
+    display: inline-block;
     text-align: left;
     z-index: 20;
+    margin: $spacing-unit-x8;
 
     &_bar {
       display: block;
@@ -17,11 +17,11 @@
     }
 
     &_text {
-      @include font-alpha;
+      @include font-beta;
     }
 
     &_sub {
-      opacity: 0;
+      opacity: 1;
 
       &--show {
         opacity: 1;
@@ -31,7 +31,7 @@
   }
 
   &__pete-nelson {
-    height: 11rem;
+    height: $spacing-unit-x16;
 
     .cls-1{
       fill: $light-gray;
@@ -93,7 +93,7 @@
   &__sky_line {
     position: absolute;
     right: 0;
-    bottom: -4vw;
+    bottom: -2rem;
     width: 100%;
   }
   &__sky_line--1 {
@@ -101,10 +101,46 @@
   }
   &__sky_line--2 {
     z-index: 12;
-    bottom: -5.5vw;
+    bottom: -1.5rem;
   }
   &__sky_line--3 {
     z-index: 11;
-    bottom: -5vw;
+    bottom: -1rem;
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  .intro {
+    &__card {
+      position: absolute;
+      display: block;
+      margin: 0;
+      top: $spacing-unit-x12;
+      left: $spacing-unit-x16;
+
+      &_sub {
+        opacity: 0;
+      }
+
+      &_text {
+        @include font-alpha;
+      }
+    }
+
+    &__pete-nelson {
+      height: 11rem;
+    }
+
+    &__sky_line--1 {
+      bottom: -4vw;
+    }
+
+    &__sky_line--2 {
+      bottom: -5.5vw;
+    }
+
+    &__sky_line--3 {
+      bottom: -5vw;
+    }
   }
 }

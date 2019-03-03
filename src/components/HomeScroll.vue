@@ -7,6 +7,8 @@
 
 <script>
 import { mapState } from 'vuex';
+import { SCREEN_SIZE, getScreenSizeMax } from '@/utils/sizes';
+// Sections
 import IntroSection from './sections/IntroSection.vue';
 import MountainsSection from './sections/MountainsSection.vue';
 
@@ -41,34 +43,40 @@ export default {
     },
   },
   created() {
-    // Preventing scrolling until first animating is complete
-    window.scrollTo(0, 0);
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('resize', this.onResize);
+    if (!this.isMobile()) {
+      // Preventing scrolling until first animating is complete
+      window.scrollTo(0, 0);
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('resize', this.onResize);
+    }
   },
   mounted() {
     this.sections = [
       this.$refs.introSection,
       this.$refs.mountainSection,
     ];
-    this.$refs.pageScroll.style.height = 'auto';
-    this.calculatePositions();
-    this.sections.forEach((section, index) => {
-      this.sections[index].reset();
-    });
-    this.setHash();
-    this.sections[this.currentSection].load()
-      .then(() => {
-        this.scrollToNewSection(this.currentSection);
-        document.body.style.overflow = null;
-        this.onScroll = window.addEventListener('scroll', this.onScroll);
-        // TODO: Show scroll indicator to user
+    if (!this.isMobile()) {
+      this.calculatePositions();
+      this.sections.forEach((section, index) => {
+        this.sections[index].reset();
       });
+      this.setHash();
+      this.sections[this.currentSection].load()
+        .then(() => {
+          this.scrollToNewSection(this.currentSection);
+          document.body.style.overflow = null;
+          this.onScroll = window.addEventListener('scroll', this.onScroll);
+          // TODO: Show scroll indicator to user
+        });
+    }
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
+    isMobile() {
+      return true; //window.innerWidth < getScreenSizeMax(SCREEN_SIZE.SM);
+    },
     getCurrentSection(section) {
       if (this.sections) {
         return this.sections.findIndex(curSection => curSection.getHash() === section.replace('#', ''));
@@ -121,7 +129,7 @@ export default {
           if (this.currentSection === position.section) {
             this.sections[position.section].show(position.section > lastSection);
           }
-        }, 400);
+        }, 300);
       }
       this.sections[position.section].adjust(position.offset);
     },
@@ -136,16 +144,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  @import "@/styles/_globals.scss";
-  .one-page-scroll {
-    height: 0;
-    overflow: hidden;
-  }
-  .section {
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
+  @import "./homeScroll.scss";
 </style>

@@ -4,7 +4,7 @@
       <PeteNelson ref="peteNelson" class="intro__pete-nelson"/>
       <div ref="introCardSub" class="intro__card_sub">
         <hr class="intro__card_bar" />
-        <span class="intro__card_text">Senior Developer & Designer</span>
+        <span class="intro__card_text">Developer & Designer</span>
       </div>
     </div>
     <Cloud1 ref="cloud1" class="intro__cloud intro__cloud--1"/>

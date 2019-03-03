@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "animejs": "^3.0.1",
+    "modernizr": "^3.7.0",
     "register-service-worker": "^1.5.2",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
@@ -26,6 +27,7 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "vue-svg-loader": "^0.12.0",
-    "vue-template-compiler": "^2.6.7"
+    "vue-template-compiler": "^2.6.7",
+    "webpack-modernizr-loader": "^4.0.1"
   }
 }

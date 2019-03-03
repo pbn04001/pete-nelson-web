@@ -1,0 +1,22 @@
+@import "@/styles/_globals.scss";
+
+.section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+@media (min-width: $breakpoint-sm) {
+  .one-page-scroll {
+    height: 0;
+    overflow: hidden;
+  }
+
+  .section {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}
