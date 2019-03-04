@@ -78,14 +78,6 @@ export default {
       return 'intro';
     },
     reset(visible = true) {
-      if (visible && !this.visible) {
-        this.$refs.moon_back.classList.remove('intro__moon_back--hide');
-        this.$refs.moon_back.classList.add('intro__moon_back--show');
-      } else if (!visible && this.visible) {
-        this.$refs.moon_back.classList.add('intro__moon_back--hide');
-        this.$refs.moon_back.classList.remove('intro__moon_back--show');
-      }
-
       this.$refs.introCard.style.transform = `translateX(${visible ? 0 : this.introCardOffScreen()}px)`;
       this.$refs.skyLine1.style.transform = `translateY(${visible ? 0 : this.skyLine1OffScreen()}px)`;
       this.$refs.skyLine2.style.transform = `translateY(${visible ? 0 : this.skyLine2OffScreen()}px)`;
@@ -124,7 +116,9 @@ export default {
       return new Promise((resolve) => {
         this.$refs.moon_back.classList.remove('intro__moon_back--hide');
         setTimeout(() => {
-          this.$refs.moon_back.classList.add('intro__moon_back--show');
+          if (this.visible) {
+            this.$refs.moon_back.classList.add('intro__moon_back--show');
+          }
         }, 300);
 
         anime({

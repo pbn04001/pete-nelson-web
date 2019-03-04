@@ -17,6 +17,7 @@
 
 <script>
 import anime from 'animejs';
+import { delayAnimationCheckVisible } from '@/utils/animation';
 import Mountains1 from '@/assets/images/mountains_1.svg';
 import Mountains2 from '@/assets/images/mountains_2.svg';
 import Clouds from '@/assets/images/mountain_clouds.svg';
@@ -64,11 +65,9 @@ export default {
       return 'developer';
     },
     reset(visible = true) {
-      console.log('Reset Mountains', visible)
       this.visible = visible;
 
-      console.log('Mountains 1 Offscreen', this.mountains1Offscreen())
-
+      this.$refs.card.style.opacity = visible ? 1 : 0;
       this.$refs.card.style.transform = `translateY(${visible ? 0 : this.cardOffScreen()}px)`;
       this.$refs.mountains1.style.transform = `translateY(${visible ? 0 : this.mountains1Offscreen()}px)`;
       this.$refs.mountains2.style.transform = `translateY(${visible ? 0 : this.mountains2Offscreen()}px)`;
@@ -82,6 +81,7 @@ export default {
       anime({
         targets: this.$refs.card,
         translateY: 0,
+        opacity: 1,
         easing: 'easeOutSine',
         duration: 700,
       });
@@ -94,32 +94,31 @@ export default {
         duration: 700,
       });
 
-      anime({
+      delayAnimationCheckVisible({
         targets: this.$refs.mountains2,
         translateY: this.mountains2Movement(offset),
         easing: 'easeOutSine',
-        delay: 200,
         duration: 500,
-      });
+      }, 200, this);
 
-      anime({
+      delayAnimationCheckVisible({
         targets: this.$refs.mountains1,
         translateY: this.mountains1Movement(offset),
         easing: 'easeOutSine',
-        delay: 200,
         duration: 300,
-      }).finished.then(() => {
-        this.showing = false;
-      });
+      }, 200, this)
+        .then(() => {
+          this.showing = false;
+        });
     },
     hideAnimated() {
-      console.log('Hide Mountains')
       this.visible = false;
       document.body.classList.remove('body--mountains');
 
       anime({
         targets: this.$refs.card,
         translateY: this.cardOffScreen(),
+        opacity: 0,
         easing: 'easeOutSine',
         duration: 700,
       });

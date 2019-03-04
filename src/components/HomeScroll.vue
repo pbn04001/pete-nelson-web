@@ -29,6 +29,7 @@ export default {
       currentSection: this.getCurrentSection(),
       viewHeight: this.getViewHeight(),
       stopSectionSelect: false,
+      hasLoadedAnimations: false,
     };
   },
   watch: {
@@ -49,8 +50,8 @@ export default {
       // Preventing scrolling until first animating is complete
       window.scrollTo(0, 0);
       document.body.style.overflow = 'hidden';
-      window.addEventListener('resize', this.onResize);
     }
+    window.addEventListener('resize', this.onResize);
   },
   mounted() {
     this.sections = [
@@ -58,18 +59,7 @@ export default {
       this.$refs.mountainSection,
     ];
     if (!this.isMobile) {
-      this.calculatePositions();
-      this.sections.forEach((section, index) => {
-        this.sections[index].reset(false);
-      });
-      this.setHash();
-      this.sections[this.currentSection].load()
-        .then(() => {
-          this.scrollToNewSection(this.currentSection);
-          document.body.style.overflow = null;
-          this.onScroll = window.addEventListener('scroll', this.onScroll);
-          // TODO: Show scroll indicator to user
-        });
+      this.loadAnimations();
     }
   },
   beforeDestroy() {
@@ -92,8 +82,14 @@ export default {
       const isMobile = this.getIsMobile();
       this.viewHeight = this.getViewHeight();
       if (!isMobile) {
-        this.calculatePositions();
-        debounce(this.resetNoVisibleSections(), 200);
+        if (!this.hasLoadedAnimations) {
+          this.loadAnimations();
+        } else {
+          this.calculatePositions();
+          this.stopScroll = true;
+          this.scrollToNewSection(this.currentSection);
+          debounce(this.resetNoVisibleSections(), 200);
+        }
       } else if (!this.isMobile) { // Only run once when first viewing mobile
         this.$refs.pageScroll.style.height = 'auto';
         this.sections.forEach((section, index) => {
@@ -101,6 +97,23 @@ export default {
         });
       }
       this.isMobile = isMobile;
+    },
+    loadAnimations() {
+      this.hasLoadedAnimations = true;
+      window.scrollTo(0, 0);
+      document.body.style.overflow = 'hidden';
+      this.calculatePositions();
+      this.sections.forEach((section, index) => {
+        this.sections[index].reset(false);
+      });
+      this.setHash();
+      this.sections[this.currentSection].load()
+        .then(() => {
+          this.scrollToNewSection(this.currentSection);
+          document.body.style.overflow = null;
+          this.onScroll = window.addEventListener('scroll', this.onScroll);
+          // TODO: Show scroll indicator to user
+        });
     },
     resetNoVisibleSections() {
       this.sections.forEach((section, index) => {
@@ -149,6 +162,10 @@ export default {
       this.sections[position.section].adjust(position.offset);
     },
     onScroll() {
+      if (this.stopScroll) {
+        this.stopScroll = false;
+        return;
+      }
       if (!this.isMobile) {
         const lastSection = this.currentSection;
         const position = this.calculatePosition();

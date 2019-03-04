@@ -27,6 +27,7 @@ module.exports = {
     "no-undef": "off",
     "no-param-reassign": "off",
     "object-shorthand": "off",
+    "func-names": "off",
   },
   parserOptions: {
     parser: 'babel-eslint',
