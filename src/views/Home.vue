@@ -1,14 +1,18 @@
 <template>
-  <HomeScroll />
+  <div class="home">
+    <NavBar />
+    <HomeScroll />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import HomeScroll from '@/components/HomeScroll.vue';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'home',
   components: {
+    NavBar,
     HomeScroll,
   },
 };
