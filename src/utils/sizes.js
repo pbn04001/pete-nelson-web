@@ -8,7 +8,7 @@ export const SCREEN_SIZE = Object.freeze({
   LG: 'lg',
 });
 
-export const getScreenSizeMax = (size) => {
+export function getScreenSizeMax(size) {
   switch (size) {
     case SCREEN_SIZE.SM : {
       return getBaseFontSize() * 48;
@@ -24,3 +24,11 @@ export const getScreenSizeMax = (size) => {
     }
   }
 };
+
+export function getClientHeight(client) {
+  return client.clientHeight || client.parentNode.clientHeight;
+}
+
+export function getClientWidth(client) {
+  return client.clientWidth || client.parentNode.clientWidth;
+}

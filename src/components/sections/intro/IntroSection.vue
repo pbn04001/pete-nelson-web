@@ -19,6 +19,7 @@
 
 <script>
 import anime from 'animejs';
+import { getClientHeight, getClientWidth } from '@/utils/sizes';
 import SkyLine1 from '@/assets/images/skyline_1.svg';
 import SkyLine2 from '@/assets/images/skyline_2.svg';
 import SkyLine3 from '@/assets/images/skyline_3.svg';
@@ -305,25 +306,25 @@ export default {
       }, 1000);
     },
     skyLine1OffScreen() {
-      return (this.$refs.skyLine1.clientHeight || this.$refs.skyLine1.parentNode.clientHeight) + 50;
+      return getClientHeight(this.$refs.skyLine1) + 50;
     },
     skyLine2OffScreen() {
-      return (this.$refs.skyLine2.clientHeight || this.$refs.skyLine2.parentNode.clientHeight) + 50;
+      return getClientHeight(this.$refs.skyLine2) + 50;
     },
     skyLine3OffScreen() {
-      return (this.$refs.skyLine3.clientHeight || this.$refs.skyLine3.parentNode.clientHeight) + 50;
+      return getClientHeight(this.$refs.skyLine3) + 50;
     },
     moonOffScreen() {
-      return -1 * ((this.viewHeight * 0.10) + (this.$refs.moon.clientHeight || this.$refs.moon.parentNode.clientHeight) + 50);
+      return -1 * ((this.viewHeight * 0.10) + getClientHeight(this.$refs.moon) + 50);
     },
     cloud1OffScreen() {
-      return -1 * ((this.$refs.moon.clientHeight || this.$refs.moon.parentNode.clientHeight) + 100);
+      return -1 * (getClientHeight(this.$refs.moon) + 100);
     },
     cloud2OffScreen() {
-      return -1 * ((this.viewHeight * 0.19) + (this.$refs.moon.clientHeight || this.$refs.moon.parentNode.clientHeight) + 50);
+      return -1 * ((this.viewHeight * 0.19) + getClientHeight(this.$refs.moon) + 50);
     },
     introCardOffScreen() {
-      return -1 * (128 + (this.$refs.introCard.clientWidth || this.$refs.introCard.parentNode.clientWidth));
+      return -1 * (128 + getClientWidth(this.$refs.introCard));
     },
     skyLine1Movement(offset) {
       return offset * (this.viewHeight / 15);

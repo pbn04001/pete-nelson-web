@@ -18,6 +18,7 @@
 <script>
 import anime from 'animejs';
 import { delayAnimationCheckVisible } from '@/utils/animation';
+import { getClientHeight } from '@/utils/sizes';
 import Mountains1 from '@/assets/images/mountains_1.svg';
 import Mountains2 from '@/assets/images/mountains_2.svg';
 import Clouds from '@/assets/images/mountain_clouds.svg';
@@ -158,16 +159,16 @@ export default {
       });
     },
     mountains1Offscreen() {
-      return this.$refs.mountains1.clientHeight || this.$refs.mountains1.parentNode.clientHeight;
+      return getClientHeight(this.$refs.mountains1);
     },
     mountains2Offscreen() {
-      return this.$refs.mountains2.clientHeight || this.$refs.mountains2.parentNode.clientHeight;
+      return getClientHeight(this.$refs.mountains2);
     },
     cloudsOffscreen() {
-      return this.$refs.clouds.clientHeight || this.$refs.clouds.parentNode.clientHeight;
+      return getClientHeight(this.$refs.clouds);
     },
     cardOffScreen() {
-      return -1 * ((this.$refs.card.clientHeight || this.$refs.card.parentNode.clientHeight) + 100);
+      return -1 * (getClientHeight(this.$refs.card) + 100);
     },
     mountains1Movement(offset) {
       return offset * (this.viewHeight / 30);
