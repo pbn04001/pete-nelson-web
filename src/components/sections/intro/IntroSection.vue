@@ -261,7 +261,7 @@ export default {
       });
     },
     animatePeteNelson() {
-      this.$refs.introCard.style.transform = `translateX(0px)`;
+      this.$refs.introCard.style.transform = 'translateX(0px)';
       anime({
         targets: document.getElementById('name-p'),
         loop: false,

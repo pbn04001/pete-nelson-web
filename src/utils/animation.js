@@ -13,8 +13,8 @@ export function delayAnimationCheckVisible(animation, delay, component) {
       }
     }, delay);
   });
-};
+}
 
 export default {
   delayAnimationCheckVisible,
-}
+};
