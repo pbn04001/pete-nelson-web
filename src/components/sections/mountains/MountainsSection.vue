@@ -49,9 +49,14 @@ export default {
       }
     },
     show(top) {
-      if (!this.visible) {
-        this.showAnimated(top ? 0 : 1);
-      }
+      return new Promise((resolve) => {
+        if (!this.visible) {
+          this.showAnimated(top ? 0 : 1)
+            .then(resolve);
+        } else {
+          resolve();
+        }
+      });
     },
     adjust(offset) {
       if (this.visible && !this.showing) {
@@ -79,38 +84,41 @@ export default {
       this.showing = true;
       document.body.classList.add('body--mountains');
 
-      anime({
-        targets: this.$refs.card,
-        translateY: 0,
-        opacity: 1,
-        easing: 'easeOutSine',
-        duration: 700,
-      });
-
-      anime({
-        targets: this.$refs.clouds,
-        translateY: 0,
-        easing: 'easeOutSine',
-        opacity: 1,
-        duration: 700,
-      });
-
-      delayAnimationCheckVisible({
-        targets: this.$refs.mountains2,
-        translateY: this.mountains2Movement(offset),
-        easing: 'easeOutSine',
-        duration: 500,
-      }, 200, this);
-
-      delayAnimationCheckVisible({
-        targets: this.$refs.mountains1,
-        translateY: this.mountains1Movement(offset),
-        easing: 'easeOutSine',
-        duration: 300,
-      }, 200, this)
-        .then(() => {
-          this.showing = false;
+      return new Promise((resolve) => {
+        anime({
+          targets: this.$refs.card,
+          translateY: 0,
+          opacity: 1,
+          easing: 'easeOutSine',
+          duration: 700,
         });
+
+        anime({
+          targets: this.$refs.clouds,
+          translateY: 0,
+          easing: 'easeOutSine',
+          opacity: 1,
+          duration: 700,
+        });
+
+        delayAnimationCheckVisible({
+          targets: this.$refs.mountains2,
+          translateY: this.mountains2Movement(offset),
+          easing: 'easeOutSine',
+          duration: 500,
+        }, 200, this);
+
+        delayAnimationCheckVisible({
+          targets: this.$refs.mountains1,
+          translateY: this.mountains1Movement(offset),
+          easing: 'easeOutSine',
+          duration: 300,
+        }, 200, this)
+          .then(() => {
+            this.showing = false;
+            resolve();
+          });
+      });
     },
     hideAnimated() {
       this.visible = false;

@@ -60,9 +60,14 @@ export default {
       }
     },
     show(top = true) {
-      if (!this.visible) {
-        this.showAnimated(top ? 0 : 1, false);
-      }
+      return new Promise((resolve) => {
+        if (!this.visible) {
+          this.showAnimated(top ? 0 : 1, false)
+            .then(resolve);
+        } else {
+          resolve();
+        }
+      });
     },
     adjust(offset) {
       if (this.visible && !this.showing) {

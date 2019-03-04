@@ -30,6 +30,7 @@ export default {
       viewHeight: this.getViewHeight(),
       stopSectionSelect: false,
       hasLoadedAnimations: false,
+      swapping: false,
     };
   },
   watch: {
@@ -47,9 +48,7 @@ export default {
   created() {
     this.isMobile = this.getIsMobile();
     if (!this.isMobile) {
-      // Preventing scrolling until first animating is complete
-      window.scrollTo(0, 0);
-      document.body.style.overflow = 'hidden';
+      this.stopInitialScroll();
     }
     window.addEventListener('resize', this.onResize);
   },
@@ -85,7 +84,7 @@ export default {
         if (!this.hasLoadedAnimations) {
           this.loadAnimations();
         } else {
-          this.calculatePositions();
+          this.calculatePageSize();
           this.stopScroll = true;
           this.scrollToNewSection(this.currentSection);
           debounce(this.resetNoVisibleSections(), 200);
@@ -98,11 +97,15 @@ export default {
       }
       this.isMobile = isMobile;
     },
-    loadAnimations() {
-      this.hasLoadedAnimations = true;
+    stopInitialScroll() {
+      // Preventing scrolling until first animating is complete
       window.scrollTo(0, 0);
       document.body.style.overflow = 'hidden';
-      this.calculatePositions();
+    },
+    loadAnimations() {
+      this.hasLoadedAnimations = true;
+      this.stopInitialScroll()
+      this.calculatePageSize();
       this.sections.forEach((section, index) => {
         this.sections[index].reset(false);
       });
@@ -130,7 +133,7 @@ export default {
     getViewHeight() {
       return window.innerHeight;
     },
-    calculatePositions() {
+    calculatePageSize() {
       this.$refs.pageScroll.style.height = `${(this.sections.length * this.getViewHeight()) + this.getViewHeight()}px`;
     },
     calculatePosition() {
@@ -151,11 +154,13 @@ export default {
     },
     performAnimations(lastSection, position) {
       if (lastSection !== position.section) {
+        this.swapping = window.pageYOffset;
         this.setHash();
         this.sections[lastSection].hide();
         setTimeout(() => {
           if (this.currentSection === position.section) {
-            this.sections[position.section].show(position.section > lastSection);
+            this.sections[position.section].show(position.section > lastSection)
+              .then(() => { this.swapping = null; });
           }
         }, 300);
       }
@@ -165,6 +170,9 @@ export default {
       if (this.stopScroll) {
         this.stopScroll = false;
         return;
+      }
+      if (this.swapping) {
+        window.scrollTo(0, this.swapping);
       }
       if (!this.isMobile) {
         const lastSection = this.currentSection;
