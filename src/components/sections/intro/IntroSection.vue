@@ -323,10 +323,10 @@ export default {
       return -1 * ((this.viewHeight * 0.10) + getClientHeight(this.$refs.moon) + 50);
     },
     cloud1OffScreen() {
-      return -1 * (getClientHeight(this.$refs.moon) + 100);
+      return -1 * ((this.viewHeight * 0.025) + getClientHeight(this.$refs.cloud1) + 50);
     },
     cloud2OffScreen() {
-      return -1 * ((this.viewHeight * 0.19) + getClientHeight(this.$refs.moon) + 50);
+      return -1 * ((this.viewHeight * 0.19) + getClientHeight(this.$refs.cloud2) + 50);
     },
     introCardOffScreen() {
       return -1 * (128 + getClientWidth(this.$refs.introCard));

@@ -31,6 +31,7 @@ export default {
       stopSectionSelect: false,
       hasLoadedAnimations: false,
       swapping: false,
+      stopScrollOnSwap: true,
     };
   },
   watch: {
@@ -112,7 +113,9 @@ export default {
       this.setHash();
       this.sections[this.currentSection].load()
         .then(() => {
-          this.scrollToNewSection(this.currentSection);
+          if (this.currentSection > 0) {
+            this.scrollToNewSection(this.currentSection);
+          }
           document.body.style.overflow = null;
           this.onScroll = window.addEventListener('scroll', this.onScroll);
           // TODO: Show scroll indicator to user
@@ -134,10 +137,10 @@ export default {
       return window.innerHeight;
     },
     calculatePageSize() {
-      this.$refs.pageScroll.style.height = `${(this.sections.length * this.getViewHeight()) + this.getViewHeight()}px`;
+      this.$refs.pageScroll.style.height = `${((this.sections.length * 1.5) * this.getViewHeight()) + this.getViewHeight()}px`;
     },
     calculatePosition() {
-      const offset = window.pageYOffset / (this.getViewHeight() + 1);
+      const offset = window.pageYOffset / ((this.getViewHeight() * 1.5) + 1);
       let section = Math.ceil(offset) || 1;
       if (section > this.sections.length) {
         section = this.sections.length;
@@ -171,7 +174,7 @@ export default {
         this.stopScroll = false;
         return;
       }
-      if (this.swapping) {
+      if (this.swapping && this.stopScrollOnSwap) {
         window.scrollTo(0, this.swapping);
       }
       if (!this.isMobile) {

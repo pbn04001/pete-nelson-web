@@ -1,8 +1,8 @@
 @import "@/styles/_globals.scss";
 
-$bar-width: $spacing-unit-x5;
-$bar-height: 3px;
-$bar-spacing: 10px;
+$bar-width: $spacing-unit-x4;
+$bar-height: 2px;
+$bar-spacing: 8px;
 
 .nav-bar {
   background-color: $transparent-black;
@@ -10,12 +10,12 @@ $bar-spacing: 10px;
   z-index: 200;
   top: 0;
   width: 100%;
-  height: $spacing-unit-x7;
+  height: $spacing-unit-x4;
 
   &__menu {
     position: absolute;
     right: 0;
-    margin: $spacing-unit-x2;
+    margin: $spacing-unit $spacing-unit-x4;
     width: $bar-width;
     height: calc(#{$bar-height} + (#{$bar-spacing} * 2));
     cursor: pointer;

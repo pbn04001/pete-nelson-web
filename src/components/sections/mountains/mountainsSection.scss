@@ -24,7 +24,7 @@
     width: 100%;
     flex: 0 0 100%;
     text-align: center;
-    margin: $spacing-unit-x4 0 0 0;
+    margin: $spacing-unit-x8 0 0 0;
   }
   &__mountains {
     position: absolute;
@@ -60,7 +60,8 @@
 
     &__card_sub {
       @include font-delta;
-      margin: $spacing-unit-x8 $spacing-unit-x16;
+      padding: $spacing-unit-x4;
+      margin: $spacing-unit-x8 $spacing-unit-x12;
     }
   }
 }
@@ -69,6 +70,7 @@
   .mountains {
     &__card_sub {
       @include font-gamma;
+      padding: $spacing-unit-x6;
     }
   }
 }

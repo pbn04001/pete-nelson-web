@@ -44,12 +44,14 @@
     height: 25%;
     opacity: .6;
 
-    & path {
+    & path,
+    & circle {
       fill: $dark-blue;
     }
 
     &--1 {
-      right: 25%;
+      top: 2.5%;
+      right: 26%;
     }
     &--2 {
       top: 19%;
