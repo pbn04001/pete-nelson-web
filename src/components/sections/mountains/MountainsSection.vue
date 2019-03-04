@@ -88,10 +88,15 @@ export default {
         anime({
           targets: this.$refs.card,
           translateY: 0,
+          easing: 'easeOutSine',
+          duration: 800,
+        });
+        delayAnimationCheckVisible({
+          targets: this.$refs.card,
           opacity: 1,
           easing: 'easeOutSine',
-          duration: 700,
-        });
+          duration: 500,
+        }, 300, this);
 
         anime({
           targets: this.$refs.clouds,
