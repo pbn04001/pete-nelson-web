@@ -1,33 +1,30 @@
 
+@mixin large-title {
+  font-size: 6rem;
+  line-height: 6.5rem;
+}
+
 @mixin font-alpha {
   font-size: 3.5rem;
-  line-height: 3rem;
+  line-height: 4rem;
 }
 
 @mixin font-beta {
   font-size: 2.5rem;
-  line-height: 2rem;
+  line-height: 3rem;
 }
 
 @mixin font-gamma {
   font-size: 2rem;
-  line-height: 1.75rem;
+  line-height: 2.5rem;
 }
 
 @mixin font-delta {
-  font-size: 1.25rem;
-  line-height: 1.35rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 @mixin font-epsilon {
   font-size: 1rem;
-  line-height: 1rem;
-}
-
-h1 {
-  @include font-alpha;
-}
-
-h2 {
-  @include font-gamma;
+  line-height: 1.25rem;
 }

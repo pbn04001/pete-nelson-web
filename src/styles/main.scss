@@ -33,17 +33,32 @@ body {
 #app {
   width: 100%;
 }
+h1 {
+  @include font-alpha;
+}
+
+h2 {
+  @include font-gamma;
+  font-weight: 400;
+}
 
 @media (min-width: $breakpoint-sm) {
   .body {
-    &--intro {
-      background-color: $black;
-      transition: background-color linear 600ms;
-    }
-    &--mountains {
-      background-color: $light-blue;
-      transition: background-color linear 600ms;
-    }
+     &--intro {
+       background-color: $black;
+       transition: background-color linear 600ms;
+     }
+     &--mountains {
+       background-color: $light-blue;
+       transition: background-color linear 600ms;
+     }
   }
 
+  h1 {
+    @include large-title;
+  }
+
+  h2 {
+    @include font-alpha;
+  }
 }

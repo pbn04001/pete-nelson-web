@@ -16,17 +16,8 @@
       background-color: $dark-blue;
     }
 
-    &_text {
-      @include font-beta;
-    }
-
     &_sub {
       opacity: 1;
-
-      &--show {
-        opacity: 1;
-        transition: opacity linear 500ms;
-      }
     }
   }
 
@@ -120,27 +111,16 @@
 
       &_sub {
         opacity: 0;
-      }
 
-      &_text {
-        @include font-alpha;
+        &--show {
+          opacity: 1;
+          transition: opacity linear 500ms;
+        }
       }
     }
 
     &__pete-nelson {
       height: 11rem;
-    }
-
-    &__sky_line--1 {
-      bottom: -4vw;
-    }
-
-    &__sky_line--2 {
-      bottom: -5.5vw;
-    }
-
-    &__sky_line--3 {
-      bottom: -5vw;
     }
   }
 }
