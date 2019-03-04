@@ -78,7 +78,14 @@ export default {
       return 'intro';
     },
     reset(visible = true) {
-      this.visible = false;
+      if (visible && !this.visible) {
+        this.$refs.moon_back.classList.remove('intro__moon_back--hide');
+        this.$refs.moon_back.classList.add('intro__moon_back--show');
+      } else if (!visible && this.visible) {
+        this.$refs.moon_back.classList.add('intro__moon_back--hide');
+        this.$refs.moon_back.classList.remove('intro__moon_back--show');
+      }
+
       this.$refs.introCard.style.transform = `translateX(${visible ? 0 : this.introCardOffScreen()}px)`;
       this.$refs.skyLine1.style.transform = `translateY(${visible ? 0 : this.skyLine1OffScreen()}px)`;
       this.$refs.skyLine2.style.transform = `translateY(${visible ? 0 : this.skyLine2OffScreen()}px)`;
@@ -86,12 +93,12 @@ export default {
       this.$refs.moon.style.transform = `translateY(${visible ? 0 : this.moonOffScreen()}px)`;
       this.$refs.cloud1.style.transform = `translateY(${visible ? 0 : this.cloud1OffScreen()}px)`;
       this.$refs.cloud2.style.transform = `translateY(${visible ? 0 : this.cloud2OffScreen()}px)`;
+      this.visible = visible;
     },
     showAnimated(offset, firstLoad) {
       this.visible = true;
       this.showing = true;
       document.body.classList.add('body--intro');
-      this.$refs.section.style.zIndex = '100';
 
       return new Promise((resolve) => {
         if (firstLoad) {
@@ -101,7 +108,6 @@ export default {
               .then(resolve);
           }, 700);
         } else {
-          this.showPeteNelson();
           this.$refs.introCardSub.classList.add('intro__card_sub--show');
           anime({
             targets: this.$refs.introCard,
@@ -173,7 +179,6 @@ export default {
       this.$refs.moon_back.classList.remove('intro__moon_back--show');
       this.$refs.moon_back.classList.add('intro__moon_back--hide');
       document.body.classList.remove('body--intro');
-      this.$refs.section.style.zIndex = '0';
 
       anime({
         targets: this.$refs.introCard,
@@ -305,29 +310,26 @@ export default {
         this.$refs.introCardSub.classList.add('intro__card_sub--show');
       }, 1000);
     },
-    showPeteNelson() {
-
-    },
     skyLine1OffScreen() {
-      return this.$refs.skyLine1.clientHeight + 50;
+      return (this.$refs.skyLine1.clientHeight || this.$refs.skyLine1.parentNode.clientHeight) + 50;
     },
     skyLine2OffScreen() {
-      return this.$refs.skyLine2.clientHeight + 50;
+      return (this.$refs.skyLine2.clientHeight || this.$refs.skyLine2.parentNode.clientHeight) + 50;
     },
     skyLine3OffScreen() {
-      return this.$refs.skyLine3.clientHeight + 50;
+      return (this.$refs.skyLine3.clientHeight || this.$refs.skyLine3.parentNode.clientHeight) + 50;
     },
     moonOffScreen() {
-      return -1 * ((this.viewHeight * 0.10) + this.$refs.moon.clientHeight + 50);
+      return -1 * ((this.viewHeight * 0.10) + (this.$refs.moon.clientHeight || this.$refs.moon.parentNode.clientHeight) + 50);
     },
     cloud1OffScreen() {
-      return -1 * (this.$refs.moon.clientHeight + 100);
+      return -1 * ((this.$refs.moon.clientHeight || this.$refs.moon.parentNode.clientHeight) + 100);
     },
     cloud2OffScreen() {
-      return -1 * ((this.viewHeight * 0.19) + this.$refs.moon.clientHeight + 50);
+      return -1 * ((this.viewHeight * 0.19) + (this.$refs.moon.clientHeight || this.$refs.moon.parentNode.clientHeight) + 50);
     },
     introCardOffScreen() {
-      return -1 * (128 + this.$refs.introCard.clientWidth);
+      return -1 * (128 + (this.$refs.introCard.clientWidth || this.$refs.introCard.parentNode.clientWidth));
     },
     skyLine1Movement(offset) {
       return offset * (this.viewHeight / 15);

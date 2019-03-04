@@ -64,7 +64,10 @@ export default {
       return 'developer';
     },
     reset(visible = true) {
-      this.visible = false;
+      console.log('Reset Mountains', visible)
+      this.visible = visible;
+
+      console.log('Mountains 1 Offscreen', this.mountains1Offscreen())
 
       this.$refs.card.style.transform = `translateY(${visible ? 0 : this.cardOffScreen()}px)`;
       this.$refs.mountains1.style.transform = `translateY(${visible ? 0 : this.mountains1Offscreen()}px)`;
@@ -75,7 +78,6 @@ export default {
       this.visible = true;
       this.showing = true;
       document.body.classList.add('body--mountains');
-      this.$refs.section.style.zIndex = '100';
 
       anime({
         targets: this.$refs.card,
@@ -111,9 +113,9 @@ export default {
       });
     },
     hideAnimated() {
+      console.log('Hide Mountains')
       this.visible = false;
       document.body.classList.remove('body--mountains');
-      this.$refs.section.style.zIndex = '0';
 
       anime({
         targets: this.$refs.card,
@@ -157,16 +159,16 @@ export default {
       });
     },
     mountains1Offscreen() {
-      return this.$refs.mountains1.clientHeight;
+      return this.$refs.mountains1.clientHeight || this.$refs.mountains1.parentNode.clientHeight;
     },
     mountains2Offscreen() {
-      return this.$refs.mountains2.clientHeight;
+      return this.$refs.mountains2.clientHeight || this.$refs.mountains2.parentNode.clientHeight;
     },
     cloudsOffscreen() {
-      return this.$refs.clouds.clientHeight;
+      return this.$refs.clouds.clientHeight || this.$refs.clouds.parentNode.clientHeight;
     },
     cardOffScreen() {
-      return -1 * (this.$refs.card.clientHeight + 100);
+      return -1 * ((this.$refs.card.clientHeight || this.$refs.card.parentNode.clientHeight) + 100);
     },
     mountains1Movement(offset) {
       return offset * (this.viewHeight / 30);

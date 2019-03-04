@@ -30,16 +30,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.body {
-  &--intro {
-    background-color: $black;
-    transition: background-color linear 600ms;
+#app {
+  width: 100%;
+}
+
+@media (min-width: $breakpoint-sm) {
+  .body {
+    &--intro {
+      background-color: $black;
+      transition: background-color linear 600ms;
+    }
+    &--mountains {
+      background-color: $light-blue;
+      transition: background-color linear 600ms;
+    }
   }
-  &--mountains {
-    background-color: $light-blue;
-    transition: background-color linear 600ms;
-  }
-  #app {
-    width: 100%;
-  }
+
 }

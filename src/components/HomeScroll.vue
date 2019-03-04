@@ -149,9 +149,11 @@ export default {
       this.sections[position.section].adjust(position.offset);
     },
     onScroll() {
-      const lastSection = this.currentSection;
-      const position = this.calculatePosition();
-      this.performAnimations(lastSection, position);
+      if (!this.isMobile) {
+        const lastSection = this.currentSection;
+        const position = this.calculatePosition();
+        this.performAnimations(lastSection, position);
+      }
     },
   },
 };
