@@ -23,7 +23,7 @@ html{
 }
 body {
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-size: 16px;
   color: $white;
   background-color: $black;
@@ -34,10 +34,20 @@ body {
   width: 100%;
 }
 h1 {
-  @include font-alpha;
+  @include small-title;
 }
 
 h2 {
+  @include font-alpha;
+  font-weight: 400;
+}
+
+h3 {
+  @include font-beta;
+  font-weight: 400;
+}
+
+h4 {
   @include font-gamma;
   font-weight: 400;
 }
@@ -55,10 +65,34 @@ h2 {
   }
 
   h1 {
+    @include medium-title;
+  }
+
+  h2 {
+    @include small-title;
+  }
+
+  h3 {
+    @include font-alpha;
+  }
+  h4 {
+    @include font-beta;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  h1 {
     @include large-title;
   }
 
   h2 {
+    @include medium-title;
+  }
+
+  h3 {
+    @include small-title;
+  }
+  h4 {
     @include font-alpha;
   }
 }

@@ -5,7 +5,8 @@ export function delayAnimationCheckVisible(animation, delay, component) {
     setTimeout(() => {
       if (component.visible) {
         anime(animation)
-          .finished.then(() => {
+          .finished
+          .then(() => {
             resolve();
           });
       } else {

@@ -4,17 +4,17 @@
 
   &__card {
     position: relative;
-    z-index: 20;
+    z-index: 10;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 
     &_sub {
-      @include font-epsilon;
+      @include font-delta;
       text-align: center;
       color: $black;
       background-color: $transparent-white;
-      padding: $spacing-unit-x4;
+      padding: $spacing-unit-x3 $spacing-unit-x3 $spacing-unit-x12 $spacing-unit-x3;
       margin: $spacing-unit-x2;
     }
   }
@@ -33,7 +33,7 @@
     left: 0;
 
     &--1 {
-      z-index: 3
+      z-index: 11;
     }
     &--2 {
       z-index: 2;
@@ -59,14 +59,15 @@
     }
 
     &__card_sub {
+      height: 70vh;
       @include font-delta;
       padding: $spacing-unit-x4;
-      margin: $spacing-unit-x8 $spacing-unit-x12;
+      margin: $spacing-unit-x4 $spacing-unit-x12;
     }
   }
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: $breakpoint-md) and (min-height: 720px) {
   .mountains {
     &__card_sub {
       @include font-gamma;

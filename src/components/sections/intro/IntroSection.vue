@@ -4,7 +4,7 @@
       <h1><PeteNelson ref="peteNelson" class="intro__pete-nelson"/></h1>
       <div ref="introCardSub" class="intro__card_sub">
         <hr class="intro__card_bar" />
-        <h2 class="intro__card_text">Developer & Designer</h2>
+        <h3 class="intro__card_text">Experienced Web Developer & Designer</h3>
       </div>
     </div>
     <Cloud1 ref="cloud1" class="intro__cloud intro__cloud--1"/>
@@ -20,6 +20,7 @@
 <script>
 import anime from 'animejs';
 import { getClientHeight, getClientWidth } from '@/utils/sizes';
+import { delayAnimationCheckVisible } from '@/utils/animation';
 import SkyLine1 from '@/assets/images/skyline_1.svg';
 import SkyLine2 from '@/assets/images/skyline_2.svg';
 import SkyLine3 from '@/assets/images/skyline_3.svg';
@@ -217,20 +218,20 @@ export default {
         easing: 'easeInOutSine',
         duration: 400,
       });
-      anime({
+
+      delayAnimationCheckVisible({
         targets: this.$refs.skyLine2,
         translateY: this.skyLine2OffScreen(),
         easing: 'easeInOutSine',
         duration: 400,
-        delay: 75,
-      });
-      anime({
+      }, 75, this);
+
+      delayAnimationCheckVisible({
         targets: this.$refs.skyLine3,
         translateY: this.skyLine3OffScreen(),
         easing: 'easeInOutSine',
         duration: 400,
-        delay: 150,
-      });
+      }, 150, this);
     },
     adjustAnimated(offset) {
       if (this.showing) return;

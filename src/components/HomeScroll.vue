@@ -28,7 +28,7 @@ export default {
     return {
       currentSection: this.getCurrentSection(),
       viewHeight: this.getViewHeight(),
-      stopSectionSelect: false,
+      currentHomeSectionPropagation: false,
       hasLoadedAnimations: false,
       swapping: false,
       stopScrollOnSwap: true,
@@ -36,8 +36,9 @@ export default {
   },
   watch: {
     currentHomeSection: function currentHomeSection(val) {
-      if (this.stopSectionSelect) {
-        this.stopSectionSelect = false;
+      // If we fired navigation change via this component, we want to stop this method from continuing.
+      if (this.currentHomeSectionPropagation) {
+        this.currentHomeSectionPropagation = false;
         return;
       }
       const newSection = this.getCurrentSection(val);
@@ -85,9 +86,6 @@ export default {
         if (!this.hasLoadedAnimations) {
           this.loadAnimations();
         } else {
-          this.calculatePageSize();
-          this.stopScroll = true;
-          this.scrollToNewSection(this.currentSection);
           debounce(this.resetNoVisibleSections(), 200);
         }
       } else if (!this.isMobile) { // Only run once when first viewing mobile
@@ -105,7 +103,7 @@ export default {
     },
     loadAnimations() {
       this.hasLoadedAnimations = true;
-      this.stopInitialScroll()
+      this.stopInitialScroll();
       this.calculatePageSize();
       this.sections.forEach((section, index) => {
         this.sections[index].reset(false);
@@ -152,7 +150,7 @@ export default {
       };
     },
     setHash() {
-      this.stopSectionSelect = true;
+      this.currentHomeSectionPropagation = true;
       window.location.hash = this.sections[this.currentSection].getHash();
     },
     performAnimations(lastSection, position) {
@@ -170,10 +168,6 @@ export default {
       this.sections[position.section].adjust(position.offset);
     },
     onScroll() {
-      if (this.stopScroll) {
-        this.stopScroll = false;
-        return;
-      }
       if (this.swapping && this.stopScrollOnSwap) {
         window.scrollTo(0, this.swapping);
       }

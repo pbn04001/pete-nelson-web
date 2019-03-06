@@ -1,27 +1,40 @@
 
 @mixin large-title {
+  font-family: 'Roboto', sans-serif;
   font-size: 6rem;
   line-height: 6.5rem;
 }
 
-@mixin font-alpha {
-  font-size: 3.5rem;
-  line-height: 4rem;
+@mixin medium-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 4.5rem;
+  line-height: 5rem;
 }
 
-@mixin font-beta {
+@mixin small-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+
+@mixin font-alpha {
   font-size: 2.5rem;
   line-height: 3rem;
 }
 
-@mixin font-gamma {
+@mixin font-beta {
   font-size: 2rem;
   line-height: 2.5rem;
 }
 
-@mixin font-delta {
+@mixin font-gamma {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+@mixin font-delta {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 @mixin font-epsilon {

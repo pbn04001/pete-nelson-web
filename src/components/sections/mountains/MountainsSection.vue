@@ -3,10 +3,12 @@
     <div ref="card" class="mountains__card">
       <h1 class="mountains__title" >Developer</h1>
       <div ref="cardSub" class="mountains__card_sub">
-        Experienced web developer with over 19 years of professional experience.  Full stack javascript developer
-        with a focus on UI development.  Have worked with most major frameworks such as React, VUE and Angular.
-        Advanced CSS knowledge with experience creating pixel perfect designs that are both responsive and cross browser compatible.
-        Extensive backend knowledge from Node to Java.
+        Accomplished web developer with over 13 years of professional experience.  Have worked on delivering full stack
+        solutions from the initial design phase into full production implementation.  Extensive experience using major
+        UI frameworks React, Vue, and Angular.  Advanced knowledge creating designs using CSS and SASS.  Knowledgable about
+        micro service architectures, and have written both rest and soap services in Node and Java.  Setup and integrated
+        with many types of databases including SQL Server, DB2, and MySql.  Written backend python scripts used in processing
+        20k network transactions a second.
       </div>
     </div>
     <Mountains1 ref="mountains1" class="mountains__mountains mountains__mountains--1" />
@@ -181,7 +183,7 @@ export default {
       return getClientHeight(this.$refs.clouds);
     },
     cardOffScreen() {
-      return -1 * (getClientHeight(this.$refs.card) + 100);
+      return (getClientHeight(this.$refs.card) + 50);
     },
     mountains1Movement(offset) {
       return offset * (this.viewHeight / 30);
