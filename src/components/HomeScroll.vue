@@ -86,6 +86,7 @@ export default {
         if (!this.hasLoadedAnimations) {
           this.loadAnimations();
         } else {
+          this.calculatePageSize();
           debounce(this.resetNoVisibleSections(), 200);
         }
       } else if (!this.isMobile) { // Only run once when first viewing mobile

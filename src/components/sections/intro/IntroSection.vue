@@ -224,14 +224,14 @@ export default {
         translateY: this.skyLine2OffScreen(),
         easing: 'easeInOutSine',
         duration: 400,
-      }, 75, this);
+      }, 75, this, false);
 
       delayAnimationCheckVisible({
         targets: this.$refs.skyLine3,
         translateY: this.skyLine3OffScreen(),
         easing: 'easeInOutSine',
         duration: 400,
-      }, 150, this);
+      }, 150, this, false);
     },
     adjustAnimated(offset) {
       if (this.showing) return;

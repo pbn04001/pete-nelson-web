@@ -67,11 +67,20 @@
   }
 }
 
-@media (min-width: $breakpoint-md) and (min-height: 720px) {
+@media (min-width: $breakpoint-md) and (min-height: 700px) {
   .mountains {
     &__card_sub {
       @include font-gamma;
       padding: $spacing-unit-x6;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) and (min-height: 840px) {
+  .mountains {
+    &__card_sub {
+      @include font-beta;
+      padding: $spacing-unit-x8;
     }
   }
 }

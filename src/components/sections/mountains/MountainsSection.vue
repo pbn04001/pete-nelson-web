@@ -98,7 +98,7 @@ export default {
           opacity: 1,
           easing: 'easeOutSine',
           duration: 500,
-        }, 300, this);
+        }, 300, this, true);
 
         anime({
           targets: this.$refs.clouds,
@@ -113,14 +113,14 @@ export default {
           translateY: this.mountains2Movement(offset),
           easing: 'easeOutSine',
           duration: 500,
-        }, 200, this);
+        }, 200, this, true);
 
         delayAnimationCheckVisible({
           targets: this.$refs.mountains1,
           translateY: this.mountains1Movement(offset),
           easing: 'easeOutSine',
           duration: 300,
-        }, 200, this)
+        }, 200, this, true)
           .then(() => {
             this.showing = false;
             resolve();
