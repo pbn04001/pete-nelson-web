@@ -72,6 +72,9 @@ export default {
     getHash() {
       return 'developer';
     },
+    getSize() {
+      return 3;
+    },
     reset(visible = true) {
       this.visible = visible;
 

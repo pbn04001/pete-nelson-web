@@ -59,6 +59,14 @@ export default {
       this.$refs.introSection,
       this.$refs.mountainSection,
     ];
+    this.totalSectionsSize = 0;
+    this.sectionSizes = this.sections
+      .map((section) => {
+        const size = section.getSize();
+        this.totalSectionsSize += size;
+        return size;
+      });
+
     if (!this.isMobile) {
       this.loadAnimations();
     }
@@ -129,24 +137,30 @@ export default {
     },
     scrollToNewSection(newSection) {
       setTimeout(() => {
-        window.scrollTo(0, (newSection * this.getViewHeight() + (this.getViewHeight() / 2)));
+        const newScroll = this.sectionSizes.slice(0, newSection).reduce((acc, cur) => acc + cur, 0);
+        window.scrollTo(0, (newScroll * this.getViewHeight() + (this.getViewHeight() / 2)));
       }, 1);
     },
     getViewHeight() {
       return window.innerHeight;
     },
     calculatePageSize() {
-      this.$refs.pageScroll.style.height = `${((this.sections.length * 1.5) * this.getViewHeight()) + this.getViewHeight()}px`;
+      this.$refs.pageScroll.style.height = `${(this.totalSectionsSize * this.getViewHeight()) + this.getViewHeight()}px`;
     },
     calculatePosition() {
-      const offset = window.pageYOffset / ((this.getViewHeight() * 1.5) + 1);
-      let section = Math.ceil(offset) || 1;
-      if (section > this.sections.length) {
-        section = this.sections.length;
-      }
-      this.currentSection = section - 1;
+      let offset = window.pageYOffset / (this.getViewHeight() + 1);
+      const section = this.sectionSizes.findIndex((size) => {
+        const newOffset = offset - size;
+        if (newOffset <= 0) {
+          offset /= size;
+          return true;
+        }
+        offset -= size;
+        return false;
+      });
+      this.currentSection = section;
       return {
-        section: section - 1,
+        section: section,
         offset: (offset % 1),
       };
     },

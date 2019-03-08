@@ -84,6 +84,9 @@ export default {
     getHash() {
       return 'intro';
     },
+    getSize() {
+      return 1;
+    },
     reset(visible = true) {
       this.$refs.introCard.style.transform = `translateX(${visible ? 0 : this.introCardOffScreen()}px)`;
       this.$refs.skyLine1.style.transform = `translateY(${visible ? 0 : this.skyLine1OffScreen()}px)`;
