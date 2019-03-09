@@ -2,6 +2,7 @@
   <div class="one-page-scroll" ref="pageScroll">
     <IntroSection ref="introSection" :view-height="viewHeight" />
     <MountainsSection ref="mountainSection" :view-height="viewHeight" />
+    <ForestSection ref="forestSection" :view-height="viewHeight" />
   </div>
 </template>
 
@@ -12,21 +13,24 @@ import { SCREEN_SIZE, getScreenSizeMax } from '@/utils/sizes';
 // Sections
 import IntroSection from './sections/intro/IntroSection.vue';
 import MountainsSection from './sections/mountains/MountainsSection.vue';
+import ForestSection from './sections/forest/ForestSection.vue';
 
 export default {
   name: 'HomeScrollCustom',
   components: {
     IntroSection,
     MountainsSection,
+    ForestSection,
   },
   computed: {
     ...mapState({
       currentHomeSection: state => state.currentHomeSection,
     }),
+    currentSection: function () { return this.getCurrentSection(); },
   },
   data() {
     return {
-      currentSection: this.getCurrentSection(),
+      lockSection: 2,
       viewHeight: this.getViewHeight(),
       currentHomeSectionPropagation: false,
       hasLoadedAnimations: false,
@@ -58,6 +62,7 @@ export default {
     this.sections = [
       this.$refs.introSection,
       this.$refs.mountainSection,
+      this.$refs.forestSection,
     ];
     this.totalSectionsSize = 0;
     this.sectionSizes = this.sections
@@ -79,7 +84,8 @@ export default {
       return window.innerWidth < getScreenSizeMax(SCREEN_SIZE.SM);
     },
     getCurrentSection(section) {
-      if (this.sections) {
+      if (this.lockSection) return this.lockSection;
+      if (this.sections && section) {
         return this.sections.findIndex(curSection => curSection.getHash() === section.replace('#', ''));
       }
       if (window.location.hash === '#developer') {
@@ -183,6 +189,7 @@ export default {
       this.sections[position.section].adjust(position.offset);
     },
     onScroll() {
+      if (this.lockSection) return;
       if (this.swapping && this.stopScrollOnSwap) {
         window.scrollTo(0, this.swapping);
       }

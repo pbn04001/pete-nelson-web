@@ -31,8 +31,8 @@
         </span>
       </div>
     </div>
-    <Mountains1 ref="mountains1" class="mountains__mountains mountains__mountains--1" />
     <Mountains2 ref="mountains2" class="mountains__mountains mountains__mountains--2" />
+    <Mountains1 ref="mountains1" class="mountains__mountains mountains__mountains--1" />
     <Clouds ref="clouds" class="mountains__clouds" />
   </div>
 </template>
