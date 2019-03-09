@@ -3,22 +3,25 @@
   background-color: $pale-blue;
 
   &__card {
+    @include font-delta;
     position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    z-index: 20;
+    color: $black;
+    background-color: $transparent-white;
+    padding: $spacing-unit-x3 $spacing-unit-x3 $spacing-unit-x12 $spacing-unit-x3;
+    margin: $spacing-unit-x2;
 
-    &_sub {
-      @include font-delta;
-      text-align: center;
-      color: $black;
-      background-color: $transparent-white;
-      padding: $spacing-unit-x3 $spacing-unit-x3 $spacing-unit-x12 $spacing-unit-x3;
-      margin: $spacing-unit-x2;
+    &--hide {
+      opacity: 0;
+      transition: opacity linear 500ms;
+    }
+    &--show {
+      opacity: 1;
+      transition: opacity linear 500ms;
     }
   }
   &__title {
+    z-index: 30;
     color: $midnight-blue;
     display: block;
     width: 100%;
@@ -41,7 +44,7 @@
 
   &__trees {
     position: absolute;
-    bottom: 2vw;
+    bottom: 1vw;
     z-index: 4;
   }
 
@@ -51,27 +54,32 @@
     top: -4%;
     left: 5%;
     width: 25%;
-    height: 25%;
   }
   &__moon_back {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-
-    &--hide {
-      opacity: 0;
-      transition: opacity linear 300ms;
-    }
-    &--show {
-      opacity: 1;
-      transition: opacity linear 300ms;
-    }
   }
 }
 
 @media (min-width: $breakpoint-sm) {
   .forest {
     background-color: transparent;
+
+    &__moon_back {
+      opacity: 0;
+
+      &--hide {
+        opacity: 0;
+        transition: opacity linear 300ms;
+      }
+      &--show {
+        opacity: 1;
+        transition: opacity linear 300ms;
+      }
+    }
   }
+
+
 }

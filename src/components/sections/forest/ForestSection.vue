@@ -1,7 +1,8 @@
 <template>
   <div ref="section" class="section forest">
+    <h1 ref="title" class="forest__title" >Designer</h1>
     <div ref="card" class="forest__card">
-      <h1 class="forest__title" >Designer</h1>
+
     </div>
     <Hills1 ref="hills1" class="forest__hills forest__hills--1" />
     <Hills2 ref="hills2" class="forest__hills forest__hills--2" />
@@ -61,9 +62,7 @@ export default {
       });
     },
     adjust(offset) {
-      if (this.visible && !this.showing) {
-        this.adjustAnimated(offset);
-      }
+      this.adjustAnimated(offset);
     },
     load() {
       this.showAnimated(0);
@@ -78,54 +77,156 @@ export default {
     reset(visible = true) {
       this.visible = visible;
 
-      this.$refs.card.style.opacity = visible ? 1 : 0;
-      this.$refs.card.style.transform = `translateY(${visible ? 0 : this.cardOffScreen()}px)`;
+      this.hideCard();
+      this.$refs.title.style.transform = `translateY(${visible ? 0 : this.titleOffScreen()}px)`;
+      this.$refs.hills1.style.transform = `translateY(${visible ? 0 : this.hills1Offscreen()}px)`;
+      this.$refs.hills2.style.transform = `translateY(${visible ? 0 : this.hills2Offscreen()}px)`;
+      this.$refs.trees.style.transform = `translateY(${visible ? 0 : this.treesOffscreen()}px)`;
+      this.$refs.moon.style.transform = `translateY(${visible ? 0 : this.moonOffScreen()}px)`;
     },
-    showAnimated() {
+    showAnimated(offset) {
       this.visible = true;
       this.showing = true;
       document.body.classList.add('body--forest');
 
+      this.showCard();
       return new Promise((resolve) => {
         anime({
-          targets: this.$refs.card,
+          targets: this.$refs.title,
           translateY: 0,
           easing: 'easeOutSine',
-          duration: 800,
+          duration: 500,
         });
-        delayAnimationCheckVisible({
-          targets: this.$refs.card,
+
+        this.$refs.moon_back.classList.remove('forest__moon_back--hide');
+        this.$refs.moon_back.classList.add('forest__moon_back--show');
+
+        anime({
+          targets: this.$refs.moon,
+          translateY: 0,
+          easing: 'easeOutSine',
+          duration: 300,
+        });
+
+        anime({
+          targets: this.$refs.trees,
+          translateY: this.treesMovement(offset),
+          easing: 'easeOutSine',
           opacity: 1,
+          duration: 700,
+        });
+
+        delayAnimationCheckVisible({
+          targets: this.$refs.hills2,
+          translateY: this.hills2Movement(offset),
           easing: 'easeOutSine',
           duration: 500,
-        }, 300, this, true);
-        resolve();
+        }, 200, this, true);
+
+        delayAnimationCheckVisible({
+          targets: this.$refs.hills1,
+          translateY: this.hills1Movement(offset),
+          easing: 'easeOutSine',
+          duration: 300,
+        }, 200, this, true)
+          .then(() => {
+            this.showing = false;
+            resolve();
+          });
       });
     },
     hideAnimated() {
       this.visible = false;
+      this.$refs.moon_back.classList.remove('forest__moon_back--show');
+      this.$refs.moon_back.classList.add('forest__moon_back--hide');
       document.body.classList.remove('body--forest');
 
+      this.hideCard();
       anime({
-        targets: this.$refs.card,
-        translateY: this.cardOffScreen(),
-        opacity: 0,
+        targets: this.$refs.title,
+        translateY: this.titleOffScreen(),
         easing: 'easeOutSine',
+        duration: 500,
+      });
+
+      const self = this;
+      setTimeout(() => {
+        if (!self.visible) {
+          anime({
+            targets: this.$refs.moon,
+            translateY: this.moonOffScreen(),
+            easing: 'easeInOutSine',
+            duration: 400,
+          });
+        }
+      }, 300);
+
+      anime({
+        targets: this.$refs.trees,
+        translateY: this.treesOffscreen(),
+        easing: 'easeInOutSine',
         duration: 700,
+        opacity: 0,
+      });
+
+      anime({
+        targets: this.$refs.hills2,
+        translateY: this.hills2Offscreen(),
+        easing: 'easeInOutSine',
+        duration: 500,
+      });
+
+      anime({
+        targets: this.$refs.hills1,
+        translateY: this.hills1Offscreen(),
+        easing: 'easeInOutSine',
+        duration: 300,
       });
     },
     adjustAnimated(offset) {
-      anime({
-        targets: this.$refs.card,
-        translateY: this.cardMovement(offset),
-        duration: 100,
-      });
+      if (this.showing || !this.visible) return;
+
+      this.$refs.trees.style.transform = `translateY(${this.treesMovement(offset)}px)`;
+      this.$refs.hills2.style.transform = `translateY(${this.hills2Movement(offset)}px)`;
+      this.$refs.hills1.style.transform = `translateY(${this.hills1Movement(offset)}px)`;
     },
     cardOffScreen() {
       return (getClientHeight(this.$refs.card) + 50);
     },
+    showCard() {
+      this.$refs.card.classList.add('forest__card--show');
+      this.$refs.card.classList.remove('forest__card--hide');
+    },
+    hideCard() {
+      this.$refs.card.classList.add('forest__card--hide');
+      this.$refs.card.classList.remove('forest__card--show');
+    },
+    titleOffScreen() {
+      return -1 * ((this.viewHeight * 0.10) + getClientHeight(this.$refs.title) + 50);
+    },
+    hills1Offscreen() {
+      return getClientHeight(this.$refs.hills1);
+    },
+    hills2Offscreen() {
+      return getClientHeight(this.$refs.hills2) + 200;
+    },
+    treesOffscreen() {
+      return getClientHeight(this.$refs.trees);
+    },
+    moonOffScreen() {
+      return -1 * ((this.viewHeight * 0.10) + getClientHeight(this.$refs.moon) + 50);
+    },
     cardMovement(offset) {
       return -1 * (offset * (getClientHeight(this.$refs.card) - this.viewHeight));
+    },
+    treesMovement(offset) {
+      return offset * (this.viewHeight / 15);
+    },
+    hills2Movement(offset) {
+      return offset * (this.viewHeight / 20);
+    },
+    hills1Movement(offset) {
+      return offset * (this.viewHeight / 25);
     },
   },
 };

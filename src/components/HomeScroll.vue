@@ -26,11 +26,11 @@ export default {
     ...mapState({
       currentHomeSection: state => state.currentHomeSection,
     }),
-    currentSection: function () { return this.getCurrentSection(); },
   },
   data() {
     return {
-      lockSection: 2,
+      currentSection: this.getCurrentSection(),
+      lockSection: null,
       viewHeight: this.getViewHeight(),
       currentHomeSectionPropagation: false,
       hasLoadedAnimations: false,

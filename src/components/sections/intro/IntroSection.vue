@@ -71,9 +71,7 @@ export default {
       });
     },
     adjust(offset) {
-      if (this.visible && !this.showing) {
-        this.adjustAnimated(offset);
-      }
+      this.adjustAnimated(offset);
     },
     load() {
       return new Promise((resolve) => {
@@ -237,37 +235,13 @@ export default {
       }, 150, this, false);
     },
     adjustAnimated(offset) {
-      if (this.showing) return;
+      if (this.showing || !this.visible) return;
 
-      anime({
-        targets: this.$refs.cloud1,
-        translateY: this.cloud1Movement(offset),
-        duration: 200,
-      });
-
-      anime({
-        targets: this.$refs.cloud2,
-        translateY: this.cloud2Movement(offset),
-        duration: 200,
-      });
-
-      anime({
-        targets: this.$refs.skyLine1,
-        translateY: this.skyLine1Movement(offset),
-        duration: 200,
-      });
-
-      anime({
-        targets: this.$refs.skyLine2,
-        translateY: this.skyLine2Movement(offset),
-        duration: 200,
-      });
-
-      anime({
-        targets: this.$refs.skyLine3,
-        translateY: this.skyLine3Movement(offset),
-        duration: 200,
-      });
+      this.$refs.cloud1.style.transform = `translateY(${this.cloud1Movement(offset)}px)`;
+      this.$refs.cloud2.style.transform = `translateY(${this.cloud2Movement(offset)}px)`;
+      this.$refs.skyLine1.style.transform = `translateY(${this.skyLine1Movement(offset)}px)`;
+      this.$refs.skyLine2.style.transform = `translateY(${this.skyLine2Movement(offset)}px)`;
+      this.$refs.skyLine3.style.transform = `translateY(${this.skyLine3Movement(offset)}px)`;
     },
     animatePeteNelson() {
       this.$refs.introCard.style.transform = 'translateX(0px)';

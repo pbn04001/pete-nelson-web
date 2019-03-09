@@ -72,16 +72,7 @@
     height: 95%;
     top: -27.5%;
     right: -22.5%;
-    opacity: 0;
-
-    &--hide {
-      opacity: 0;
-      transition: opacity linear 300ms;
-    }
-    &--show {
-      opacity: 1;
-      transition: opacity linear 300ms;
-    }
+    opacity: 1;
   }
   &__sky_line {
     position: absolute;
@@ -118,6 +109,19 @@
           opacity: 1;
           transition: opacity linear 500ms;
         }
+      }
+    }
+
+    &__moon_back {
+      opacity: 0;
+
+      &--hide {
+        opacity: 0;
+        transition: opacity linear 300ms;
+      }
+      &--show {
+        opacity: 1;
+        transition: opacity linear 300ms;
       }
     }
 

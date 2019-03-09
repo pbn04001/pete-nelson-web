@@ -81,9 +81,7 @@ export default {
       });
     },
     adjust(offset) {
-      if (this.visible && !this.showing) {
-        this.adjustAnimated(offset);
-      }
+      this.adjustAnimated(offset);
     },
     load() {
       this.showAnimated(0);
@@ -185,22 +183,11 @@ export default {
       });
     },
     adjustAnimated(offset) {
-      anime({
-        targets: this.$refs.card,
-        translateY: this.cardMovement(offset),
-        duration: 100,
-      });
+      if (this.showing || !this.visible) return;
 
-      anime({
-        targets: this.$refs.mountains2,
-        translateY: this.mountains2Movement(offset),
-        duration: 100,
-      });
-      anime({
-        targets: this.$refs.mountains1,
-        translateY: this.mountains1Movement(offset),
-        duration: 100,
-      });
+      this.$refs.card.style.transform = `translateY(${this.cardMovement(offset)}px)`;
+      this.$refs.mountains2.style.transform = `translateY(${this.mountains2Movement(offset)}px)`;
+      this.$refs.mountains1.style.transform = `translateY(${this.mountains1Movement(offset)}px)`;
     },
     cardMovement(offset) {
       return -1 * (offset * (getClientHeight(this.$refs.card) - this.viewHeight));
