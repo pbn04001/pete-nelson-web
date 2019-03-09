@@ -5,10 +5,30 @@
       <div ref="cardSub" class="mountains__card_sub">
         Accomplished web developer with over 13 years of professional experience.  Have worked on delivering full stack
         solutions from the initial design phase into full production implementation.  Extensive experience using major
-        UI frameworks React, Vue, and Angular.  Advanced knowledge creating designs using CSS and SASS.  Knowledgable about
+        UI frameworks React, Vue, and Angular.  Advanced knowledge creating designs using CSS and SASS.  Knowledgeable about
         micro service architectures, and have written both rest and soap services in Node and Java.  Setup and integrated
         with many types of databases including SQL Server, DB2, and MySql.  Written backend python scripts used in processing
         20k network transactions a second.
+
+        <h4>Javascript Frameworks</h4>
+        <span class="mountains__tech_list">
+          React, Vue, Angular, ExtJS
+        </span>
+
+        <h4>UI Styling</h4>
+        <span class="mountains__tech_list">
+          CSS3, HTML5, SASS, PostCSS
+        </span>
+
+        <h4>Rest/Soap Services</h4>
+        <span class="mountains__tech_list">
+          Node, Java, Scala, Python
+        </span>
+
+        <h4>Databases</h4>
+        <span class="mountains__tech_list">
+          SQL Server, MySQL, IBM DB2, Hadoop
+        </span>
       </div>
     </div>
     <Mountains1 ref="mountains1" class="mountains__mountains mountains__mountains--1" />
@@ -73,7 +93,7 @@ export default {
       return 'developer';
     },
     getSize() {
-      return 3;
+      return 2;
     },
     reset(visible = true) {
       this.visible = visible;
@@ -166,15 +186,24 @@ export default {
     },
     adjustAnimated(offset) {
       anime({
+        targets: this.$refs.card,
+        translateY: this.cardMovement(offset),
+        duration: 100,
+      });
+
+      anime({
         targets: this.$refs.mountains2,
         translateY: this.mountains2Movement(offset),
-        duration: 200,
+        duration: 100,
       });
       anime({
         targets: this.$refs.mountains1,
         translateY: this.mountains1Movement(offset),
-        duration: 200,
+        duration: 100,
       });
+    },
+    cardMovement(offset) {
+      return -1 * (offset * (getClientHeight(this.$refs.card) - this.viewHeight));
     },
     mountains1Offscreen() {
       return getClientHeight(this.$refs.mountains1);

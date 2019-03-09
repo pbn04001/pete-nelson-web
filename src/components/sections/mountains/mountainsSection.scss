@@ -48,6 +48,11 @@
     left: 0;
     opacity: 1;
   }
+
+  h4 {
+    margin-top: $spacing-unit-x4;
+    color: $dark-teal;
+  }
 }
 
 @media (min-width: $breakpoint-sm) {
@@ -61,8 +66,12 @@
     &__card_sub {
       height: 70vh;
       @include font-delta;
-      padding: $spacing-unit-x4;
-      margin: $spacing-unit-x4 $spacing-unit-x12;
+      padding: $spacing-unit-x4 $spacing-unit-x4 $spacing-unit-x20 $spacing-unit-x4;
+      margin: $spacing-unit-x4 $spacing-unit-x12 0 $spacing-unit-x12;
+    }
+
+    &__tech_list {
+      @include font-gamma;
     }
   }
 }
@@ -71,16 +80,7 @@
   .mountains {
     &__card_sub {
       @include font-gamma;
-      padding: $spacing-unit-x6;
-    }
-  }
-}
-
-@media (min-width: $breakpoint-lg) and (min-height: 840px) {
-  .mountains {
-    &__card_sub {
-      @include font-beta;
-      padding: $spacing-unit-x8;
+      padding-bottom: spacingUnit(30);
     }
   }
 }

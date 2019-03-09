@@ -19,5 +19,9 @@ $spacing-unit-x18: 18 * $spacing-unit;
 $spacing-unit-x19: 19 * $spacing-unit;
 $spacing-unit-x20: 20 * $spacing-unit;
 
+@function spacingUnit($size) {
+  @return $spacing-unit * $size;
+}
+
 
 
