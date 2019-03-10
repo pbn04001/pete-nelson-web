@@ -110,7 +110,7 @@ export default {
       return new Promise((resolve) => {
         anime({
           targets: this.$refs.card,
-          translateY: 0,
+          translateY: this.cardMovement(offset),
           easing: 'easeOutSine',
           duration: 800,
         });

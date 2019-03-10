@@ -4,30 +4,35 @@
 
   &__card {
     @include font-delta;
+    display: table;
     position: relative;
     z-index: 20;
     color: $black;
     background-color: $transparent-white;
-    padding: $spacing-unit-x3 $spacing-unit-x3 $spacing-unit-x12 $spacing-unit-x3;
-    margin: $spacing-unit-x2;
+    margin: $spacing-unit-x12 0 $spacing-unit-x16 0;
+    padding: $spacing-unit;
+    width: auto;
+  }
 
-    &--hide {
-      opacity: 0;
-      transition: opacity linear 500ms;
-    }
-    &--show {
-      opacity: 1;
-      transition: opacity linear 500ms;
+  &__card_inside {
+    display: inline-block;
+    background-color: $white;
+    padding: $spacing-unit;
+
+    & img {
+      width: 100%;
     }
   }
+
   &__title {
+    position: absolute;
     z-index: 30;
     color: $midnight-blue;
     display: block;
     width: 100%;
     flex: 0 0 100%;
     text-align: center;
-    margin: $spacing-unit-x8 0 0 0;
+    margin: $spacing-unit-x3 0 $spacing-unit-x3 0;
   }
 
   &__hills {
@@ -66,6 +71,31 @@
 @media (min-width: $breakpoint-sm) {
   .forest {
     background-color: transparent;
+
+    &__title {
+      position: relative;
+      margin: $spacing-unit-x5 0 $spacing-unit-x2 0;
+    }
+
+    &__card {
+      opacity: 0;
+      margin: 0 auto;
+
+      &--hide {
+        opacity: 0;
+        transition: opacity linear 200ms;
+      }
+      &--show {
+        opacity: 1;
+        transition: opacity linear 600ms;
+      }
+    }
+
+    &__card_inside {
+      & img {
+        height: 70vh;
+      }
+    }
 
     &__moon_back {
       opacity: 0;

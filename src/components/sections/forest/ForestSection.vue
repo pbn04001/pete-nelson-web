@@ -2,7 +2,9 @@
   <div ref="section" class="section forest">
     <h1 ref="title" class="forest__title" >Designer</h1>
     <div ref="card" class="forest__card">
-
+      <div class="forest__card_inside">
+        <img src="/img/spacecake/website/spacecake-web-large.png" />
+      </div>
     </div>
     <Hills1 ref="hills1" class="forest__hills forest__hills--1" />
     <Hills2 ref="hills2" class="forest__hills forest__hills--2" />
@@ -14,7 +16,7 @@
 
 <script>
 import anime from 'animejs';
-import { delayAnimationCheckVisible } from '@/utils/animation';
+import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
 
 // Scenery
@@ -99,7 +101,9 @@ export default {
         });
 
         this.$refs.moon_back.classList.remove('forest__moon_back--hide');
-        this.$refs.moon_back.classList.add('forest__moon_back--show');
+        delayActionCheckVisible(() => {
+          this.$refs.moon_back.classList.add('forest__moon_back--show');
+        }, 600, this, true);
 
         anime({
           targets: this.$refs.moon,
@@ -149,17 +153,12 @@ export default {
         duration: 500,
       });
 
-      const self = this;
-      setTimeout(() => {
-        if (!self.visible) {
-          anime({
-            targets: this.$refs.moon,
-            translateY: this.moonOffScreen(),
-            easing: 'easeInOutSine',
-            duration: 400,
-          });
-        }
-      }, 300);
+      delayAnimationCheckVisible({
+        targets: this.$refs.moon,
+        translateY: this.moonOffScreen(),
+        easing: 'easeInOutSine',
+        duration: 400,
+      }, 300, this, false);
 
       anime({
         targets: this.$refs.trees,

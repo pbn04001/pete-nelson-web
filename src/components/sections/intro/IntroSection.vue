@@ -20,7 +20,7 @@
 <script>
 import anime from 'animejs';
 import { getClientHeight, getClientWidth } from '@/utils/sizes';
-import { delayAnimationCheckVisible } from '@/utils/animation';
+import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
 import SkyLine1 from '@/assets/images/skyline_1.svg';
 import SkyLine2 from '@/assets/images/skyline_2.svg';
 import SkyLine3 from '@/assets/images/skyline_3.svg';
@@ -123,11 +123,9 @@ export default {
     showRemainingAnimated(offset) {
       return new Promise((resolve) => {
         this.$refs.moon_back.classList.remove('intro__moon_back--hide');
-        setTimeout(() => {
-          if (this.visible) {
-            this.$refs.moon_back.classList.add('intro__moon_back--show');
-          }
-        }, 300);
+        delayActionCheckVisible(() => {
+          this.$refs.moon_back.classList.add('intro__moon_back--show');
+        }, 300, this, true);
 
         anime({
           targets: this.$refs.moon,
@@ -188,17 +186,14 @@ export default {
         easing: 'easeOutSine',
         duration: 400,
       });
-      const self = this;
-      setTimeout(() => {
-        if (!self.visible) {
-          anime({
-            targets: this.$refs.moon,
-            translateY: this.moonOffScreen(),
-            easing: 'easeInOutSine',
-            duration: 400,
-          });
-        }
-      }, 300);
+
+      delayAnimationCheckVisible({
+        targets: this.$refs.moon,
+        translateY: this.moonOffScreen(),
+        easing: 'easeInOutSine',
+        duration: 400,
+      }, 300, this, false);
+
       anime({
         targets: this.$refs.cloud1,
         translateY: this.cloud1OffScreen(),
@@ -284,9 +279,10 @@ export default {
         delay: 1000,
         duration: 500,
       });
-      setTimeout(() => {
+
+      delayActionCheckVisible(() => {
         this.$refs.introCardSub.classList.add('intro__card_sub--show');
-      }, 1000);
+      }, 1000, this, true);
     },
     skyLine1OffScreen() {
       return getClientHeight(this.$refs.skyLine1) + 50;
