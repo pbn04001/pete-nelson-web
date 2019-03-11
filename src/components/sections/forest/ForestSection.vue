@@ -117,8 +117,11 @@ export default {
       this.offset = offset;
       document.body.classList.add('body--forest');
 
-      this.showCard();
+      setTimeout(() => {
+        this.showCard();
+      }, 600);
       this.showImage(offset);
+
       return new Promise((resolve) => {
         anime({
           targets: this.$refs.title,

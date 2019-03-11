@@ -64,7 +64,6 @@
     }
 
     &__card_sub {
-      height: 70vh;
       @include font-delta;
       padding: $spacing-unit-x4 $spacing-unit-x4 $spacing-unit-x20 $spacing-unit-x4;
       margin: $spacing-unit-x4 $spacing-unit-x12 0 $spacing-unit-x12;
@@ -76,7 +75,7 @@
   }
 }
 
-@media (min-width: $breakpoint-md) and (min-height: 700px) {
+@media (min-width: $breakpoint-md) {
   .mountains {
     &__card_sub {
       @include font-gamma;
