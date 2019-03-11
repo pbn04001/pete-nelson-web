@@ -74,6 +74,10 @@ export default {
 
     if (!this.isMobile) {
       this.loadAnimations();
+    } else {
+      this.sections.forEach((section, index) => {
+        this.sections[index].showAssets();
+      });
     }
   },
   beforeDestroy() {

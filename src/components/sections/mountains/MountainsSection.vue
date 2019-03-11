@@ -102,6 +102,7 @@ export default {
       this.$refs.mountains2.style.transform = `translateY(${visible ? 0 : this.mountains2Offscreen()}px)`;
       this.$refs.clouds.style.transform = `translateY(${visible ? 0 : this.cloudsOffscreen()}px)`;
     },
+    showAssets() {},
     showAnimated(offset) {
       this.visible = true;
       this.showing = true;

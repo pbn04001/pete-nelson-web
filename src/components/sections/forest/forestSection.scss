@@ -4,7 +4,7 @@
 
   &__card {
     @include font-delta;
-    display: table;
+    display: block;
     position: relative;
     z-index: 20;
     color: $black;
@@ -15,9 +15,15 @@
   }
 
   &__card_inside {
-    display: inline-block;
+    display: block;
+    position: relative;
     background-color: $white;
-    padding: $spacing-unit;
+    padding: $spacing-unit $spacing-unit 0 $spacing-unit;
+    margin-bottom: $spacing-unit;
+
+    &:last-child {
+      margin-bottom: none;
+    }
 
     & img {
       width: 100%;
@@ -78,8 +84,11 @@
     }
 
     &__card {
+      position: relative;
+      background: transparent;
       opacity: 0;
-      margin: 0 auto;
+      width: 100%;
+      margin: 0;
 
       &--hide {
         opacity: 0;
@@ -92,8 +101,28 @@
     }
 
     &__card_inside {
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      background: transparent;
+      display: table;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+
       & img {
+        border: $transparent-white solid $spacing-unit;
         height: 70vh;
+        width: auto;
+      }
+
+      &--show {
+        opacity: 1;
+        transition: opacity linear 500ms;
+      }
+      &--hide {
+        opacity: 0;
+        transition: opacity linear 500ms;
       }
     }
 

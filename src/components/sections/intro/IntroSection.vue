@@ -95,6 +95,7 @@ export default {
       this.$refs.cloud2.style.transform = `translateY(${visible ? 0 : this.cloud2OffScreen()}px)`;
       this.visible = visible;
     },
+    showAssets() {},
     showAnimated(offset, firstLoad) {
       this.visible = true;
       this.showing = true;

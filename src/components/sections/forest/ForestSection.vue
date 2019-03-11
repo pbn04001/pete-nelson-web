@@ -2,8 +2,11 @@
   <div ref="section" class="section forest">
     <h1 ref="title" class="forest__title" >Designer</h1>
     <div ref="card" class="forest__card">
-      <div class="forest__card_inside">
+      <div ref="image1" class="forest__card_inside" v-if="renderImages">
         <img src="/img/spacecake/website/spacecake-web-large.png" />
+      </div>
+      <div ref="image2" class="forest__card_inside" v-if="renderImages">
+        <img src="/img/highberry/website/highberry-web-large.jpg" />
       </div>
     </div>
     <Hills1 ref="hills1" class="forest__hills forest__hills--1" />
@@ -17,7 +20,7 @@
 <script>
 import anime from 'animejs';
 import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
-import { getClientHeight } from '@/utils/sizes';
+import { getClientHeight, getClientWidth } from '@/utils/sizes';
 
 // Scenery
 import Hills1 from '@/assets/images/hills_1.svg';
@@ -45,7 +48,25 @@ export default {
     return {
       visible: true,
       showing: true,
+      renderImages: false,
+      offset: null,
+      currentImage: null,
     };
+  },
+  updated() {
+    if (this.triggerShowImages !== null) {
+      this.showImage(this.offset);
+      this.triggerShowImages = null;
+    }
+  },
+  watch: {
+    renderImages: {
+      handler(newValue, oldValue) {
+        if (newValue && !oldValue) {
+          this.triggerShowImages = this.offset;
+        }
+      },
+    },
   },
   methods: {
     hide() {
@@ -86,12 +107,18 @@ export default {
       this.$refs.trees.style.transform = `translateY(${visible ? 0 : this.treesOffscreen()}px)`;
       this.$refs.moon.style.transform = `translateY(${visible ? 0 : this.moonOffScreen()}px)`;
     },
+    showAssets() {
+      this.renderImages = true;
+    },
     showAnimated(offset) {
+      this.renderImages = true;
       this.visible = true;
       this.showing = true;
+      this.offset = offset;
       document.body.classList.add('body--forest');
 
       this.showCard();
+      this.showImage(offset);
       return new Promise((resolve) => {
         anime({
           targets: this.$refs.title,
@@ -185,9 +212,30 @@ export default {
     adjustAnimated(offset) {
       if (this.showing || !this.visible) return;
 
+      this.showImage(offset);
       this.$refs.trees.style.transform = `translateY(${this.treesMovement(offset)}px)`;
       this.$refs.hills2.style.transform = `translateY(${this.hills2Movement(offset)}px)`;
       this.$refs.hills1.style.transform = `translateY(${this.hills1Movement(offset)}px)`;
+    },
+    showImage(offset) {
+      if (this.$refs.image1) {
+        if (offset < 0.5) {
+          this.swapImages(this.$refs.image1);
+        } else {
+          this.swapImages(this.$refs.image2);
+        }
+      }
+    },
+    swapImages(newImage) {
+      const { currentImage } = this;
+      if (currentImage === newImage) return;
+      if (currentImage) {
+        currentImage.classList.remove('forest__card_inside--show');
+        currentImage.classList.add('forest__card_inside--hide');
+      }
+      newImage.classList.remove('forest__card_inside--hide');
+      newImage.classList.add('forest__card_inside--show');
+      this.currentImage = newImage;
     },
     cardOffScreen() {
       return (getClientHeight(this.$refs.card) + 50);
