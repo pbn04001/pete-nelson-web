@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       currentSection: this.getCurrentSection(),
-      lockSection: 3,
+      lockSection: null,
       viewHeight: this.getViewHeight(),
       currentHomeSectionPropagation: false,
       hasLoadedAnimations: false,

@@ -1,5 +1,14 @@
 <template>
   <div ref="section" class="section jungle">
+    <h1 ref="title" class="jungle__title">Logo Designer</h1>
+    <div ref="card" class="jungle__card">
+      <div ref="image1" class="jungle__card_inside" v-if="renderImages">
+        <img src="/img/spacecake/website/spacecake-web-large.png" />
+      </div>
+      <div ref="image2" class="jungle__card_inside" v-if="renderImages">
+        <img src="/img/highberry/website/highberry-web-large.jpg" />
+      </div>
+    </div>
     <JungleBack1 ref="jungleBack1" class="jungle__back jungle__back--1" />
     <JungleBack2 ref="jungleBack2" class="jungle__back jungle__back--2" />
     <JungleTrees ref="jungleTrees" class="jungle__trees" />
@@ -9,8 +18,10 @@
 
 <script>
 import anime from 'animejs';
-import { delayAnimationCheckVisible } from '@/utils/animation';
+import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
+
+// Scenery
 import JungleBack1 from '@/assets/images/jungle_back_1.svg';
 import JungleBack2 from '@/assets/images/jungle_back_2.svg';
 import JungleTrees from '@/assets/images/jungle_trees.svg';
@@ -32,7 +43,26 @@ export default {
     return {
       visible: true,
       showing: true,
+      renderImages: false,
+      offset: null,
+      currentImage: null,
+      triggerShowImages: null,
     };
+  },
+  updated() {
+    if (this.triggerShowImages !== null) {
+      this.showImage(this.offset);
+      this.triggerShowImages = null;
+    }
+  },
+  watch: {
+    renderImages: {
+      handler(newValue, oldValue) {
+        if (newValue && !oldValue) {
+          this.triggerShowImages = this.offset;
+        }
+      },
+    },
   },
   methods: {
     hide() {
@@ -58,7 +88,7 @@ export default {
       return new Promise(resolve => resolve());
     },
     getHash() {
-      return 'artist';
+      return 'logo-design';
     },
     getSize() {
       return 2;
@@ -66,40 +96,36 @@ export default {
     reset(visible = true) {
       this.visible = visible;
 
-      //this.$refs.card.style.opacity = visible ? 1 : 0;
-      //this.$refs.card.style.transform = `translateY(${visible ? 0 : this.cardOffScreen()}px)`;
+      this.hideCard();
+      this.$refs.title.style.transform = `translateY(${visible ? 0 : this.titleOffScreen()}px)`;
       this.$refs.jungleBack1.style.transform = `translateY(${visible ? 0 : this.jungleBack1Offscreen()}px)`;
       this.$refs.jungleBack2.style.transform = `translateY(${visible ? 0 : this.jungleBack2Offscreen()}px)`;
       this.$refs.jungleTrees.style.transform = `translateY(${visible ? 0 : this.jungleTreesOffscreen()}px)`;
       this.$refs.jungleLeaves.style.transform = `translateY(${visible ? 0 : this.jungleLeavesOffscreen()}px)`;
     },
-    showAssets() {},
+    showAssets() {
+      this.renderImages = true;
+    },
     showAnimated(offset) {
+      this.renderImages = true;
       this.visible = true;
       this.showing = true;
+      this.offset = offset;
       document.body.classList.add('body--jungle');
 
-      return new Promise((resolve) => {
-        /*anime({
-          targets: this.$refs.card,
-          translateY: this.cardMovement(offset),
-          easing: 'easeOutSine',
-          duration: 800,
-        });
-        delayAnimationCheckVisible({
-          targets: this.$refs.card,
-          opacity: 1,
-          easing: 'easeOutSine',
-          duration: 500,
-        }, 300, this, true);*/
+      delayActionCheckVisible(() => {
+        this.showCard();
+      }, 600, this, true);
 
-        /*anime({
-          targets: this.$refs.clouds,
+      this.showImage(offset);
+
+      return new Promise((resolve) => {
+        anime({
+          targets: this.$refs.title,
           translateY: 0,
           easing: 'easeOutSine',
-          opacity: 1,
-          duration: 700,
-        });*/
+          duration: 500,
+        });
 
         anime({
           targets: this.$refs.jungleLeaves,
@@ -138,21 +164,14 @@ export default {
       this.visible = false;
       document.body.classList.remove('body--jungle');
 
-      /*anime({
-        targets: this.$refs.card,
-        translateY: this.cardOffScreen(),
-        opacity: 0,
-        easing: 'easeOutSine',
-        duration: 700,
-      });
+      this.hideCard();
 
       anime({
-        targets: this.$refs.clouds,
-        translateY: this.cloudsOffscreen(),
-        easing: 'easeInOutSine',
-        duration: 700,
-        opacity: 0,
-      });*/
+        targets: this.$refs.title,
+        translateY: this.titleOffScreen(),
+        easing: 'easeOutSine',
+        duration: 500,
+      });
 
       anime({
         targets: this.$refs.jungleLeaves,
@@ -163,7 +182,7 @@ export default {
 
       anime({
         targets: this.$refs.jungleTrees,
-        translateY: this.jungleTreesOffscreen(offset),
+        translateY: this.jungleTreesOffscreen(),
         easing: 'easeOutSine',
         duration: 500,
       });
@@ -185,15 +204,46 @@ export default {
     adjustAnimated(offset) {
       if (this.showing || !this.visible) return;
 
-      //this.$refs.card.style.transform = `translateY(${this.cardMovement(offset)}px)`;
+      this.showImage(offset);
       this.$refs.jungleBack1.style.transform = `translateY(${this.jungleBack1Movement(offset)}px)`;
       this.$refs.jungleBack2.style.transform = `translateY(${this.jungleBack2Movement(offset)}px)`;
       this.$refs.jungleTrees.style.transform = `translateY(${this.jungleTreesMovement(offset)}px)`;
       this.$refs.jungleLeaves.style.transform = `translateY(${this.jungleLeavesMovement(offset)}px)`;
     },
-    /*cardMovement(offset) {
-      return -1 * (offset * (getClientHeight(this.$refs.card) - this.viewHeight));
-    },*/
+    showImage(offset) {
+      if (this.$refs.image1) {
+        if (offset < 0.5) {
+          this.swapImages(this.$refs.image1);
+        } else {
+          this.swapImages(this.$refs.image2);
+        }
+      }
+    },
+    swapImages(newImage) {
+      const { currentImage } = this;
+      if (currentImage === newImage) return;
+      if (currentImage) {
+        currentImage.classList.remove('jungle__card_inside--show');
+        currentImage.classList.add('jungle__card_inside--hide');
+      }
+      newImage.classList.remove('jungle__card_inside--hide');
+      newImage.classList.add('jungle__card_inside--show');
+      this.currentImage = newImage;
+    },
+    cardOffScreen() {
+      return (getClientHeight(this.$refs.card) + 50);
+    },
+    showCard() {
+      this.$refs.card.classList.add('jungle__card--show');
+      this.$refs.card.classList.remove('jungle__card--hide');
+    },
+    hideCard() {
+      this.$refs.card.classList.add('jungle__card--hide');
+      this.$refs.card.classList.remove('jungle__card--show');
+    },
+    titleOffScreen() {
+      return -1 * ((this.viewHeight * 0.10) + getClientHeight(this.$refs.title) + 50);
+    },
     jungleBack1Offscreen() {
       return getClientHeight(this.$refs.jungleBack1);
     },

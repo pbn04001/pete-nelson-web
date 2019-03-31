@@ -1,6 +1,6 @@
 <template>
   <div ref="section" class="section forest">
-    <h1 ref="title" class="forest__title" >Designer</h1>
+    <h1 ref="title" class="forest__title">Web Designer</h1>
     <div ref="card" class="forest__card">
       <div ref="image1" class="forest__card_inside" v-if="renderImages">
         <img src="/img/spacecake/website/spacecake-web-large.png" />
@@ -20,7 +20,7 @@
 <script>
 import anime from 'animejs';
 import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
-import { getClientHeight, getClientWidth } from '@/utils/sizes';
+import { getClientHeight } from '@/utils/sizes';
 
 // Scenery
 import Hills1 from '@/assets/images/hills_1.svg';
@@ -51,6 +51,7 @@ export default {
       renderImages: false,
       offset: null,
       currentImage: null,
+      triggerShowImages: null,
     };
   },
   updated() {
@@ -92,7 +93,7 @@ export default {
       return new Promise(resolve => resolve());
     },
     getHash() {
-      return 'designer';
+      return 'web-design';
     },
     getSize() {
       return 2;
@@ -117,9 +118,10 @@ export default {
       this.offset = offset;
       document.body.classList.add('body--forest');
 
-      setTimeout(() => {
+      delayActionCheckVisible(() => {
         this.showCard();
-      }, 600);
+      }, 600, this, true);
+
       this.showImage(offset);
 
       return new Promise((resolve) => {

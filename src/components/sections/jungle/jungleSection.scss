@@ -2,6 +2,45 @@
 .jungle {
   background-color: $light-blue;
 
+  &__card {
+    @include font-delta;
+    display: block;
+    position: relative;
+    z-index: 20;
+    color: $black;
+    background-color: $transparent-white;
+    margin: $spacing-unit-x12 0 $spacing-unit-x16 0;
+    padding: $spacing-unit;
+    width: auto;
+  }
+
+  &__card_inside {
+    display: block;
+    position: relative;
+    background-color: $white;
+    padding: $spacing-unit $spacing-unit 0 $spacing-unit;
+    margin-bottom: $spacing-unit;
+
+    &:last-child {
+      margin-bottom: none;
+    }
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    z-index: 30;
+    color: $dark-green;
+    display: block;
+    width: 100%;
+    flex: 0 0 100%;
+    text-align: center;
+    margin: $spacing-unit-x3 0 $spacing-unit-x3 0;
+  }
+
   &__back, &__trees, &__leaves {
     position: absolute;
     width: 100%;
@@ -35,9 +74,53 @@
 @media (min-width: $breakpoint-sm) {
   .jungle {
     background-color: transparent;
+
+    &__title {
+      position: relative;
+      margin: $spacing-unit-x5 0 $spacing-unit-x2 0;
+    }
+
+    &__card {
+      position: relative;
+      background: transparent;
+      opacity: 0;
+      width: 100%;
+      margin: 0;
+
+      &--hide {
+        opacity: 0;
+        transition: opacity linear 200ms;
+      }
+      &--show {
+        opacity: 1;
+        transition: opacity linear 600ms;
+      }
+    }
+
+    &__card_inside {
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      background: transparent;
+      display: table;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+
+      & img {
+        border: $transparent-white solid $spacing-unit;
+        height: 70vh;
+        width: auto;
+      }
+
+      &--show {
+        opacity: 1;
+        transition: opacity linear 500ms;
+      }
+      &--hide {
+        opacity: 0;
+        transition: opacity linear 500ms;
+      }
+    }
   }
-}
-
-@media (min-width: $breakpoint-md) {
-
 }
