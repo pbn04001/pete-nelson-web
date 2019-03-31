@@ -3,6 +3,7 @@
     <IntroSection ref="introSection" :view-height="viewHeight" />
     <MountainsSection ref="mountainSection" :view-height="viewHeight" />
     <ForestSection ref="forestSection" :view-height="viewHeight" />
+    <JungleSection ref="jungleSection" :view-height="viewHeight" />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import { SCREEN_SIZE, getScreenSizeMax } from '@/utils/sizes';
 import IntroSection from './sections/intro/IntroSection.vue';
 import MountainsSection from './sections/mountains/MountainsSection.vue';
 import ForestSection from './sections/forest/ForestSection.vue';
+import JungleSection from './sections/jungle/JungleSection.vue';
 
 export default {
   name: 'HomeScrollCustom',
@@ -21,6 +23,7 @@ export default {
     IntroSection,
     MountainsSection,
     ForestSection,
+    JungleSection,
   },
   computed: {
     ...mapState({
@@ -30,7 +33,7 @@ export default {
   data() {
     return {
       currentSection: this.getCurrentSection(),
-      lockSection: null,
+      lockSection: 3,
       viewHeight: this.getViewHeight(),
       currentHomeSectionPropagation: false,
       hasLoadedAnimations: false,
@@ -59,10 +62,14 @@ export default {
     window.addEventListener('resize', this.onResize);
   },
   mounted() {
+    if (this.lockSection) {
+      this.currentSection = this.lockSection;
+    }
     this.sections = [
       this.$refs.introSection,
       this.$refs.mountainSection,
       this.$refs.forestSection,
+      this.$refs.jungleSection,
     ];
     this.totalSectionsSize = 0;
     this.sectionSizes = this.sections
@@ -179,7 +186,7 @@ export default {
       window.location.hash = this.sections[this.currentSection].getHash();
     },
     performAnimations(lastSection, position) {
-      if (lastSection !== position.section) {
+      if (!this.lockSection && lastSection !== position.section) {
         this.swapping = window.pageYOffset;
         this.setHash();
         this.sections[lastSection].hide();
@@ -193,7 +200,6 @@ export default {
       this.sections[position.section].adjust(position.offset);
     },
     onScroll() {
-      if (this.lockSection) return;
       if (this.swapping && this.stopScrollOnSwap) {
         window.scrollTo(0, this.swapping);
       }

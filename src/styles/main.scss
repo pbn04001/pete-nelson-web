@@ -66,6 +66,11 @@ h4 {
       background-color: $pale-blue;
       transition: background-color linear 600ms;
     }
+    &--jungle {
+      background: $green-grad;
+      background-attachment: fixed;
+      transition: background-color linear 600ms;
+    }
   }
 
   h1 {

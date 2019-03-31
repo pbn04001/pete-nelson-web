@@ -1,0 +1,43 @@
+@import "@/styles/_globals.scss";
+.jungle {
+  background-color: $light-blue;
+
+  &__back, &__trees, &__leaves {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+  &__back {
+    &--2 {
+      z-index: 3;
+    }
+    &--1 {
+      z-index: 2;
+    }
+  }
+  &__trees {
+    z-index: 4;
+    bottom: -4vw;
+  }
+
+  &__leaves {
+    z-index: 12;
+    bottom: -12vw;
+  }
+
+  h4 {
+    margin-top: $spacing-unit-x4;
+    color: $dark-teal;
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  .jungle {
+    background-color: transparent;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+
+}
