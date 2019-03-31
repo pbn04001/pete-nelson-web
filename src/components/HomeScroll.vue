@@ -4,6 +4,7 @@
     <MountainsSection ref="mountainSection" :view-height="viewHeight" />
     <ForestSection ref="forestSection" :view-height="viewHeight" />
     <JungleSection ref="jungleSection" :view-height="viewHeight" />
+    <DesertSection ref="desertSection" :view-height="viewHeight" />
   </div>
 </template>
 
@@ -11,11 +12,13 @@
 import { mapState } from 'vuex';
 import debounce from 'debounce';
 import { SCREEN_SIZE, getScreenSizeMax } from '@/utils/sizes';
+
 // Sections
 import IntroSection from './sections/intro/IntroSection.vue';
 import MountainsSection from './sections/mountains/MountainsSection.vue';
 import ForestSection from './sections/forest/ForestSection.vue';
 import JungleSection from './sections/jungle/JungleSection.vue';
+import DesertSection from './sections/desert/DesertSection.vue';
 
 export default {
   name: 'HomeScrollCustom',
@@ -24,6 +27,7 @@ export default {
     MountainsSection,
     ForestSection,
     JungleSection,
+    DesertSection,
   },
   computed: {
     ...mapState({
@@ -33,7 +37,7 @@ export default {
   data() {
     return {
       currentSection: this.getCurrentSection(),
-      lockSection: null,
+      lockSection: 4,
       viewHeight: this.getViewHeight(),
       currentHomeSectionPropagation: false,
       hasLoadedAnimations: false,
@@ -70,6 +74,7 @@ export default {
       this.$refs.mountainSection,
       this.$refs.forestSection,
       this.$refs.jungleSection,
+      this.$refs.desertSection,
     ];
     this.totalSectionsSize = 0;
     this.sectionSizes = this.sections
