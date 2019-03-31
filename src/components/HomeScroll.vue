@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       currentSection: this.getCurrentSection(),
-      lockSection: 4,
+      lockSection: null, // Allows me to lock in a section on load
       viewHeight: this.getViewHeight(),
       currentHomeSectionPropagation: false,
       hasLoadedAnimations: false,

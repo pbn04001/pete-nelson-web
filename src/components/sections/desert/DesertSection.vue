@@ -1,9 +1,12 @@
 <template>
   <div ref="section" class="section desert">
     <div ref="card" class="desert__card">
-      <h1 class="desert__title" >Contact</h1>
+      <h1 class="desert__title" >The End</h1>
       <div ref="cardSub" class="desert__card_sub">
         Thank you for taking the time to visit my online interactive resume.
+        If you are looking for a skilled full stack javascript developer,
+        you may contact me at <a href="mailto:petenelson.webdesign@gmail.com">petenelson.webdesign@gmail.com</a>
+        <br/><br/>
         <a href="/resume">Click here to view my full resume</a>
       </div>
     </div>
@@ -67,7 +70,7 @@ export default {
       return new Promise(resolve => resolve());
     },
     getHash() {
-      return 'developer';
+      return 'end';
     },
     getSize() {
       return 1;
@@ -112,6 +115,7 @@ export default {
         anime({
           targets: this.$refs.birds,
           translateY: this.birdsMovement(offset),
+          opacity: 1,
           easing: 'easeOutSine',
           duration: 700,
         });
@@ -157,6 +161,7 @@ export default {
       anime({
         targets: this.$refs.birds,
         translateY: this.birdsOffscreen(),
+        opacity: 0,
         easing: 'easeInOutSine',
         duration: 700,
       });
@@ -192,7 +197,7 @@ export default {
       return getClientHeight(this.$refs.sun);
     },
     birdsOffscreen() {
-      return this.$refs.birds.getBoundingClientRect().top - getClientHeight(this.$refs.birds);
+      return -1 * ((this.viewHeight * 0.5) + getClientHeight(this.$refs.birds));
     },
     cardOffScreen() {
       return (getClientHeight(this.$refs.card) + 50);
@@ -204,7 +209,7 @@ export default {
       return offset * (this.viewHeight / 20);
     },
     birdsMovement(offset) {
-      return offset * (this.viewHeight / 5);
+      return offset * (this.viewHeight / 15);
     },
   },
 };
