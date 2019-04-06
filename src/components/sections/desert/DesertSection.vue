@@ -3,9 +3,9 @@
     <div ref="card" class="desert__card">
       <h1 class="desert__title" >The End</h1>
       <div ref="cardSub" class="desert__card_sub">
-        Thank you for taking the time to visit my online interactive resume.
-        If you are looking for a skilled full stack javascript developer,
-        you may contact me at <a href="mailto:petenelson.webdesign@gmail.com">petenelson.webdesign@gmail.com</a>
+        Thank you for taking the time to visit my online portfolio.
+        <br/><br/>
+        You may contact me at <a href="mailto:petenelson.webdesign@gmail.com">petenelson.webdesign@gmail.com</a>
         <br/><br/>
         <a href="/resume">Click here to view my full resume</a>
       </div>
@@ -75,6 +75,9 @@ export default {
     getSize() {
       return 1;
     },
+    getBodyClass() {
+      return 'body--desert';
+    },
     reset(visible = true) {
       this.visible = visible;
 
@@ -90,7 +93,6 @@ export default {
     showAnimated(offset) {
       this.visible = true;
       this.showing = true;
-      document.body.classList.add('body--desert');
 
       return new Promise((resolve) => {
         anime({
@@ -143,7 +145,6 @@ export default {
     },
     hideAnimated() {
       this.visible = false;
-      document.body.classList.remove('body--desert');
 
       anime({
         targets: this.$refs.card,

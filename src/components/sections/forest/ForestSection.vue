@@ -135,6 +135,9 @@ export default {
     getSize() {
       return 3;
     },
+    getBodyClass() {
+      return 'body--forest';
+    },
     reset(visible = true) {
       this.visible = visible;
 
@@ -153,7 +156,6 @@ export default {
       this.visible = true;
       this.showing = true;
       this.offset = offset;
-      document.body.classList.add('body--forest');
 
       delayActionCheckVisible(() => {
         this.showCard();
@@ -212,7 +214,6 @@ export default {
       this.visible = false;
       this.$refs.moon_back.classList.remove('forest__moon_back--show');
       this.$refs.moon_back.classList.add('forest__moon_back--hide');
-      document.body.classList.remove('body--forest');
 
       this.hideCard();
       anime({

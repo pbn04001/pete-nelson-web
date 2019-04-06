@@ -195,6 +195,8 @@ export default {
         this.swapping = window.pageYOffset;
         this.setHash();
         this.sections[lastSection].hide();
+        document.body.classList.remove(this.sections[lastSection].getBodyClass());
+        document.body.classList.add(this.sections[position.section].getBodyClass());
         setTimeout(() => {
           if (this.currentSection === position.section) {
             this.sections[position.section].show(position.section > lastSection)

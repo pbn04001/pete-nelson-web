@@ -13,7 +13,7 @@
             alt="SpaceCake Icon">
         </picture>
       </div>
-      <div ref="image2" class="jungle__card_inside" v-if="renderImages">
+      <div ref="image2" class="jungle__card_inside no-back-mobile" v-if="renderImages">
         <picture>
           <img
             class="no-border"
@@ -28,7 +28,7 @@
             alt="">
         </picture>
       </div>
-      <div ref="image3" class="jungle__card_inside" v-if="renderImages">
+      <div ref="image3" class="jungle__card_inside no-back-mobile" v-if="renderImages">
         <picture>
           <img
             class="no-border"
@@ -129,6 +129,9 @@ export default {
     getSize() {
       return 3;
     },
+    getBodyClass() {
+      return 'body--jungle';
+    },
     reset(visible = true) {
       this.visible = visible;
 
@@ -147,7 +150,6 @@ export default {
       this.visible = true;
       this.showing = true;
       this.offset = offset;
-      document.body.classList.add('body--jungle');
 
       delayActionCheckVisible(() => {
         this.showCard();
@@ -198,7 +200,6 @@ export default {
     },
     hideAnimated() {
       this.visible = false;
-      document.body.classList.remove('body--jungle');
 
       this.hideCard();
 

@@ -85,6 +85,9 @@ export default {
     getSize() {
       return 1;
     },
+    getBodyClass() {
+      return 'body--intro';
+    },
     reset(visible = true) {
       this.$refs.introCard.style.transform = `translateX(${visible ? 0 : this.introCardOffScreen()}px)`;
       this.$refs.skyLine1.style.transform = `translateY(${visible ? 0 : this.skyLine1OffScreen()}px)`;
@@ -99,7 +102,6 @@ export default {
     showAnimated(offset, firstLoad) {
       this.visible = true;
       this.showing = true;
-      document.body.classList.add('body--intro');
 
       return new Promise((resolve) => {
         if (firstLoad) {
@@ -179,7 +181,6 @@ export default {
       this.visible = false;
       this.$refs.moon_back.classList.remove('intro__moon_back--show');
       this.$refs.moon_back.classList.add('intro__moon_back--hide');
-      document.body.classList.remove('body--intro');
 
       anime({
         targets: this.$refs.introCard,

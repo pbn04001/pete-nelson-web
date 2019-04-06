@@ -8,7 +8,6 @@
     position: relative;
     z-index: 20;
     color: $black;
-    background-color: $transparent-white;
     margin: $spacing-unit-x12 0 $spacing-unit-x16 0;
     padding: $spacing-unit;
     width: auto;
@@ -19,7 +18,7 @@
     position: relative;
     background-color: $white;
     padding: $spacing-unit $spacing-unit 0 $spacing-unit;
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit-x2;
 
     &:last-child {
       margin-bottom: none;
@@ -69,6 +68,10 @@
     margin-top: $spacing-unit-x4;
     color: $dark-teal;
   }
+}
+
+.no-back-mobile {
+  background-color: transparent;
 }
 
 @media (min-width: $breakpoint-sm) {

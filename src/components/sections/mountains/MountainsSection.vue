@@ -93,6 +93,9 @@ export default {
     getSize() {
       return 2;
     },
+    getBodyClass() {
+      return 'body--mountains';
+    },
     reset(visible = true) {
       this.visible = visible;
 
@@ -106,7 +109,6 @@ export default {
     showAnimated(offset) {
       this.visible = true;
       this.showing = true;
-      document.body.classList.add('body--mountains');
 
       return new Promise((resolve) => {
         anime({
@@ -151,7 +153,6 @@ export default {
     },
     hideAnimated() {
       this.visible = false;
-      document.body.classList.remove('body--mountains');
 
       anime({
         targets: this.$refs.card,
