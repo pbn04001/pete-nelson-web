@@ -18,7 +18,8 @@
         }">
         <ul>
           <li>
-            <a href="/resume">Resume</a>
+            <router-link to="/">Home</router-link>
+            <router-link to="/resume">Resume</router-link>
             <a href="mailto:petenelson.webdesign@gmail.com">Contact</a>
           </li>
         </ul>

@@ -1,6 +1,8 @@
 @import "@/styles/_globals.scss";
 
 .intro {
+  background-color: $black;
+
   &__card {
     position: relative;
     display: inline-block;
@@ -96,6 +98,7 @@
 
 @media (min-width: $breakpoint-sm) {
   .intro {
+    background-color: transparent;
     &__card {
       position: absolute;
       display: block;

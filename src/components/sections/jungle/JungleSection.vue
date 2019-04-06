@@ -28,22 +28,27 @@
               /img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_1119.png 1119w,
               /img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_1720.png 1720w"
             src="/img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_1720.png"
-            alt="">
+            alt="Blucifer Team Sticker">
         </picture>
       </div>
       <div ref="image3" class="jungle__card_inside no-back-mobile" v-if="renderImages">
         <picture>
           <img
             class="no-border"
-            sizes="(max-width: 1720px) 100vw, 1720px"
+            sizes="(max-width: 2960px) 100vw, 2960px"
             srcset="
-              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_200.png 200w,
-              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_617.png 617w,
-              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_925.png 925w,
-              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_1191.png 1191w,
-              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_1720.png 1720w"
-            src="/img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_1720.png"
-            alt="">
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_200.png 200w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_556.png 556w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_824.png 824w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_1100.png 1100w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_1348.png 1348w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_1596.png 1596w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_1809.png 1809w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_2025.png 2025w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_2223.png 2223w,
+              /img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_2960.png 2960w"
+            src="/img/logos/slumgullion/slumgullion_sticker_wsqxgb_c_scale_w_2960.png"
+            alt="Slumgullion Team Sticker">
         </picture>
 
       </div>
