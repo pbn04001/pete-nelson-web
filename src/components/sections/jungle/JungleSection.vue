@@ -5,12 +5,15 @@
       <div ref="image1" class="jungle__card_inside" v-if="renderImages">
         <picture>
           <img
-            sizes="(max-width: 636px) 100vw, 636px"
+            sizes="(max-width: 2960px) 100vw, 2960px"
             srcset="
-              /img/spacecake/logo/SpaceCake_Icon_kxt3zx_c_scale_w_200.png 200w,
-              /img/spacecake/logo/SpaceCake_Icon_kxt3zx_c_scale_w_636.png 636w"
-            src="/img/spacecake/logo/SpaceCake_Icon_kxt3zx_c_scale_w_636.png"
-            alt="SpaceCake Icon">
+              /img/logos/spacecake/SpaceCake_Productions_Logo_qib821_c_scale_w_200.png 200w,
+              /img/logos/spacecake/SpaceCake_Productions_Logo_qib821_c_scale_w_1206.png 1206w,
+              /img/logos/spacecake/SpaceCake_Productions_Logo_qib821_c_scale_w_1852.png 1852w,
+              /img/logos/spacecake/SpaceCake_Productions_Logo_qib821_c_scale_w_2503.png 2503w,
+              /img/logos/spacecake/SpaceCake_Productions_Logo_qib821_c_scale_w_2960.png 2960w"
+            src="/img/logos/spacecake/SpaceCake_Productions_Logo_qib821_c_scale_w_2960.png"
+            alt="SpaceCake Productions Logo">
         </picture>
       </div>
       <div ref="image2" class="jungle__card_inside no-back-mobile" v-if="renderImages">

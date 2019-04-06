@@ -112,8 +112,9 @@
 
       & img {
         border: $transparent-white solid $spacing-unit;
-        height: 70vh;
+        max-height: 70vh;
         width: auto;
+        max-width: 97%;
       }
 
       &--show {

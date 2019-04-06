@@ -26,6 +26,10 @@
     &--intro {
       background-color: $black;
       transition: background-color linear 1000ms;
+
+      .scroll-down {
+        display: block;
+      }
     }
     &--mountains {
       background-color: $light-blue;
@@ -63,12 +67,6 @@
   .body--mountains {
     .section:nth-child(2) {
       z-index: 100;
-    }
-  }
-
-  .body--intro {
-    .scroll-down {
-      display: block;
     }
   }
 

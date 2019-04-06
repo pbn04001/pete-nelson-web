@@ -18,6 +18,7 @@
 
     &_sub {
       opacity: 1;
+      color: $white;
     }
   }
 
@@ -35,10 +36,6 @@
     .cls-2{stroke-width:1.25rem;}
     .cls-3{stroke-width:1rem;}
     .cls-4{stroke-width:1.125rem}
-  }
-
-  &_txt {
-    color: $white;
   }
 
   &__cloud {
