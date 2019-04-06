@@ -82,6 +82,7 @@ export default {
       this.$refs.card.style.transform = `translateY(${visible ? 0 : this.cardOffScreen()}px)`;
       this.$refs.desertBack1.style.transform = `translateY(${visible ? 0 : this.desertBack1Offscreen()}px)`;
       this.$refs.desertBack2.style.transform = `translateY(${visible ? 0 : this.desertBack2Offscreen()}px)`;
+      this.$refs.sun.style.opacity = visible ? 1 : 0;
       this.$refs.sun.style.transform = `translateY(${visible ? 0 : this.sunOffscreen()}px)`;
       this.$refs.birds.style.transform = `translateY(${visible ? 0 : this.birdsOffscreen()}px)`;
     },
@@ -108,6 +109,7 @@ export default {
         anime({
           targets: this.$refs.sun,
           translateY: 0,
+          opacity: 1,
           easing: 'easeOutSine',
           duration: 700,
         });
@@ -154,6 +156,7 @@ export default {
       anime({
         targets: this.$refs.sun,
         translateY: this.sunOffscreen(),
+        opacity: 0,
         easing: 'easeInOutSine',
         duration: 700,
       });

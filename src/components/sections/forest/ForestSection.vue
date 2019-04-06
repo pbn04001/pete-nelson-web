@@ -3,10 +3,47 @@
     <h1 ref="title" class="forest__title">Web Designer</h1>
     <div ref="card" class="forest__card">
       <div ref="image1" class="forest__card_inside" v-if="renderImages">
-        <img src="/img/spacecake/website/spacecake-web-large.png" />
+        <picture>
+          <img
+            sizes="(max-width: 1201px) 100vw, 1201px"
+            srcset="
+              /img/spacecake/website/spacecake-web-large_afatel_c_scale_w_350.png 350w,
+              /img/spacecake/website/spacecake-web-large_afatel_c_scale_w_640.png 640w,
+              /img/spacecake/website/spacecake-web-large_afatel_c_scale_w_853.png 853w,
+              /img/spacecake/website/spacecake-web-large_afatel_c_scale_w_1040.png 1040w,
+              /img/spacecake/website/spacecake-web-large_afatel_c_scale_w_1201.png 1201w"
+            src="/img/spacecake/website/spacecake-web-large_afatel_c_scale_w_1201.png"
+            alt="SpaceCake Productions Website">
+        </picture>
       </div>
       <div ref="image2" class="forest__card_inside" v-if="renderImages">
-        <img src="/img/highberry/website/highberry-web-large.jpg" />
+        <picture>
+          <img
+            sizes="(max-width: 1070px) 100vw, 1070px"
+            srcset="
+              /img/highberry/website/highberry-web-large_hxgc5x_c_scale_w_350.jpg 350w,
+              /img/highberry/website/highberry-web-large_hxgc5x_c_scale_w_555.jpg 555w,
+              /img/highberry/website/highberry-web-large_hxgc5x_c_scale_w_716.jpg 716w,
+              /img/highberry/website/highberry-web-large_hxgc5x_c_scale_w_874.jpg 874w,
+              /img/highberry/website/highberry-web-large_hxgc5x_c_scale_w_1070.jpg 1070w"
+            src="/img/highberry/website/highberry-web-large_hxgc5x_c_scale_w_1070.jpg"
+            alt="HighBerry Music Festival Website">
+        </picture>
+      </div>
+      <div ref="image3" class="forest__card_inside" v-if="renderImages">
+        <picture>
+          <img
+            sizes="(max-width: 1101px) 100vw, 1101px"
+            srcset="
+              /img/towmate/website/towmate_website_mealgv_c_scale_w_350.jpg 350w,
+              /img/towmate/website/towmate_website_mealgv_c_scale_w_567.jpg 567w,
+              /img/towmate/website/towmate_website_mealgv_c_scale_w_739.jpg 739w,
+              /img/towmate/website/towmate_website_mealgv_c_scale_w_901.jpg 901w,
+              /img/towmate/website/towmate_website_mealgv_c_scale_w_1101.jpg 1101w"
+            src="/img/towmate/website/towmate_website_mealgv_c_scale_w_1101.jpg"
+            alt="TowMate Website">
+        </picture>
+
       </div>
     </div>
     <Hills1 ref="hills1" class="forest__hills forest__hills--1" />
@@ -96,7 +133,7 @@ export default {
       return 'web-design';
     },
     getSize() {
-      return 2;
+      return 3;
     },
     reset(visible = true) {
       this.visible = visible;
@@ -224,10 +261,12 @@ export default {
     },
     showImage(offset) {
       if (this.$refs.image1) {
-        if (offset < 0.5) {
+        if (offset < 0.33) {
           this.swapImages(this.$refs.image1);
-        } else {
+        } else if (offset < 0.66) {
           this.swapImages(this.$refs.image2);
+        } else {
+          this.swapImages(this.$refs.image3);
         }
       }
     },

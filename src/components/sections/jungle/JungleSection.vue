@@ -3,10 +3,46 @@
     <h1 ref="title" class="jungle__title">Logo Designer</h1>
     <div ref="card" class="jungle__card">
       <div ref="image1" class="jungle__card_inside" v-if="renderImages">
-        <img src="/img/spacecake/website/spacecake-web-large.png" />
+        <picture>
+          <img
+            sizes="(max-width: 636px) 100vw, 636px"
+            srcset="
+              /img/spacecake/logo/SpaceCake_Icon_kxt3zx_c_scale_w_200.png 200w,
+              /img/spacecake/logo/SpaceCake_Icon_kxt3zx_c_scale_w_636.png 636w"
+            src="/img/spacecake/logo/SpaceCake_Icon_kxt3zx_c_scale_w_636.png"
+            alt="SpaceCake Icon">
+        </picture>
       </div>
       <div ref="image2" class="jungle__card_inside" v-if="renderImages">
-        <img src="/img/highberry/website/highberry-web-large.jpg" />
+        <picture>
+          <img
+            class="no-border"
+            sizes="(max-width: 1720px) 100vw, 1720px"
+            srcset="
+              /img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_200.png 200w,
+              /img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_592.png 592w,
+              /img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_871.png 871w,
+              /img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_1119.png 1119w,
+              /img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_1720.png 1720w"
+            src="/img/logos/blucifer/Blucifer_Logo_ylhfmr_c_scale_w_1720.png"
+            alt="">
+        </picture>
+      </div>
+      <div ref="image3" class="jungle__card_inside" v-if="renderImages">
+        <picture>
+          <img
+            class="no-border"
+            sizes="(max-width: 1720px) 100vw, 1720px"
+            srcset="
+              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_200.png 200w,
+              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_617.png 617w,
+              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_925.png 925w,
+              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_1191.png 1191w,
+              /img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_1720.png 1720w"
+            src="/img/logos/slumgullion/slumgullion_sticker_rzvmus_c_scale_w_1720.png"
+            alt="">
+        </picture>
+
       </div>
     </div>
     <JungleBack1 ref="jungleBack1" class="jungle__back jungle__back--1" />
@@ -91,7 +127,7 @@ export default {
       return 'logo-design';
     },
     getSize() {
-      return 2;
+      return 3;
     },
     reset(visible = true) {
       this.visible = visible;
@@ -212,10 +248,12 @@ export default {
     },
     showImage(offset) {
       if (this.$refs.image1) {
-        if (offset < 0.5) {
+        if (offset < 0.33) {
           this.swapImages(this.$refs.image1);
-        } else {
+        } else if (offset < 0.66) {
           this.swapImages(this.$refs.image2);
+        } else {
+          this.swapImages(this.$refs.image3);
         }
       }
     },
