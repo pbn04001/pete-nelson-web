@@ -1,10 +1,20 @@
 @import "@/styles/_globals.scss";
 
+@keyframes scroll-down-arrow {
+  0% { top: 0; }
+  50% { top: 10px; }
+  100% { top: 0; }
+}
+
 .section {
   position: relative;
   width: 100%;
   height: auto;
   overflow: hidden;
+}
+
+.scroll-down {
+  display: none;
 }
 
 @media (min-width: $breakpoint-sm) {
@@ -30,6 +40,40 @@
   .body--mountains {
     .section:nth-child(2) {
       z-index: 100;
+    }
+  }
+
+  .body--intro {
+    .scroll-down {
+      display: block;
+    }
+  }
+
+  .scroll-down {
+    color: white;
+    position: fixed;
+    bottom: 1rem;
+    z-index: 100;
+    width: 10px;
+    left: 49%;
+
+    &__arrow {
+      position: relative;
+      margin-top: 0.5rem;
+      fill: $white;
+      transform: rotate(-90deg);
+      animation: scroll-down-arrow 1s ease-in-out infinite;
+    }
+
+    &__txt {
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-align: center;
+      line-height: 0.9rem;
+
+      & span {
+        display: block;
+      }
     }
   }
 }

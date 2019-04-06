@@ -5,6 +5,17 @@
     <ForestSection ref="forestSection" :view-height="viewHeight" />
     <JungleSection ref="jungleSection" :view-height="viewHeight" />
     <DesertSection ref="desertSection" :view-height="viewHeight" />
+    <div class="scroll-down">
+      <span class="scroll-down__txt">
+        <span>S</span>
+        <span>c</span>
+        <span>r</span>
+        <span>o</span>
+        <span>l</span>
+        <span>l</span>
+      </span>
+      <Arrow class="scroll-down__arrow" />
+    </div>
   </div>
 </template>
 
@@ -12,6 +23,7 @@
 import { mapState } from 'vuex';
 import debounce from 'debounce';
 import { SCREEN_SIZE, getScreenSizeMax } from '@/utils/sizes';
+import Arrow from '@/assets/icons/arrow.svg';
 
 // Sections
 import IntroSection from './sections/intro/IntroSection.vue';
@@ -28,6 +40,7 @@ export default {
     ForestSection,
     JungleSection,
     DesertSection,
+    Arrow,
   },
   computed: {
     ...mapState({
@@ -76,6 +89,7 @@ export default {
       this.$refs.jungleSection,
       this.$refs.desertSection,
     ];
+    document.body.classList.add(this.sections[this.currentSection].getBodyClass());
     this.totalSectionsSize = 0;
     this.sectionSizes = this.sections
       .map((section) => {
