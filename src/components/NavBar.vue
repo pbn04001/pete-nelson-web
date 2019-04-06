@@ -10,6 +10,19 @@
           'nav-bar__menu-hamburger--open': open,
         }"
       ></div>
+      <div
+        v-bind:class="{
+          'nav-bar__menu-body': true,
+          'nav-bar__menu-body--open': open,
+          'nav-bar__menu-body--close': !open,
+        }">
+        <ul>
+          <li>
+            <a href="/resume">Resume</a>
+            <a href="mailto:petenelson.webdesign@gmail.com">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </template>

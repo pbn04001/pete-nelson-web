@@ -39,7 +39,7 @@
 
 <script>
 import anime from 'animejs';
-import { delayAnimationCheckVisible } from '@/utils/animation';
+import { delayAnimationCheckVisible, hideSectionAfterAnimation } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
 import Mountains1 from '@/assets/images/mountains_1.svg';
 import Mountains2 from '@/assets/images/mountains_2.svg';
@@ -94,7 +94,7 @@ export default {
       return 2;
     },
     getBodyClass() {
-      return 'body--mountains';
+      return 'mountains';
     },
     reset(visible = true) {
       this.visible = visible;
@@ -104,11 +104,13 @@ export default {
       this.$refs.mountains1.style.transform = `translateY(${visible ? 0 : this.mountains1Offscreen()}px)`;
       this.$refs.mountains2.style.transform = `translateY(${visible ? 0 : this.mountains2Offscreen()}px)`;
       this.$refs.clouds.style.transform = `translateY(${visible ? 0 : this.cloudsOffscreen()}px)`;
+      this.$refs.section.style.display = visible ? 'block' : 'none';
     },
     showAssets() {},
     showAnimated(offset) {
       this.visible = true;
       this.showing = true;
+      this.$refs.section.style.display = 'block';
 
       return new Promise((resolve) => {
         anime({
@@ -183,6 +185,8 @@ export default {
         easing: 'easeInOutSine',
         duration: 300,
       });
+
+      hideSectionAfterAnimation(700, this);
     },
     adjustAnimated(offset) {
       if (this.showing || !this.visible) return;

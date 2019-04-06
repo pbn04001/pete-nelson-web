@@ -21,6 +21,29 @@
   .one-page-scroll {
     height: 0;
     overflow: hidden;
+    background-color: $black;
+
+    &--intro {
+      background-color: $black;
+      transition: background-color linear 1000ms;
+    }
+    &--mountains {
+      background-color: $light-blue;
+      transition: background-color linear 1000ms;
+    }
+    &--forest {
+      background-color: $pale-blue;
+      transition: background-color linear 1000ms;
+    }
+    &--jungle {
+      background: $green-grad;
+      background-attachment: fixed;
+      transition: background-color linear 1000ms;
+    }
+    &--desert {
+      background-color: $pale-yellow;
+      transition: background-color linear 1000ms;
+    }
   }
 
   .section {

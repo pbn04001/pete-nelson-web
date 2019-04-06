@@ -16,6 +16,14 @@ export function delayAnimationCheckVisible(animation, delay, component, visible)
   });
 }
 
+export function hideSectionAfterAnimation(delay, component) {
+  setTimeout(() => {
+    if (component.visible === false) {
+      component.$refs.section.style.display = 'none';
+    }
+  }, delay);
+}
+
 export function delayActionCheckVisible(action, delay, component, visible) {
   return new Promise((resolve) => {
     setTimeout(() => {

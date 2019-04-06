@@ -25,8 +25,8 @@ body {
   height: 100%;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
-  color: $white;
-  background-color: $black;
+  color: $black;
+  background-color: $white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -56,30 +56,6 @@ h4 {
 }
 
 @media (min-width: $breakpoint-sm) {
-  .body {
-     &--intro {
-       background-color: $black;
-       transition: background-color linear 1000ms;
-     }
-     &--mountains {
-       background-color: $light-blue;
-       transition: background-color linear 1000ms;
-     }
-    &--forest {
-      background-color: $pale-blue;
-      transition: background-color linear 1000ms;
-    }
-    &--jungle {
-      background: $green-grad;
-      background-attachment: fixed;
-      transition: background-color linear 1000ms;
-    }
-    &--desert {
-      background-color: $pale-yellow;
-      transition: background-color linear 1000ms;
-    }
-  }
-
   h1 {
     @include medium-title;
   }

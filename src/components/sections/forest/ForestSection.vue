@@ -56,7 +56,11 @@
 
 <script>
 import anime from 'animejs';
-import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
+import {
+  delayAnimationCheckVisible,
+  delayActionCheckVisible,
+  hideSectionAfterAnimation,
+} from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
 
 // Scenery
@@ -136,7 +140,7 @@ export default {
       return 3;
     },
     getBodyClass() {
-      return 'body--forest';
+      return 'forest';
     },
     reset(visible = true) {
       this.visible = visible;
@@ -147,6 +151,7 @@ export default {
       this.$refs.hills2.style.transform = `translateY(${visible ? 0 : this.hills2Offscreen()}px)`;
       this.$refs.trees.style.transform = `translateY(${visible ? 0 : this.treesOffscreen()}px)`;
       this.$refs.moon.style.transform = `translateY(${visible ? 0 : this.moonOffScreen()}px)`;
+      this.$refs.section.style.display = visible ? 'block' : 'none';
     },
     showAssets() {
       this.renderImages = true;
@@ -156,6 +161,7 @@ export default {
       this.visible = true;
       this.showing = true;
       this.offset = offset;
+      this.$refs.section.style.display = 'block';
 
       delayActionCheckVisible(() => {
         this.showCard();
@@ -251,6 +257,8 @@ export default {
         easing: 'easeInOutSine',
         duration: 300,
       });
+
+      hideSectionAfterAnimation(700, this);
     },
     adjustAnimated(offset) {
       if (this.showing || !this.visible) return;

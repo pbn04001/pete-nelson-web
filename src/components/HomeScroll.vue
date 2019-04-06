@@ -89,7 +89,7 @@ export default {
       this.$refs.jungleSection,
       this.$refs.desertSection,
     ];
-    document.body.classList.add(this.sections[this.currentSection].getBodyClass());
+    this.updateBackground(this.sections[this.currentSection].getBodyClass(), true);
     this.totalSectionsSize = 0;
     this.sectionSizes = this.sections
       .map((section) => {
@@ -209,8 +209,11 @@ export default {
         this.swapping = window.pageYOffset;
         this.setHash();
         this.sections[lastSection].hide();
-        document.body.classList.remove(this.sections[lastSection].getBodyClass());
-        document.body.classList.add(this.sections[position.section].getBodyClass());
+        const timeout = lastSection === 0 ? 400 : 0;
+        setTimeout(() => {
+          this.updateBackground(this.sections[lastSection].getBodyClass(), false);
+          this.updateBackground(this.sections[position.section].getBodyClass(), true);
+        }, timeout);
         setTimeout(() => {
           if (this.currentSection === position.section) {
             this.sections[position.section].show(position.section > lastSection)
@@ -230,6 +233,13 @@ export default {
         this.performAnimations(lastSection, position);
       }
     },
+    updateBackground(sectionClass, add) {
+      if (add) {
+        this.$refs.pageScroll.classList.add(`one-page-scroll--${sectionClass}`);
+      } else {
+        this.$refs.pageScroll.classList.remove(`one-page-scroll--${sectionClass}`);
+      }
+    }
   },
 };
 </script>

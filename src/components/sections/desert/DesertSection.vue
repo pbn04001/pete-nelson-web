@@ -19,7 +19,7 @@
 
 <script>
 import anime from 'animejs';
-import { delayAnimationCheckVisible } from '@/utils/animation';
+import { delayAnimationCheckVisible, hideSectionAfterAnimation } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
 import DesertBack1 from '@/assets/images/desert_back_1.svg';
 import DesertBack2 from '@/assets/images/desert_back_2.svg';
@@ -76,7 +76,7 @@ export default {
       return 1;
     },
     getBodyClass() {
-      return 'body--desert';
+      return 'desert';
     },
     reset(visible = true) {
       this.visible = visible;
@@ -88,11 +88,13 @@ export default {
       this.$refs.sun.style.opacity = visible ? 1 : 0;
       this.$refs.sun.style.transform = `translateY(${visible ? 0 : this.sunOffscreen()}px)`;
       this.$refs.birds.style.transform = `translateY(${visible ? 0 : this.birdsOffscreen()}px)`;
+      this.$refs.section.style.display = visible ? 'block' : 'none';
     },
     showAssets() {},
     showAnimated(offset) {
       this.visible = true;
       this.showing = true;
+      this.$refs.section.style.display = 'block';
 
       return new Promise((resolve) => {
         anime({
@@ -183,6 +185,8 @@ export default {
         easing: 'easeInOutSine',
         duration: 300,
       });
+
+      hideSectionAfterAnimation(700, this);
     },
     adjustAnimated(offset) {
       if (this.showing || !this.visible) return;

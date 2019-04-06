@@ -37,6 +37,10 @@
     .cls-4{stroke-width:1.125rem}
   }
 
+  &_txt {
+    color: $white;
+  }
+
   &__cloud {
     z-index: 2;
     position: absolute;

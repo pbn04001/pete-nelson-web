@@ -20,7 +20,11 @@
 <script>
 import anime from 'animejs';
 import { getClientHeight, getClientWidth } from '@/utils/sizes';
-import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
+import {
+  delayAnimationCheckVisible,
+  delayActionCheckVisible,
+  hideSectionAfterAnimation,
+} from '@/utils/animation';
 import SkyLine1 from '@/assets/images/skyline_1.svg';
 import SkyLine2 from '@/assets/images/skyline_2.svg';
 import SkyLine3 from '@/assets/images/skyline_3.svg';
@@ -86,9 +90,10 @@ export default {
       return 1;
     },
     getBodyClass() {
-      return 'body--intro';
+      return 'intro';
     },
     reset(visible = true) {
+      this.visible = visible;
       this.$refs.introCard.style.transform = `translateX(${visible ? 0 : this.introCardOffScreen()}px)`;
       this.$refs.skyLine1.style.transform = `translateY(${visible ? 0 : this.skyLine1OffScreen()}px)`;
       this.$refs.skyLine2.style.transform = `translateY(${visible ? 0 : this.skyLine2OffScreen()}px)`;
@@ -96,12 +101,13 @@ export default {
       this.$refs.moon.style.transform = `translateY(${visible ? 0 : this.moonOffScreen()}px)`;
       this.$refs.cloud1.style.transform = `translateY(${visible ? 0 : this.cloud1OffScreen()}px)`;
       this.$refs.cloud2.style.transform = `translateY(${visible ? 0 : this.cloud2OffScreen()}px)`;
-      this.visible = visible;
+      this.$refs.section.style.display = visible ? 'block' : 'none';
     },
     showAssets() {},
     showAnimated(offset, firstLoad) {
       this.visible = true;
       this.showing = true;
+      this.$refs.section.style.display = 'block';
 
       return new Promise((resolve) => {
         if (firstLoad) {
@@ -230,6 +236,8 @@ export default {
         easing: 'easeInOutSine',
         duration: 400,
       }, 150, this, false);
+
+      hideSectionAfterAnimation(1000, this);
     },
     adjustAnimated(offset) {
       if (this.showing || !this.visible) return;

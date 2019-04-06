@@ -54,7 +54,11 @@
 
 <script>
 import anime from 'animejs';
-import { delayAnimationCheckVisible, delayActionCheckVisible } from '@/utils/animation';
+import {
+  delayAnimationCheckVisible,
+  delayActionCheckVisible,
+  hideSectionAfterAnimation,
+} from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
 
 // Scenery
@@ -130,7 +134,7 @@ export default {
       return 3;
     },
     getBodyClass() {
-      return 'body--jungle';
+      return 'jungle';
     },
     reset(visible = true) {
       this.visible = visible;
@@ -141,6 +145,7 @@ export default {
       this.$refs.jungleBack2.style.transform = `translateY(${visible ? 0 : this.jungleBack2Offscreen()}px)`;
       this.$refs.jungleTrees.style.transform = `translateY(${visible ? 0 : this.jungleTreesOffscreen()}px)`;
       this.$refs.jungleLeaves.style.transform = `translateY(${visible ? 0 : this.jungleLeavesOffscreen()}px)`;
+      this.$refs.section.style.display = visible ? 'block' : 'none';
     },
     showAssets() {
       this.renderImages = true;
@@ -150,6 +155,7 @@ export default {
       this.visible = true;
       this.showing = true;
       this.offset = offset;
+      this.$refs.section.style.display = 'block';
 
       delayActionCheckVisible(() => {
         this.showCard();
@@ -196,6 +202,8 @@ export default {
             this.showing = false;
             resolve();
           });
+
+        hideSectionAfterAnimation(500, this);
       });
     },
     hideAnimated() {
