@@ -2,14 +2,14 @@
 
 .resume {
   color: $dark-gray;
-  padding-top: $spacing-unit-x6;
+  padding: $spacing-unit-x6;
   font-family: 'Arimo', sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 25.5px;
 
   &__sheet {
-    padding: $spacing-unit-x5;
+    padding: $spacing-unit-x5 $spacing-unit-x5 $spacing-unit-x5 0;
     background-color: $white;
     box-shadow: 0 0.5rem 2.5rem 0 rgba(0,0,0,0.25);
     width: 990px;
@@ -18,6 +18,10 @@
 
   &__description {
     margin-bottom: $spacing-unit-x2;
+  }
+
+  &__top {
+    padding-left: $spacing-unit-x6;
   }
 
   h1, h2, h3, a {
@@ -69,15 +73,20 @@
 
   &__contents {
     display: flex;
+    align-items:flex-start;
   }
 
   &__left_column {
     flex: 0 0 spacingUnit(30);
-    padding-right: $spacing-unit-x5;
+    margin-right: $spacing-unit-x2;
+    padding: $spacing-unit-x2 $spacing-unit-x3 0 $spacing-unit-x6;
+
+    background-color: $lighter-gray;
   }
 
   &__right_column {
     flex: 1 0;
+    padding-top: $spacing-unit-x2;
   }
 
   &__section {
@@ -87,6 +96,10 @@
 
   &__info {
     margin-bottom: $spacing-unit;
+
+    &:last-child {
+      margin-bottom: $spacing-unit-x3;
+    }
   }
 
   &__job {
@@ -109,5 +122,39 @@
     &-info {
       flex: 1 0;
     }
+  }
+}
+
+
+@media print {
+  body {
+    background-color: $white;
+  }
+  h2, h3 {
+    page-break-after: avoid;
+  }
+  .resume {
+    padding: 0;
+
+    &__top {
+      page-break-after: avoid;
+    }
+
+    &__content {
+      page-break-inside: auto;
+    }
+
+    &__sheet {
+      box-shadow: none;
+    }
+  }
+  .nav-bar {
+    display: none;
+  }
+}
+@media print and (color) {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

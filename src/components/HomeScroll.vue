@@ -108,6 +108,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll)
   },
   methods: {
     getIsMobile() {
@@ -160,7 +161,7 @@ export default {
             this.scrollToNewSection(this.currentSection);
           }
           document.body.style.overflow = null;
-          this.onScroll = window.addEventListener('scroll', this.onScroll);
+          window.addEventListener('scroll', this.onScroll);
           // TODO: Show scroll indicator to user
         });
     },

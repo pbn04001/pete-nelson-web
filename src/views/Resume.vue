@@ -2,14 +2,16 @@
   <div class="resume">
     <link href="https://fonts.googleapis.com/css?family=Arimo:400,700" rel="preload" as="font" type="font/woff2" />
     <div class="resume__sheet">
-      <h1>Pete Nelson</h1>
-      <h2>Staff Engineer</h2>
-      <div class="resume__description">
-        Accomplished web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack solutions
-        from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue, and Angular.
-        Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server, DB2, and MySql.
-        Able to create site designs, illustrations, and logos use Sketch, Illustrator and Photoshop.  Education includes both a BA in Computer
-        Science, and an MBA.
+      <div class="resume__top">
+        <h1>Pete Nelson</h1>
+        <h2>Staff Engineer</h2>
+        <div class="resume__description">
+          Accomplished web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack solutions
+          from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue, and Angular.
+          Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server, DB2,
+          and MySql. Able to create site designs, illustrations, and logos use Sketch, Illustrator and Photoshop.  Education includes both a BA in
+          Computer Science, and an MBA.
+        </div>
       </div>
       <div class="resume__contents">
         <div class="resume__left_column">
@@ -33,6 +35,40 @@
             <div class="resume__info">
               <label>WWW</label>
               <a href="http://petenelson.dev">http://petenelson.dev</a>
+            </div>
+          </div>
+          <h3>
+            <Person />
+            Skills
+          </h3>
+          <div class="resume__section resume__skills">
+            <div class="resume__info">
+              <label>Languages</label>
+              Javascript, Java, Scala, Python, Swift
+            </div>
+            <div class="resume__info">
+              <label>UI Frameworks</label>
+              React, Angular, VUE, ExtJS
+            </div>
+            <div class="resume__info">
+              <label>UI</label>
+              CSS3, SASS, PostCSS, SVG, HTML5
+            </div>
+            <div class="resume__info">
+              <label>Server</label>
+              Node, Express, Spring, Rest, Soap, OpenTSDB, Kafka
+            </div>
+            <div class="resume__info">
+              <label>Design</label>
+              Illustrator, Sketch, Photoshop
+            </div>
+            <div class="resume__info">
+              <label>Database</label>
+              MySQL, SQL Server, DB2, Hadoop
+            </div>
+            <div class="resume__info">
+              <label>Testing</label>
+              Enzyme, Karma, Chai, Sinon, Nightwatch, Cucumber
             </div>
           </div>
         </div>
