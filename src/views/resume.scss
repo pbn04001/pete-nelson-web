@@ -1,5 +1,113 @@
 @import "@/styles/_globals.scss";
 
 .resume {
+  color: $dark-gray;
+  padding-top: $spacing-unit-x6;
+  font-family: 'Arimo', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 25.5px;
 
+  &__sheet {
+    padding: $spacing-unit-x5;
+    background-color: $white;
+    box-shadow: 0 0.5rem 2.5rem 0 rgba(0,0,0,0.25);
+    width: 990px;
+    margin: 0 auto;
+  }
+
+  &__description {
+    margin-bottom: $spacing-unit-x2;
+  }
+
+  h1, h2, h3, a {
+    color: $resume-blue;
+  }
+  h1 {
+    font-size: 2.68rem;
+    line-height: 2.68rem;
+    font-weight: 700;
+    margin-bottom: $spacing-unit-x2;
+  }
+
+  h2 {
+    color: $resume-blue;
+    font-size: 1.375rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+    margin-bottom: $spacing-unit-x2;
+  }
+
+  h3 {
+    color: $resume-blue;
+    font-size: 1.575rem;
+    line-height: 1.875rem;
+    font-weight: 700;
+    margin-bottom: $half-spacing-unit;
+    display: inline-flex;
+    justify-content: center;
+
+    svg {
+      width: $spacing-unit-x4;
+      height: $spacing-unit-x4;
+      margin-right: $spacing-unit;
+    }
+  }
+
+  h4 {
+    color: $dark-gray;
+    font-size: 1.275rem;
+    line-height: 1.275rem;
+    font-weight: 700;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    line-height: 1.25rem;
+  }
+
+  &__contents {
+    display: flex;
+  }
+
+  &__left_column {
+    flex: 0 0 spacingUnit(30);
+    padding-right: $spacing-unit-x5;
+  }
+
+  &__right_column {
+    flex: 1 0;
+  }
+
+  &__section {
+    border-top: 1px solid $border-gray;
+    padding-top: $spacing-unit;
+  }
+
+  &__info {
+    margin-bottom: $spacing-unit;
+  }
+
+  &__job {
+    display: flex;
+    margin-bottom: $spacing-unit-x2;
+
+    &:last-child {
+      margin-bottom: $spacing-unit-x4;
+    }
+
+    ul {
+      margin-left: $spacing-unit-x2;
+    }
+
+    &-dates {
+      flex: 0 0 $spacing-unit-x16;
+      padding-right: $spacing-unit-x2;
+    }
+
+    &-info {
+      flex: 1 0;
+    }
+  }
 }
