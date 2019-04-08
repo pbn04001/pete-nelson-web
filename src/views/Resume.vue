@@ -13,10 +13,9 @@
           Computer Science, and an MBA.
         </div>
       </div>
-      <div class="resume__contents">
-        <div class="resume__left_column">
+      <div class="resume__left-column">
           <h3>
-            <Person />
+            <Person aria-hidden="true"/>
             Personal Info
           </h3>
           <div class="resume__section resume__personal-info">
@@ -33,12 +32,12 @@
               08/11/1982
             </div>
             <div class="resume__info">
-              <label>WWW</label>
+              <label>Website</label>
               <a href="http://petenelson.dev">http://petenelson.dev</a>
             </div>
           </div>
           <h3>
-            <Person />
+            <Puzzle aria-hidden="true"/>
             Skills
           </h3>
           <div class="resume__section resume__skills">
@@ -72,9 +71,9 @@
             </div>
           </div>
         </div>
-        <div class="resume__right_column">
+      <div class="resume__right-column">
           <h3>
-            <Person />
+            <Suitecase aria-hidden="true"/>
             Experience
           </h3>
           <div class="resume__section resume__experience">
@@ -161,7 +160,7 @@
             </div>
           </div>
           <h3>
-            <Person />
+            <Education aria-hidden="true"/>
             Eduction
           </h3>
           <div class="resume__section resume__experience">
@@ -186,21 +185,25 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import Person from '@/assets/icons/person.svg';
+import Person from '@/assets/icons/person.svg';
+import Suitecase  from '@/assets/icons/suitecase.svg';
+import Puzzle from '@/assets/icons/puzzle.svg';
+import Education from '@/assets/icons/education.svg';
 
-  export default {
-    name: 'resume',
-    components: {
-      Person,
-    },
-  };
-
+export default {
+  name: 'resume',
+  components: {
+    Person,
+    Suitecase,
+    Puzzle,
+    Education,
+  },
+};
 </script>
 
 <style lang="scss">

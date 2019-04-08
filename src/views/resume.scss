@@ -14,6 +14,9 @@
     box-shadow: 0 0.5rem 2.5rem 0 rgba(0,0,0,0.25);
     width: 990px;
     margin: 0 auto;
+    display: flex;
+    align-items:flex-start;
+    flex-wrap: wrap;
   }
 
   &__description {
@@ -22,6 +25,7 @@
 
   &__top {
     padding-left: $spacing-unit-x6;
+    flex: 0 0 900px;
   }
 
   h1, h2, h3, a {
@@ -71,12 +75,7 @@
     line-height: 1.25rem;
   }
 
-  &__contents {
-    display: flex;
-    align-items:flex-start;
-  }
-
-  &__left_column {
+  &__left-column {
     flex: 0 0 spacingUnit(30);
     margin-right: $spacing-unit-x2;
     padding: $spacing-unit-x2 $spacing-unit-x3 0 $spacing-unit-x6;
@@ -84,7 +83,7 @@
     background-color: $lighter-gray;
   }
 
-  &__right_column {
+  &__right-column {
     flex: 1 0;
     padding-top: $spacing-unit-x2;
   }
@@ -130,31 +129,29 @@
   body {
     background-color: $white;
   }
-  h2, h3 {
-    page-break-after: avoid;
-  }
   .resume {
     padding: 0;
 
-    &__top {
-      page-break-after: avoid;
-    }
-
-    &__content {
-      page-break-inside: auto;
-    }
-
     &__sheet {
       box-shadow: none;
+      padding: 0;
+    }
+
+    &__top {
+      padding-left: 0;
+    }
+
+    &__left-column {
+      padding-left: 0;
+    }
+
+    &__experience {
+      .resume__job:last-child {
+        margin-bottom: 0;
+      }
     }
   }
   .nav-bar {
     display: none;
-  }
-}
-@media print and (color) {
-  * {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
   }
 }
