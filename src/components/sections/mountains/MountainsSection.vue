@@ -31,9 +31,9 @@
         </span>
       </div>
     </div>
-    <Mountains2 ref="mountains2" class="mountains__mountains mountains__mountains--2" />
-    <Mountains1 ref="mountains1" class="mountains__mountains mountains__mountains--1" />
-    <Clouds ref="clouds" class="mountains__clouds" />
+    <img src="/assets/images/mountains_2.svg" ref="mountains2" class="mountains__mountains mountains__mountains--2" />
+    <img src="/assets/images/mountains_1.svg" ref="mountains1" class="mountains__mountains mountains__mountains--1" />
+    <img src="/assets/images/mountain_clouds.svg" ref="clouds" class="mountains__clouds" />
   </div>
 </template>
 
@@ -41,16 +41,10 @@
 import anime from 'animejs';
 import { delayAnimationCheckVisible, hideSectionAfterAnimation } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
-import Mountains1 from '@/assets/images/mountains_1.svg';
-import Mountains2 from '@/assets/images/mountains_2.svg';
-import Clouds from '@/assets/images/mountain_clouds.svg';
 
 export default {
   name: 'MountainsSection',
   components: {
-    Mountains1,
-    Mountains2,
-    Clouds,
   },
   props: {
     viewHeight: {

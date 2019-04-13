@@ -53,10 +53,10 @@
 
       </div>
     </div>
-    <JungleBack1 ref="jungleBack1" class="jungle__back jungle__back--1" />
-    <JungleBack2 ref="jungleBack2" class="jungle__back jungle__back--2" />
-    <JungleTrees ref="jungleTrees" class="jungle__trees" />
-    <img src="/img/scene/jungle_leaves.svg" ref="jungleLeaves" class="jungle__leaves" />
+    <img src="/assets/images/jungle_back_1.svg" ref="jungleBack1" class="jungle__back jungle__back--1" />
+    <img src="/assets/images/jungle_back_2.svg" ref="jungleBack2" class="jungle__back jungle__back--2" />
+    <img src="/assets/images/jungle_trees.svg" ref="jungleTrees" class="jungle__trees" />
+    <img src="/assets/images/jungle_leaves.svg" ref="jungleLeaves" class="jungle__leaves" />
   </div>
 </template>
 
@@ -69,17 +69,9 @@ import {
 } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
 
-// Scenery
-import JungleBack1 from '@/assets/images/jungle_back_1.svg';
-import JungleBack2 from '@/assets/images/jungle_back_2.svg';
-import JungleTrees from '@/assets/images/jungle_trees.svg';
-
 export default {
   name: 'JungleSection',
   components: {
-    JungleBack1,
-    JungleBack2,
-    JungleTrees,
   },
   props: {
     viewHeight: {

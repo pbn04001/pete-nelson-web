@@ -7,13 +7,13 @@
         <h3 class="intro__card_text">Experienced Web Developer & Designer</h3>
       </div>
     </div>
-    <Cloud1 ref="cloud1" class="intro__cloud intro__cloud--1"/>
-    <Cloud2 ref="cloud2" class="intro__cloud intro__cloud--2"/>
-    <Moon ref="moon" class="intro__moon"/>
-    <MoonBack ref="moon_back" class="intro__moon_back"/>
-    <SkyLine1 ref="skyLine1" class="intro__sky_line intro__sky_line--1"/>
-    <SkyLine2 ref="skyLine2" class="intro__sky_line intro__sky_line--2"/>
-    <SkyLine3 ref="skyLine3" class="intro__sky_line intro__sky_line--3"/>
+    <img src="/assets/images/cloud_1.svg" ref="cloud1" class="intro__cloud intro__cloud--1"/>
+    <img src="/assets/images/cloud_2.svg" ref="cloud2" class="intro__cloud intro__cloud--2"/>
+    <img src="/assets/images/moon.svg" ref="moon" class="intro__moon"/>
+    <img src="/assets/images/moon_back.svg" ref="moon_back" class="intro__moon_back"/>
+    <img src="/assets/images/skyline_1.svg" ref="skyLine1" class="intro__sky_line intro__sky_line--1"/>
+    <img src="/assets/images/skyline_2.svg" ref="skyLine2" class="intro__sky_line intro__sky_line--2"/>
+    <img src="/assets/images/skyline_3.svg" ref="skyLine3" class="intro__sky_line intro__sky_line--3"/>
   </div>
 </template>
 
@@ -25,14 +25,7 @@ import {
   delayActionCheckVisible,
   hideSectionAfterAnimation,
 } from '@/utils/animation';
-import SkyLine1 from '@/assets/images/skyline_1.svg';
-import SkyLine2 from '@/assets/images/skyline_2.svg';
-import SkyLine3 from '@/assets/images/skyline_3.svg';
-import Cloud1 from '@/assets/images/cloud_1.svg';
-import Cloud2 from '@/assets/images/cloud_2.svg';
-import Moon from '@/assets/images/moon.svg';
-import MoonBack from '@/assets/images/moon_back.svg';
-import PeteNelson from '@/assets/images/pete_nelson.svg';
+import PeteNelson from '@/assets/images/pete_nelson.vue';
 
 export default {
   name: 'IntroSection',
@@ -43,13 +36,6 @@ export default {
     },
   },
   components: {
-    SkyLine1,
-    SkyLine2,
-    SkyLine3,
-    Cloud1,
-    Cloud2,
-    Moon,
-    MoonBack,
     PeteNelson,
   },
   data() {

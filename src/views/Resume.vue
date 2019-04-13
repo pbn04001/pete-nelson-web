@@ -15,7 +15,7 @@
       </div>
       <div class="resume__left-column">
           <h3>
-            <Person aria-hidden="true"/>
+            <img src="/assets/icons/person.svg" aria-hidden="true"/>
             Personal Info
           </h3>
           <div class="resume__section resume__personal-info">
@@ -37,7 +37,7 @@
             </div>
           </div>
           <h3>
-            <Puzzle aria-hidden="true"/>
+            <img src="/assets/icons/puzzle.svg" aria-hidden="true"/>
             Skills
           </h3>
           <div class="resume__section resume__skills">
@@ -73,7 +73,7 @@
         </div>
       <div class="resume__right-column">
           <h3>
-            <Suitecase aria-hidden="true"/>
+            <img src="/assets/icons/suitecase.svg" aria-hidden="true"/>
             Experience
           </h3>
           <div class="resume__section resume__experience">
@@ -160,7 +160,7 @@
             </div>
           </div>
           <h3>
-            <Education aria-hidden="true"/>
+            <img src="/assets/icons/education.svg" aria-hidden="true"/>
             Eduction
           </h3>
           <div class="resume__section resume__experience">
@@ -190,18 +190,9 @@
 </template>
 
 <script>
-import Person from '@/assets/icons/person.svg';
-import Suitecase  from '@/assets/icons/suitecase.svg';
-import Puzzle from '@/assets/icons/puzzle.svg';
-import Education from '@/assets/icons/education.svg';
-
 export default {
   name: 'resume',
   components: {
-    Person,
-    Suitecase,
-    Puzzle,
-    Education,
   },
 };
 </script>

@@ -10,10 +10,10 @@
         <a href="/resume">Click here to view my full resume</a>
       </div>
     </div>
-    <DesertBack2 ref="desertBack2" class="desert__back desert__back--2" />
-    <DesertBack1 ref="desertBack1" class="desert__back desert__back--1" />
-    <Sun ref="sun" class="desert__sun" />
-    <Birds ref="birds" class="desert__birds" />
+    <img src="/assets/images/desert_back_2.svg" ref="desertBack2" class="desert__back desert__back--2" />
+    <img src="/assets/images/desert_back_1.svg" ref="desertBack1" class="desert__back desert__back--1" />
+    <img src="/assets/images/desert_sun.svg" ref="sun" class="desert__sun" />
+    <img src="/assets/images/desert_birds.svg" ref="birds" class="desert__birds" />
   </div>
 </template>
 
@@ -21,18 +21,10 @@
 import anime from 'animejs';
 import { delayAnimationCheckVisible, hideSectionAfterAnimation } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
-import DesertBack1 from '@/assets/images/desert_back_1.svg';
-import DesertBack2 from '@/assets/images/desert_back_2.svg';
-import Sun from '@/assets/images/desert_sun.svg';
-import Birds from '@/assets/images/desert_birds.svg';
 
 export default {
   name: 'DesertSection',
   components: {
-    DesertBack1,
-    DesertBack2,
-    Sun,
-    Birds,
   },
   props: {
     viewHeight: {

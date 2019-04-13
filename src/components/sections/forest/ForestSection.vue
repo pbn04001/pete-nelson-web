@@ -46,11 +46,11 @@
 
       </div>
     </div>
-    <Hills1 ref="hills1" class="forest__hills forest__hills--1" />
-    <Hills2 ref="hills2" class="forest__hills forest__hills--2" />
-    <Trees ref="trees" class="forest__trees" />
-    <Moon ref="moon" class="forest__moon"/>
-    <MoonBack ref="moon_back" class="forest__moon_back"/>
+    <img src="/assets/images/hills_1.svg" ref="hills1" class="forest__hills forest__hills--1" />
+    <img src="/assets/images/hills_2.svg" ref="hills2" class="forest__hills forest__hills--2" />
+    <img src="/assets/images/trees.svg" ref="trees" class="forest__trees" />
+    <img src="/assets/images/moon_yellow.svg" ref="moon" class="forest__moon"/>
+    <img src="/assets/images/moon_yellow_back.svg" ref="moon_back" class="forest__moon_back"/>
   </div>
 </template>
 
@@ -63,21 +63,9 @@ import {
 } from '@/utils/animation';
 import { getClientHeight } from '@/utils/sizes';
 
-// Scenery
-import Hills1 from '@/assets/images/hills_1.svg';
-import Hills2 from '@/assets/images/hills_2.svg';
-import Trees from '@/assets/images/trees.svg';
-import Moon from '@/assets/images/moon_yellow.svg';
-import MoonBack from '@/assets/images/moon_yellow_back.svg';
-
 export default {
   name: 'ForestSection',
   components: {
-    Hills1,
-    Hills2,
-    Trees,
-    Moon,
-    MoonBack,
   },
   props: {
     viewHeight: {

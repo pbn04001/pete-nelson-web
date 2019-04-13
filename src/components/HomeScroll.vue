@@ -14,7 +14,7 @@
         <span>l</span>
         <span>l</span>
       </span>
-      <Arrow class="scroll-down__arrow" />
+      <img src="/assets/icons/arrow.svg" class="scroll-down__arrow" />
     </div>
   </div>
 </template>
@@ -23,7 +23,6 @@
 import { mapState } from 'vuex';
 import debounce from 'debounce';
 import { SCREEN_SIZE, getScreenSizeMax } from '@/utils/sizes';
-import Arrow from '@/assets/icons/arrow.svg';
 
 // Sections
 import IntroSection from './sections/intro/IntroSection.vue';
@@ -40,7 +39,6 @@ export default {
     ForestSection,
     JungleSection,
     DesertSection,
-    Arrow,
   },
   computed: {
     ...mapState({
