@@ -10,16 +10,17 @@ $bar-spacing: 7px;
   z-index: 200;
   bottom: 0;
   width: 100%;
-  height: $spacing-unit-x4;
+  height: $spacing-unit-x6;
   overflow: visible;
   display: flex;
   justify-content: center;
 
   &__menu {
+    @include font-delta;
     color: $white;
     position: absolute;
     margin: $spacing-unit;
-    width: 5rem;
+    width: 5.5rem;
     height: calc(#{$bar-height} + (#{$bar-spacing} * 2));
     cursor: pointer;
     text-align: right;
@@ -34,7 +35,7 @@ $bar-spacing: 7px;
 
   &__menu-hamburger {
     position: absolute;
-    top: 0;
+    top: 0.4rem;
     left: 0;
     transform: translateY($bar-spacing);
     background: rgba(255, 255, 255, 1);
@@ -84,7 +85,7 @@ $bar-spacing: 7px;
 
     &--open {
       opacity: 1;
-      height: 7.5rem;
+      height: 9.5rem;
       transition: all linear 300ms;
 
       ul {
@@ -128,9 +129,24 @@ $bar-spacing: 7px;
     top: 0;
     right: 3rem;
     justify-content: flex-end;
+    height: $spacing-unit-x4;
+
+    &__menu {
+      @include font-epsilon;
+      width: 5rem;
+    }
 
     &__menu-body {
       top: $spacing-unit-x3;
+      bottom: $spacing-unit-x3;
+
+      &--open {
+        height: 7.5rem;
+      }
+    }
+
+    &__menu-hamburger {
+      top: 0;
     }
   }
 
