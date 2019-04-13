@@ -2,8 +2,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import createRouter from './router';
 import store from './store';
-import './registerServiceWorker';
-import 'modernizr';
+//import './registerServiceWorker';
+//import 'modernizr';
 
 Vue.config.productionTip = false;
 
