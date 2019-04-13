@@ -129,8 +129,14 @@
   body {
     background-color: $white;
   }
+
   .resume {
     padding: 0;
+
+    a {
+      color: $dark-gray;
+      text-decoration: none;
+    }
 
     &__sheet {
       box-shadow: none;

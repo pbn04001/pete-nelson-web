@@ -88,7 +88,7 @@
                   <li>Currently working on Staff Engineering team to deliver advanced implementations across the web, server and ios platforms.</li>
                   <li>Technical lead on agile team responsible for delivering features for a React and Angular application.</li>
                   <li>Architected a custom CMS solution for our applications to delivery custom content to users in a quick, reliable and performant manner.</li>
-                  <li>Over a year experience working on our flag ship IOS application using Swift.</li>
+                  <li>Worked on our flag ship IOS application using Swift.</li>
                 </ul>
               </div>
             </div>
