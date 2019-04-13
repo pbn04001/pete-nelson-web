@@ -158,7 +158,7 @@ export default {
           if (this.currentSection > 0) {
             this.scrollToNewSection(this.currentSection);
           }
-          document.body.style.overflow = null;
+          document.body.style.overflow = 'visible';
           window.addEventListener('scroll', this.onScroll);
           // TODO: Show scroll indicator to user
         });
