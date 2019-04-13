@@ -131,7 +131,7 @@ export default {
       return 'logo-design';
     },
     getSize() {
-      return 3;
+      return 5;
     },
     getBodyClass() {
       return 'jungle';
@@ -257,9 +257,9 @@ export default {
     },
     showImage(offset) {
       if (this.$refs.image1) {
-        if (offset < 0.33) {
+        if (offset < 0.3) {
           this.swapImages(this.$refs.image1);
-        } else if (offset < 0.66) {
+        } else if (offset < 0.7) {
           this.swapImages(this.$refs.image2);
         } else {
           this.swapImages(this.$refs.image3);
