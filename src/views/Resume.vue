@@ -145,7 +145,7 @@
               <div class="resume__job-info">
                 <h4>Graphic Design</h4>
                 <i>Cuerdon Signs</i>
-                Designed and install signs using Corel Draw
+                - Designed and install signs using Corel Draw
               </div>
             </div>
             <div class="resume__job">
@@ -155,7 +155,7 @@
               <div class="resume__job-info">
                 <h4>Graphic Design</h4>
                 <i>Best Banner and Sign</i>
-                Design and installsigns for using FlexiSign.
+                - Design and installsigns for using FlexiSign.
               </div>
             </div>
           </div>
