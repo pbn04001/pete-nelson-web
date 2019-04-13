@@ -1,25 +1,28 @@
 @import "@/styles/_globals.scss";
 
-$bar-width: $spacing-unit-x4;
+$bar-width: $spacing-unit-x3;
 $bar-height: 2px;
-$bar-spacing: 8px;
+$bar-spacing: 7px;
 
 .nav-bar {
   background-color: $transparent-black;
   position: fixed;
   z-index: 200;
-  top: 0;
+  bottom: 0;
   width: 100%;
   height: $spacing-unit-x4;
   overflow: visible;
+  display: flex;
+  justify-content: center;
 
   &__menu {
+    color: $white;
     position: absolute;
-    right: 0;
     margin: $spacing-unit $spacing-unit-x4;
-    width: $bar-width;
+    width: 5rem;
     height: calc(#{$bar-height} + (#{$bar-spacing} * 2));
     cursor: pointer;
+    text-align: right;
   }
 
   &__menu-hamburger,
@@ -30,7 +33,9 @@ $bar-spacing: 8px;
   }
 
   &__menu-hamburger {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     transform: translateY($bar-spacing);
     background: rgba(255, 255, 255, 1);
     transition: all 0ms 300ms;
@@ -72,14 +77,14 @@ $bar-spacing: 8px;
 
   &__menu-body {
     position: absolute;
-    top: $spacing-unit-x3;
+    bottom: $spacing-unit-x3;
     right: -2rem;
     overflow: hidden;
     width: 10rem;
 
     &--open {
       opacity: 1;
-      height: 10rem;
+      height: 8.3rem;
       transition: all linear 300ms;
 
       ul {
@@ -113,7 +118,20 @@ $bar-spacing: 8px;
       display: block;
       color: $white;
       background-color: $transparent-black;
-      padding: $spacing-unit $spacing-unit-x4 $spacing-unit-x2 $spacing-unit-x3;
+      padding: $spacing-unit $spacing-unit-x5 $spacing-unit-x2 $spacing-unit-x3;
     }
   }
+}
+
+@media (min-width: $breakpoint-sm) {
+  .nav-bar {
+    top: 0;
+    justify-content: flex-end;
+
+    &__menu-body {
+      top: $spacing-unit-x3;
+    }
+  }
+
+
 }

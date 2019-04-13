@@ -4,6 +4,7 @@
       class="nav-bar__menu"
       v-on:click="toggleMenu"
     >
+      Menu
       <div
         v-bind:class="{
           'nav-bar__menu-hamburger': true,
