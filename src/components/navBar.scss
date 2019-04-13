@@ -18,7 +18,7 @@ $bar-spacing: 7px;
   &__menu {
     color: $white;
     position: absolute;
-    margin: $spacing-unit $spacing-unit-x4;
+    margin: $spacing-unit;
     width: 5rem;
     height: calc(#{$bar-height} + (#{$bar-spacing} * 2));
     cursor: pointer;
@@ -84,7 +84,7 @@ $bar-spacing: 7px;
 
     &--open {
       opacity: 1;
-      height: 8.3rem;
+      height: 7.5rem;
       transition: all linear 300ms;
 
       ul {
@@ -126,6 +126,7 @@ $bar-spacing: 7px;
 @media (min-width: $breakpoint-sm) {
   .nav-bar {
     top: 0;
+    right: 3rem;
     justify-content: flex-end;
 
     &__menu-body {
