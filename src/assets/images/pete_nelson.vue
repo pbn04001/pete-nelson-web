@@ -1,6 +1,6 @@
 <!-- eslint-disable -->
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.43 243.24">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.43 243.24" preserveAspectRatio="xMinYMin meet">
     <clipPath id="name-mask">
       <rect id="name-mask-rectangle" x="0" y="0" width="100%" height="100%"/>
     </clipPath>
