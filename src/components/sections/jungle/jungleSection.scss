@@ -1,6 +1,6 @@
 @import "@/styles/_globals.scss";
 .jungle {
-  background-color: $green;
+  background-color: black;
 
   &__card {
     @include font-delta;
@@ -32,7 +32,7 @@
   &__title {
     position: absolute;
     z-index: 30;
-    color: $dark-green;
+    color: $light-gray;
     display: block;
     width: 100%;
     flex: 0 0 100%;
@@ -79,6 +79,7 @@
     background-color: transparent;
 
     &__title {
+      color: $dark-green;
       position: relative;
       margin: $spacing-unit-x5 0 $spacing-unit-x2 0;
     }

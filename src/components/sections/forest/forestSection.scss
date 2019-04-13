@@ -33,7 +33,7 @@
   &__title {
     position: absolute;
     z-index: 30;
-    color: $midnight-blue;
+    color: $dark-blue;
     display: block;
     width: 100%;
     flex: 0 0 100%;
@@ -83,6 +83,7 @@
     background-color: transparent;
 
     &__title {
+      color: $midnight-blue;
       position: relative;
       margin: $spacing-unit-x5 0 $spacing-unit-x2 0;
     }
