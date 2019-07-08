@@ -127,13 +127,13 @@ $bar-spacing: 7px;
 @media (min-width: $breakpoint-sm) {
   .nav-bar {
     top: 0;
-    right: 3rem;
     justify-content: flex-end;
     height: $spacing-unit-x4;
 
     &__menu {
       @include font-epsilon;
       width: 5rem;
+      right: 3rem;
     }
 
     &__menu-body {
