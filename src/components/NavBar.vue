@@ -32,10 +32,21 @@
 <script>
 export default {
   name: 'NavBar',
+  props: {
+    resume: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       open: false,
     };
+  },
+  created() {
+    if (this.resume) {
+      this.$router.push('/resume');
+    }
   },
   methods: {
     toggleMenu() {
