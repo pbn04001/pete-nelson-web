@@ -7,7 +7,7 @@
         <br/><br/>
         You may contact me at <a href="mailto:petenelson.webdesign@gmail.com">petenelson.webdesign@gmail.com</a>
         <br/><br/>
-        <a href="/resume">Click here to view my full resume</a>
+        <router-link to="/resume">Click here to view my full resume</router-link>
       </div>
     </div>
     <img src="/assets/images/desert_back_2.svg" ref="desertBack2" class="desert__back desert__back--2" />
