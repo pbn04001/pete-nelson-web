@@ -9,8 +9,8 @@
           Accomplished web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack solutions
           from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue, and Angular.
           Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server, DB2,
-          and MySql. Able to create site designs, illustrations, and logos use Sketch, Illustrator and Photoshop.  Education includes both a BA in
-          Computer Science, and an MBA.
+          and MySql. Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Education includes both a BA in
+          Computer Science, and a Masters in Business Administration.
         </div>
       </div>
       <div class="resume__left-column">
