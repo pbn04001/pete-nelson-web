@@ -1,6 +1,6 @@
 @import "@/styles/_globals.scss";
 .mountains {
-  background-color: $light-blue;
+  background-color: $black;
 
   &__card {
     position: relative;
@@ -12,14 +12,14 @@
     &_sub {
       @include font-delta;
       text-align: center;
-      color: $black;
-      background-color: $transparent-white;
+      color: $white;
+      background-color: $transparent-gray;
       padding: $spacing-unit-x3 $spacing-unit-x3 $spacing-unit-x6 $spacing-unit-x3;
       margin: $spacing-unit-x2;
     }
   }
   &__title {
-    color: $dark-teal;
+    color: $white;
     display: block;
     width: 100%;
     flex: 0 0 100%;
@@ -27,6 +27,7 @@
     margin: $spacing-unit-x5 0 0 0;
   }
   &__mountains {
+    display: none;
     position: absolute;
     width: 100%;
     bottom: -6vw;
@@ -46,12 +47,12 @@
     width: 100%;
     bottom: -6vw;
     left: 0;
-    opacity: 1;
+    opacity: .15;
   }
 
   h4 {
     margin-top: $spacing-unit-x4;
-    color: $dark-teal;
+    color: $gray;
   }
 }
 
@@ -59,11 +60,21 @@
   .mountains {
     background-color: transparent;
 
+    &__title {
+      color: $dark-teal;
+    }
+
     &__clouds {
       opacity: 0;
     }
 
+    &__mountains {
+      display: block;
+    }
+
     &__card_sub {
+      color: $black;
+      background-color: $transparent-white;
       @include font-delta;
       padding: $spacing-unit-x4 $spacing-unit-x4 $spacing-unit-x20 $spacing-unit-x4;
       margin: $spacing-unit-x4 $spacing-unit-x12 0 $spacing-unit-x12;
@@ -71,6 +82,10 @@
 
     &__tech_list {
       @include font-gamma;
+    }
+
+    h4 {
+      color: $dark-teal;
     }
   }
 }

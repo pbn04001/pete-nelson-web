@@ -8,7 +8,7 @@
     position: relative;
     z-index: 20;
     color: $black;
-    margin: $spacing-unit-x12 0 $spacing-unit-x16 0;
+    margin: $spacing-unit-x12 0 $spacing-unit-x2 0;
     padding: $spacing-unit;
     width: auto;
   }
@@ -41,6 +41,7 @@
   }
 
   &__back, &__trees, &__leaves {
+    display: none;
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -125,6 +126,10 @@
         opacity: 0;
         transition: opacity linear 500ms;
       }
+    }
+
+    &__back, &__trees, &__leaves {
+      display: block;
     }
   }
 }

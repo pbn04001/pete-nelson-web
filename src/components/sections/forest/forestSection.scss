@@ -1,6 +1,6 @@
 @import "@/styles/_globals.scss";
 .forest {
-  background-color: $pale-blue;
+  background-color: $black;
 
   &__card {
     @include font-delta;
@@ -8,8 +8,8 @@
     position: relative;
     z-index: 20;
     color: $black;
-    background-color: $transparent-white;
-    margin: $spacing-unit-x12 0 $spacing-unit-x16 0;
+    background-color: transparent;
+    margin: $spacing-unit-x12 0 $spacing-unit-x2 0;
     padding: $spacing-unit;
     width: auto;
   }
@@ -17,7 +17,7 @@
   &__card_inside {
     display: block;
     position: relative;
-    background-color: $white;
+    background-color: $transparent-gray;
     padding: $spacing-unit $spacing-unit 0 $spacing-unit;
     margin-bottom: $spacing-unit-x2;
 
@@ -33,7 +33,7 @@
   &__title {
     position: absolute;
     z-index: 30;
-    color: $dark-blue;
+    color: $white;
     display: block;
     width: 100%;
     flex: 0 0 100%;
@@ -43,7 +43,7 @@
 
   &__hills {
     position: absolute;
-    display: block;
+    display: none;
     bottom: -2vw;
     width: 100%;
 
@@ -56,6 +56,7 @@
   }
 
   &__trees {
+    display: none;
     position: absolute;
     bottom: 1vw;
     z-index: 4;
@@ -63,13 +64,27 @@
   }
 
   &__moon {
-    z-index: 1;
+    opacity: .15;
+    z-index: 2;
     position: absolute;
     top: -2%;
     left: 6%;
     width: 20%;
+
+    &_circle {
+      background-color: $black;
+      z-index: 1;
+      position: absolute;
+      top: -2%;
+      left: 6%;
+      width: 20%;
+      height: 20vw;
+      border-radius: 20vw;
+    }
   }
+
   &__moon_back {
+    opacity: .35;
     position: absolute;
     top: 0;
     left: 0;
@@ -91,6 +106,7 @@
     &__card {
       position: relative;
       background: transparent;
+      margin-bottom: $spacing-unit-x16;
       opacity: 0;
       margin: 0;
 
@@ -130,8 +146,21 @@
       }
     }
 
+    &__hills {
+      display: block;
+    }
+
+    &__trees {
+      display: block;
+    }
+
     &__moon {
+      opacity: 1;
       top: -4%;
+
+      &_circle {
+        display: none;
+      }
     }
 
     &__moon_back {

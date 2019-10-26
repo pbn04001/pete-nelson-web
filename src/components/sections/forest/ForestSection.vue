@@ -50,6 +50,7 @@
     <img src="/assets/images/hills_2.svg" ref="hills2" class="forest__hills forest__hills--2" />
     <img src="/assets/images/trees.svg" ref="trees" class="forest__trees" />
     <img src="/assets/images/moon_yellow.svg" ref="moon" class="forest__moon"/>
+    <div class="forest__moon_circle">stuff</div>
     <img src="/assets/images/moon_yellow_back.svg" ref="moon_back" class="forest__moon_back"/>
   </div>
 </template>

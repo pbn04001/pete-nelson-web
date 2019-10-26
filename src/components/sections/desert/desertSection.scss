@@ -1,9 +1,9 @@
 @import "@/styles/_globals.scss";
 .desert {
-  background-color: $pale-yellow;
+  background-color: $black;
 
   a {
-    color: $clay-red;
+    color: $gray;
   }
 
   &__card {
@@ -16,14 +16,14 @@
     &_sub {
       @include font-delta;
       text-align: center;
-      color: $black;
-      background-color: $transparent-white;
+      color: $white;
+      background-color: $transparent-gray;
       padding: $spacing-unit-x3 $spacing-unit-x3 $spacing-unit-x12 $spacing-unit-x3;
       margin: $spacing-unit-x2;
     }
   }
   &__title {
-    color: $clay-red;
+    color: $white;
     display: block;
     width: 100%;
     flex: 0 0 100%;
@@ -31,6 +31,7 @@
     margin: $spacing-unit-x5 0 0 0;
   }
   &__back {
+    display: none;
     position: absolute;
     width: 100%;
     left: 0;
@@ -50,6 +51,7 @@
     width: 100%;
     bottom: 4vw;
     left: 0;
+    opacity: .1;
   }
 
   &__birds {
@@ -71,14 +73,28 @@
   .desert {
     background-color: transparent;
 
+    a {
+      color: $clay-red;
+    }
+
     &__birds {
       display: block;
     }
 
     &__card_sub {
+      color: $black;
+      background-color: $transparent-white;
       @include font-gamma;
       padding: $spacing-unit-x4 $spacing-unit-x4 $spacing-unit-x20 $spacing-unit-x4;
       margin: $spacing-unit-x4 $spacing-unit-x12 0 $spacing-unit-x12;
+    }
+
+    &__title {
+      color: $clay-red;
+    }
+
+    &__back {
+      display: block;
     }
   }
 }
