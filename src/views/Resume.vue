@@ -115,7 +115,7 @@
                 <label>February - October 2008, August 2009 - August 2015</label>
               </div>
               <div class="resume__job-info">
-                <h4>Senior Java Developer</h4>
+                <h4>Senior UI Java Developer</h4>
                 <i>J.B. Hunt Transport</i>
                 <ul>
                   <li>Lead developer on a team of 15 responsible for our flagship application "J.B. Hunt 360". used
