@@ -51,7 +51,7 @@
     font-size: 1.575rem;
     line-height: 1.875rem;
     font-weight: 700;
-    margin-bottom: $half-spacing-unit;
+    margin-bottom: $spacing-unit-x2;
     display: inline-flex;
     justify-content: center;
 
@@ -79,8 +79,8 @@
     flex: 0 0 spacingUnit(30);
     margin-right: $spacing-unit-x2;
     padding: $spacing-unit-x2 $spacing-unit-x3 0 $spacing-unit-x6;
-
     background-color: $lighter-gray;
+    -webkit-print-color-adjust: exact;
   }
 
   &__right-column {
@@ -90,7 +90,7 @@
 
   &__section {
     border-top: 1px solid $border-gray;
-    padding-top: $spacing-unit;
+    padding-top: $spacing-unit-x2;
   }
 
   &__info {
@@ -124,9 +124,17 @@
   }
 }
 
-@media (max-width: $breakpoint-md) {
+@media only screen and (max-width: $breakpoint-md) {
   .resume {
     padding: $spacing-unit-x6 $spacing-unit $spacing-unit $spacing-unit;
+
+    h3 {
+      margin-bottom: $spacing-unit;
+    }
+
+    &__section {
+      padding-top: $spacing-unit;
+    }
 
     &__sheet {
       padding: $spacing-unit-x2;
@@ -141,7 +149,7 @@
     }
 
     &__left-column {
-      padding: $spacing-unit-x2;
+      padding: $spacing-unit-x2 $spacing-unit-x2 0 $spacing-unit-x2;
     }
 
     &__job {
@@ -166,7 +174,7 @@
   }
 }
 
-@media (max-width: $breakpoint-sm) {
+@media only screen and (max-width: $breakpoint-sm) {
   .resume {
     padding-top: $spacing-unit;
 

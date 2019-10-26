@@ -56,7 +56,7 @@
             </div>
             <div class="resume__info">
               <label>Server</label>
-              Node, Express, Spring, Rest, Soap, OpenTSDB, Kafka, Spark
+              Node, Express, Spring, Rest, Soap, Kafka, Spark
             </div>
             <div class="resume__info">
               <label>Design</label>
@@ -64,7 +64,7 @@
             </div>
             <div class="resume__info">
               <label>Database</label>
-              MySQL, SQL Server, Postgress, Hadoop, TSDB
+              MySQL, SQL Server, Postgress, Hadoop, OpenTSDB
             </div>
             <div class="resume__info">
               <label>Testing</label>
@@ -86,12 +86,12 @@
                 <h4>Staff Engineer</h4>
                 <i>Aetna</i>
                 <ul>
-                  <li>Currently working on Staff Engineering team to deliver advanced implementations across the web, server and ios platforms.</li>
+                  <li>Currently working as a Staff Engineer to deliver advanced implementations across the web, server and ios platforms.</li>
                   <li>Technical lead on agile team responsible for delivering features for a React and Angular application.</li>
-                  <li>Developed rest services in both Node and Java</li>
+                  <li>Developed rest services in both Node and Java.</li>
                   <li>Architected a custom CMS solution for our applications to delivery content to users in a quick, reliable and performant manner.</li>
                   <li>Worked on our flag ship IOS application using Swift.</li>
-                  <li>Unit and integration test all applications using Enzyme, Karma, Chai and Cucumber</li>
+                  <li>Unit and integration test all applications using Enzyme, Karma, Chai and Cucumber.</li>
                 </ul>
               </div>
             </div>
@@ -106,7 +106,7 @@
                   <li>Lead UI developer on primary security threat portal.  Designed and developed final solution using Illustrator, AngularJS, and Scala.</li>
                   <li>Created scripts in Scala and Python for analyzing 20k network transactions a second.  Used Spark and Kafka to store the resulting metrics into OpenTSDB.</li>
                   <li>Built interactive charting dashboard for all metrics using D3 charts.</li>
-                  <li>Integration tests written for portal using Protractor</li>
+                  <li>Integration tests written for portal using Protractor.</li>
                 </ul>
               </div>
             </div>
@@ -125,7 +125,7 @@
                   <li>Developed multiple rest and soap services used for integrating with SQLServer and DB2,
                     as well as multiple 3rd party vendors such as SalesForce, ExactTarget, Omniture and Google.</li>
                   <li>Taught several classes on the subjects of JavaScript, ExtJS and JSF.</li>
-                  <li>Built a custom link and email tracking system for our marketing emails</li>
+                  <li>Built a custom link and email tracking system for our marketing emails.</li>
                 </ul>
               </div>
             </div>
@@ -165,7 +165,7 @@
               <div class="resume__job-info">
                 <h4>Graphic Design</h4>
                 <i>Cuerdon Signs</i>
-                - Designed and install signs using Corel Draw
+                - Designed and installed signs using Corel Draw
               </div>
             </div>
             <div class="resume__job">
@@ -175,7 +175,7 @@
               <div class="resume__job-info">
                 <h4>Graphic Design</h4>
                 <i>Best Banner and Sign</i>
-                - Design and install signs for using FlexiSign.
+                - Designed and installed signs using FlexiSign.
               </div>
             </div>
           </div>
