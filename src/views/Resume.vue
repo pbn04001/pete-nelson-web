@@ -6,11 +6,11 @@
         <h1>Pete Nelson</h1>
         <h2>Staff Engineer</h2>
         <div class="resume__description">
-          Accomplished full stack web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack solutions
-          from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue, and Angular.
-          Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server, Postgres,
-          and MySql. Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend python scripts
-          using spark streaming and kafka for processing 20k network transactions a second.  Education includes both a BA in
+          Accomplished full stack web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack
+          solutions from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue,
+          and Angular. Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server,
+          Postgres, and MySql. Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend
+          python scripts using Spark and Kafka for processing 20k network transactions a second.  Education includes both a BA in
           Computer Science, and a Masters in Business Administration.
         </div>
       </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="resume__info">
               <label>Server</label>
-              Node, Express, Spring, Rest, Soap, OpenTSDB, Kafka
+              Node, Express, Spring, Rest, Soap, OpenTSDB, Kafka, Spark
             </div>
             <div class="resume__info">
               <label>Design</label>
@@ -64,7 +64,7 @@
             </div>
             <div class="resume__info">
               <label>Database</label>
-              MySQL, SQL Server, DB2, Hadoop
+              MySQL, SQL Server, Postgress, Hadoop, TSDB
             </div>
             <div class="resume__info">
               <label>Testing</label>
@@ -88,9 +88,10 @@
                 <ul>
                   <li>Currently working on Staff Engineering team to deliver advanced implementations across the web, server and ios platforms.</li>
                   <li>Technical lead on agile team responsible for delivering features for a React and Angular application.</li>
-                  <li>Developed rest services in Node and Java</li>
+                  <li>Developed rest services in both Node and Java</li>
                   <li>Architected a custom CMS solution for our applications to delivery content to users in a quick, reliable and performant manner.</li>
                   <li>Worked on our flag ship IOS application using Swift.</li>
+                  <li>Unit and integration test all applications using Enzyme, Karma, Chai and Cucumber</li>
                 </ul>
               </div>
             </div>
@@ -104,25 +105,42 @@
                 <ul>
                   <li>Lead UI developer on primary security threat portal.  Designed and developed final solution using Illustrator, AngularJS, and Scala.</li>
                   <li>Created scripts in Scala and Python for analyzing 20k network transactions a second.  Used Spark and Kafka to store the resulting metrics into OpenTSDB.</li>
-                  <li>Built interactive charting dashboard built off the resulting metrics using multiple types of D3 charts.</li>
+                  <li>Built interactive charting dashboard for all metrics using D3 charts.</li>
+                  <li>Integration tests written for portal using Protractor</li>
                 </ul>
               </div>
             </div>
             <div class="resume__job">
               <div class="resume__job-dates">
-                <label>February 2008 - August 2015</label>
+                <label>February - October 2008, August 2009 - August 2015</label>
               </div>
               <div class="resume__job-info">
                 <h4>Senior Java Developer</h4>
                 <i>J.B. Hunt Transport</i>
                 <ul>
-                  <li>Lead developer on team of 15 responsible for our flagship application "J.B. Hunt 360" used
-                    by customer for booking, tracking, and reporting on shipments.  Built using ExtJS.</li>
-                  <li>Designed and developed 3 generations of UI component library used by entire organization.</li>
+                  <li>Lead developer on a team of 15 responsible for our flagship application "J.B. Hunt 360". used
+                    by customers for booking, tracking, and reporting on shipments.  Built using ExtJS.</li>
+                  <li>Designed and developed 3 generations of UI component library for entire organization.</li>
                   <li>Developed and maintained our public facing websites. jbhunt.com and jbhunt.jobs.</li>
                   <li>Developed multiple rest and soap services used for integrating with SQLServer and DB2,
                     as well as multiple 3rd party vendors such as SalesForce, ExactTarget, Omniture and Google.</li>
                   <li>Taught several classes on the subjects of JavaScript, ExtJS and JSF.</li>
+                  <li>Built a custom link and email tracking system for our marketing emails</li>
+                </ul>
+              </div>
+            </div>
+            <div class="resume__job">
+              <div class="resume__job-dates">
+                <label>October 2008 - August 2009</label>
+              </div>
+              <div class="resume__job-info">
+                <h4>Chief Technical Officer</h4>
+                <i>FlipFire LLC</i>
+                <ul>
+                  <li>Managed a team of eight employees consisting of Graphic Designers, Server / UI Developers,and System Administrators.</li>
+                  <li>Invented a video player allowing users to watch videos uninterrupted in same window while browsing our site.  Listed as inventor for a filed patent.</li>
+                  <li>Developed full stack application for browsing and playing videos from our site.</li>
+                  <li>Designed and implemented a distributed system for receiving, rendering, and approving user submitted videos into our system.</li>
                 </ul>
               </div>
             </div>

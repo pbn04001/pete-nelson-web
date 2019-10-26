@@ -143,6 +143,26 @@
     &__left-column {
       padding: $spacing-unit-x2;
     }
+
+    &__job {
+      flex-wrap: wrap;
+    }
+
+    &__job-dates {
+      color: $resume-blue;
+      flex: 1 1 auto;
+      padding-bottom: $spacing-unit;
+    }
+
+    &__job-info {
+      flex: 1 1 auto;
+      border-bottom: 1px solid $light-gray;
+      padding-bottom: $spacing-unit;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
 }
 
