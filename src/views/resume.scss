@@ -124,6 +124,37 @@
   }
 }
 
+@media (max-width: $breakpoint-md) {
+  .resume {
+    padding: $spacing-unit-x6 $spacing-unit $spacing-unit $spacing-unit;
+
+    &__sheet {
+      padding: $spacing-unit-x2;
+      background-color: $white;
+      box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.25);
+      width: auto;
+    }
+
+    &__top {
+      padding-left: $spacing-unit;
+      flex: 1 1 auto;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .resume {
+    padding-top: $spacing-unit;
+
+    &__left-column {
+      flex: 1 1 auto;
+    }
+
+    &__right-column {
+      flex: 1 1 auto;
+    }
+  }
+}
 
 @media print {
   body {
