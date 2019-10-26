@@ -7,8 +7,8 @@
         solutions from the initial design phase into full production implementation.  Extensive experience using major
         UI frameworks React, Vue, and Angular.  Advanced knowledge creating designs using CSS and SASS.  Knowledgeable about
         micro service architectures, and have written both rest and soap services in Node and Java.  Setup and integrated
-        with many types of databases including SQL Server, DB2, and MySql.  Written backend python scripts used in processing
-        20k network transactions a second.
+        with many types of databases including SQL Server, Postgres, and MySql.  Written backend python scripts using spark
+        streaming and kafka for processing 20k network transactions a second.
 
         <h4>Javascript Frameworks</h4>
         <span class="mountains__tech_list">

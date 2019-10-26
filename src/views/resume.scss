@@ -139,6 +139,10 @@
       padding-left: $spacing-unit;
       flex: 1 1 auto;
     }
+
+    &__left-column {
+      padding: $spacing-unit-x2;
+    }
   }
 }
 
@@ -148,6 +152,7 @@
 
     &__left-column {
       flex: 1 1 auto;
+      margin-right: 0;
     }
 
     &__right-column {
