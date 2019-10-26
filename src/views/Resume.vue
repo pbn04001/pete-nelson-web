@@ -6,7 +6,7 @@
         <h1>Pete Nelson</h1>
         <h2>Staff Engineer</h2>
         <div class="resume__description">
-          Accomplished web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack solutions
+          Accomplished full stack web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack solutions
           from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue, and Angular.
           Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server, Postgres,
           and MySql. Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend python scripts
@@ -88,7 +88,8 @@
                 <ul>
                   <li>Currently working on Staff Engineering team to deliver advanced implementations across the web, server and ios platforms.</li>
                   <li>Technical lead on agile team responsible for delivering features for a React and Angular application.</li>
-                  <li>Architected a custom CMS solution for our applications to delivery custom content to users in a quick, reliable and performant manner.</li>
+                  <li>Developed rest services in Node and Java</li>
+                  <li>Architected a custom CMS solution for our applications to delivery content to users in a quick, reliable and performant manner.</li>
                   <li>Worked on our flag ship IOS application using Swift.</li>
                 </ul>
               </div>
@@ -171,7 +172,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>University of Arkansas, Masters in Business Administration</h4>
-                <i>3.7GPA</i>
+                <i>3.7 GPA</i>
               </div>
             </div>
             <div class="resume__job">
