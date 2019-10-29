@@ -163,7 +163,7 @@
                 <label>January 2004 - May 2006</label>
               </div>
               <div class="resume__job-info">
-                <h4>Graphic Design</h4>
+                <h4>Graphic Designer</h4>
                 <i>Cuerdon Signs</i>
                 - Designed and installed signs using Corel Draw
               </div>
@@ -173,7 +173,7 @@
                 <label>September 1999 - January 2004</label>
               </div>
               <div class="resume__job-info">
-                <h4>Graphic Design</h4>
+                <h4>Graphic Designer</h4>
                 <i>Best Banner and Sign</i>
                 - Designed and installed signs using FlexiSign.
               </div>
