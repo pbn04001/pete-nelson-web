@@ -84,7 +84,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Staff Engineer</h4>
-                <i>Aetna</i>
+                <i>Aetna <span class="resume__job-location">(Denver, CO)</span></i>
                 <ul>
                   <li>Currently working as a Staff Engineer to deliver advanced implementations across the web, server and ios platforms.</li>
                   <li>Technical lead on agile team responsible for delivering features for a React and Angular application.</li>
@@ -101,7 +101,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Senior UI Engineer</h4>
-                <i>Level 3 Communications</i>
+                <i>Level 3 Communications <span class="resume__job-location">(Broomfield, CO)</span></i>
                 <ul>
                   <li>Lead UI developer on primary security threat portal.  Designed and developed final solution using Illustrator, AngularJS, and Scala.</li>
                   <li>Created scripts in Scala and Python for analyzing 20k network transactions a second.  Used Spark and Kafka to store the resulting metrics into OpenTSDB.</li>
@@ -116,7 +116,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Senior UI Java Developer</h4>
-                <i>J.B. Hunt Transport</i>
+                <i>J.B. Hunt Transport <span class="resume__job-location">(Lowell, AR)</span></i>
                 <ul>
                   <li>Lead developer on a team of 15 responsible for our flagship application "J.B. Hunt 360". used
                     by customers for booking, tracking, and reporting on shipments.  Built using ExtJS.</li>
@@ -135,7 +135,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Chief Technical Officer</h4>
-                <i>FlipFire LLC</i>
+                <i>FlipFire LLC <span class="resume__job-location">(Fayetteville, AR)</span></i>
                 <ul>
                   <li>Managed a team of eight employees consisting of Graphic Designers, Server / UI Developers,and System Administrators.</li>
                   <li>Invented a video player allowing users to watch videos uninterrupted in same window while browsing our site.  Listed as inventor for a filed patent.</li>
@@ -150,7 +150,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Java Software Developer</h4>
-                <i>Acxiom</i>
+                <i>Acxiom <span class="resume__job-location">(Fayetteville, AR)</span></i>
                 <ul>
                   <li>Responsible for design and development of JSF web application with emphasis using ajax to create fluid
                     interface for partitioning data sets.</li>
@@ -164,7 +164,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Graphic Designer</h4>
-                <i>Cuerdon Signs</i>
+                <i>Cuerdon Signs <span class="resume__job-location">(Conway, AR)</span></i>
                 - Designed and installed signs using Corel Draw
               </div>
             </div>
@@ -174,7 +174,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Graphic Designer</h4>
-                <i>Best Banner and Sign</i>
+                <i>Best Banner and Sign <span class="resume__job-location">(Rogers, AR)</span></i>
                 - Designed and installed signs using FlexiSign.
               </div>
             </div>
