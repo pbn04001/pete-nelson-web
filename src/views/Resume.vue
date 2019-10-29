@@ -10,8 +10,8 @@
           solutions from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue,
           and Angular. Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server,
           Postgres, and MySql. Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend
-          python scripts using Spark and Kafka for processing 20k network transactions a second.  Education includes both a BA in
-          Computer Science, and a Masters in Business Administration.
+          python scripts using Spark and Kafka for processing 20k network transactions a second.  Experience working in AWS to setup services using
+          S3, EC2, Lambda, etc. Education includes both a BA in Computer Science, and a Masters in Business Administration.
         </div>
       </div>
       <div class="resume__left-column">
@@ -48,7 +48,7 @@
             </div>
             <div class="resume__info">
               <label>UI Frameworks</label>
-              React, Angular, VUE, ExtJS
+              React/Redux, Angular, VUE, ExtJS
             </div>
             <div class="resume__info">
               <label>UI</label>
