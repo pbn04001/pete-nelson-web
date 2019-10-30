@@ -26,6 +26,9 @@
         </ul>
       </div>
     </div>
+    <a class="nav-bar__github" title="Pete Nelson GitHub" href="https://github.com/pbn04001">
+      <img src="/assets/icons/github.svg" />
+    </a>
   </nav>
 </template>
 
