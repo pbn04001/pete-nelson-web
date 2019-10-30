@@ -3,31 +3,46 @@
     <div ref="card" class="mountains__card">
       <h1 class="mountains__title" >Developer</h1>
       <div ref="cardSub" class="mountains__card_sub">
-        Accomplished web developer with over 13 years of professional experience.  Have worked on delivering full stack
-        solutions from the initial design phase into full production implementation.  Extensive experience using major
-        UI frameworks React, Vue, and Angular.  Advanced knowledge creating designs using CSS and SASS.  Knowledgeable about
-        micro service architectures, and have written both rest and soap services in Node and Java.  Setup and integrated
-        with many types of databases including SQL Server, Postgres, and MySql.  Written backend python scripts using spark
-        streaming and kafka for processing 20k network transactions a second.
+        Accomplished full stack web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack
+        solutions from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue,
+        and Angular. Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server,
+        Postgres, and MySql. Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend
+        python scripts using Spark and Kafka for processing 20k network transactions a second.  Experience working in AWS to setup services using
+        S3, EC2, Lambda, etc. Education includes both a BA in Computer Science, and a Masters in Business Administration.
 
-        <h4>Javascript Frameworks</h4>
+        <h4>Languages</h4>
         <span class="mountains__tech_list">
-          React, Vue, Angular, ExtJS
+          Javascript, Java, Scala, Python, Swift
         </span>
 
-        <h4>UI Styling</h4>
+        <h4>UI Frameworks</h4>
         <span class="mountains__tech_list">
-          CSS3, HTML5, SASS, PostCSS
+          React/Redux, Angular, VUE, ExtJS
         </span>
 
-        <h4>Rest/Soap Services</h4>
+        <h4>UI</h4>
         <span class="mountains__tech_list">
-          Node, Java, Scala, Python
+          CSS3, SASS, PostCSS, SVG, HTML5
+        </span>
+
+        <h4>Server</h4>
+        <span class="mountains__tech_list">
+          Node, Express, Spring, Rest, Soap, Kafka, Spark
+        </span>
+
+        <h4>Design</h4>
+        <span class="mountains__tech_list">
+          Illustrator, Sketch, Photoshop
         </span>
 
         <h4>Databases</h4>
         <span class="mountains__tech_list">
-          SQL Server, MySQL, IBM DB2, Hadoop
+          MySQL, SQL Server, Postgress, Hadoop, OpenTSDB
+        </span>
+
+        <h4>Databases</h4>
+        <span class="mountains__tech_list">
+          Enzyme, Karma, Chai, Sinon, Nightwatch, Cucumber
         </span>
       </div>
     </div>
