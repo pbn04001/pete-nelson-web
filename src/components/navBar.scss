@@ -133,12 +133,12 @@ $bar-spacing: 7px;
     &__menu {
       @include font-epsilon;
       width: 5rem;
-      left: 1rem;
+      right: 3rem;
     }
 
     &__github {
       position: absolute;
-      right: 1rem;
+      left: 1rem;
       top: .3rem;
 
       & img {
