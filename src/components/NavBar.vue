@@ -22,12 +22,17 @@
             <router-link to="/">Home</router-link>
             <router-link to="/resume">Resume</router-link>
             <a href="mailto:petenelson.webdesign@gmail.com">Contact</a>
+            <a class="nav-bar__link-mobile" href="https://github.com/pbn04001">GitHub</a>
+            <a class="nav-bar__link-mobile" href="https://twitter.com/petenelsonweb">Twitter</a>
           </li>
         </ul>
       </div>
     </div>
     <a class="nav-bar__github" title="Pete Nelson GitHub" href="https://github.com/pbn04001">
       <img src="/assets/icons/github.svg" />
+    </a>
+    <a class="nav-bar__twitter" title="Pete Nelson Twitter" href="https://twitter.com/petenelsonweb">
+      <img src="/assets/icons/twitter.svg" />
     </a>
   </nav>
 </template>

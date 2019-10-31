@@ -46,12 +46,12 @@
   }
 
   &__sun {
+    display: none;
     z-index: 1;
     position: absolute;
     width: 100%;
     bottom: 4vw;
     left: 0;
-    opacity: .1;
   }
 
   &__birds {
@@ -94,6 +94,10 @@
     }
 
     &__back {
+      display: block;
+    }
+
+    &__sun {
       display: block;
     }
   }
