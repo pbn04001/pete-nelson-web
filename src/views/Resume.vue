@@ -48,7 +48,7 @@
             </div>
             <div class="resume__info">
               <label>UI Frameworks</label>
-              React/Redux, Angular, VUE, ExtJS
+              React/Redux, Angular, Vue, ExtJS
             </div>
             <div class="resume__info">
               <label>UI</label>
@@ -64,7 +64,7 @@
             </div>
             <div class="resume__info">
               <label>Database</label>
-              MySQL, SQL Server, Postgress, Hadoop, OpenTSDB
+              MySQL, SQL Server, Postgres, Hadoop, OpenTSDB
             </div>
             <div class="resume__info">
               <label>Testing</label>
