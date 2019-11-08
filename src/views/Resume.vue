@@ -29,10 +29,6 @@
               <a href="mailto:petenelson.webdesign@gmail.com">petenelson.webdesign@gmail.com</a>
             </div>
             <div class="resume__info">
-              <label>Date of birth</label>
-              08/11/1982
-            </div>
-            <div class="resume__info">
               <label>Website</label>
               <a href="http://petenelson.dev">http://petenelson.dev</a>
             </div>
