@@ -48,11 +48,11 @@
             </div>
             <div class="resume__info">
               <label>UI</label>
-              CSS3, SASS, PostCSS, SVG, HTML5
+              CSS3, SASS, PostCSS, SVG, HTML5, TypeScript
             </div>
             <div class="resume__info">
               <label>Server</label>
-              Node, Express, Spring, Rest, Soap, Kafka, Spark
+              Node, Express, Spring, Rest, Soap, Kafka, Spark, GraphQL
             </div>
             <div class="resume__info">
               <label>Design</label>
