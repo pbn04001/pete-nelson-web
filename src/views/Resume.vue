@@ -6,10 +6,11 @@
         <h1>Pete Nelson</h1>
         <h2>Staff Engineer</h2>
         <div class="resume__description">
-          Accomplished full stack web developer / designer with over 13 years of professional experience.  Have worked on delivering full stack
+          Accomplished full stack web developer / designer with over 14 years of professional experience.  Have worked on delivering full stack
           solutions from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue,
           and Angular. Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server,
-          Postgres, and MySql. Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend
+          Postgres, and MySql.  Strong understanding on how to create tightly coupled integrations between the UI and server using TypeScript and GraphQL.
+          Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend
           python scripts using Spark and Kafka for processing 20k network transactions a second.  Experience working in AWS to setup services using
           S3, EC2, Lambda, etc. Education includes both a BA in Computer Science, and a Masters in Business Administration.
         </div>
@@ -22,7 +23,7 @@
           <div class="resume__section resume__personal-info">
             <div class="resume__info">
               <label>Address</label>
-              Denver, CO
+              Portland, OR
             </div>
             <div class="resume__info">
               <label>E-mail</label>
@@ -52,7 +53,7 @@
             </div>
             <div class="resume__info">
               <label>Server</label>
-              Node, Express, Spring, Rest, Soap, Kafka, Spark, GraphQL
+              Node, Express, Spring, Rest, Soap, Kafka, Spark, GraphQL, Docker
             </div>
             <div class="resume__info">
               <label>Design</label>
@@ -76,7 +77,22 @@
           <div class="resume__section resume__experience">
             <div class="resume__job">
               <div class="resume__job-dates">
-                <label>July 2016 - Present</label>
+                <label>January 2020 - Present</label>
+              </div>
+              <div class="resume__job-info">
+                <h4>Senior Web Engineer</h4>
+                <i>Aetna <span class="resume__job-location">(Portland, OR)</span></i>
+                <ul>
+                  <li>Spearheaded initiative to migrate their current UI off of java monolith into a stand alone react application.</li>
+                  <li>Setup new GraphQL endpoints used to tightly couple backend data with the front end using TypeScript.</li>
+                  <li>Developed full CI/CD pipeline using bamboo.</li>
+                  <li>Build full testing suite using Jest and Nightwatch that can be run quickly against PRs using docker.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="resume__job">
+              <div class="resume__job-dates">
+                <label>July 2016 - January 2020</label>
               </div>
               <div class="resume__job-info">
                 <h4>Staff Engineer</h4>
