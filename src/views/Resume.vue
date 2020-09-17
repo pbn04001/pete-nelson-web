@@ -4,7 +4,7 @@
     <div class="resume__sheet">
       <div class="resume__top">
         <h1>Pete Nelson</h1>
-        <h2>Staff Engineer</h2>
+        <h2>Senior Web Engineer</h2>
         <div class="resume__description">
           Accomplished full stack web developer / designer with over 14 years of professional experience.  Have worked on delivering full stack
           solutions from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue,
