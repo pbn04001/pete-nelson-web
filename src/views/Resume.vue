@@ -81,7 +81,7 @@
               </div>
               <div class="resume__job-info">
                 <h4>Senior Web Engineer</h4>
-                <i>Aetna <span class="resume__job-location">(Portland, OR)</span></i>
+                <i>Act-On Software <span class="resume__job-location">(Portland, OR)</span></i>
                 <ul>
                   <li>Spearheaded initiative to migrate their current UI off of java monolith into a stand alone react application.</li>
                   <li>Setup new GraphQL endpoints used to tightly couple backend data with the front end using TypeScript.</li>
