@@ -6,10 +6,11 @@
         <h1>Pete Nelson</h1>
         <h2>Senior Web Engineer</h2>
         <div class="resume__description">
-          Accomplished full stack web developer / designer with over 14 years of professional experience.  Have worked on delivering full stack
+          Accomplished full stack web developer / designer with over 16 years of professional experience.  Have worked on delivering full stack
           solutions from the initial design phase into full production implementation.  Extensive experience using major UI frameworks React, Vue,
           and Angular. Written both rest and soap services in Node and Java.  Setup and integrated with many types of databases including SQL Server,
           Postgres, and MySql.  Strong understanding on how to create tightly coupled integrations between the UI and server using TypeScript and GraphQL.
+          Implemented complex CI/CD pipelines using CircleCI and AWS.
           Able to create site designs, illustrations, and logos using Sketch, Illustrator and Photoshop.  Written backend
           python scripts using Spark and Kafka for processing 20k network transactions a second.  Experience working in AWS to setup services using
           S3, EC2, Lambda, etc. Education includes both a BA in Computer Science, and a Masters in Business Administration.
@@ -23,7 +24,7 @@
           <div class="resume__section resume__personal-info">
             <div class="resume__info">
               <label>Address</label>
-              Portland, OR
+              Bella Vista, AR
             </div>
             <div class="resume__info">
               <label>E-mail</label>
@@ -53,7 +54,7 @@
             </div>
             <div class="resume__info">
               <label>Server</label>
-              Node, Express, Spring, Rest, Soap, Kafka, Spark, GraphQL, Docker
+              Node, Express, Spring, Rest, Soap, Kafka, Spark, GraphQL, Docker, CircleCi
             </div>
             <div class="resume__info">
               <label>Design</label>
@@ -65,7 +66,7 @@
             </div>
             <div class="resume__info">
               <label>Testing</label>
-              Enzyme, Karma, Chai, Sinon, Nightwatch, Cucumber
+              React Testing Library, Jest, Enzyme, Karma, Chai, Sinon, Nightwatch, Cucumber
             </div>
           </div>
         </div>
@@ -77,7 +78,26 @@
           <div class="resume__section resume__experience">
             <div class="resume__job">
               <div class="resume__job-dates">
-                <label>January 2020 - Present</label>
+                <label>October 2020 - Present</label>
+              </div>
+              <div class="resume__job-info">
+                <h4>Advanced Senior Web Engineer</h4>
+                <i>CVS <span class="resume__job-location">(Remote)</span></i>
+                <ul>
+                  <li>Been a team lead for one of our web teams, overseeing implementation and technical issues</li>
+                  <li>Created a new Micro Frontend architecture that has laid the ground work for breaking up our monolithic web application</li>
+                  <li>Spearheaded the initiative to migrate our main web application over to TypeScript</li>
+                  <li>Worked on the initial implementation of our guest user environment that allows us to provide a guest user sign in to our production environment</li>
+                  <li>Worked on migrating off of Karma and Enzyme, over to Jest and React Testing Library</li>
+                  <li>Migrated our entire web CI workflow off of jenkins, and over to using CircleCi</li>
+                  <li>Did performance enhancements to our login flow, and was able to shave off roughly 4 seconds</li>
+                  <li>Migrated off of Perfecto, and replaced it with selenium grid.  Also helped to spin up our new UI testing framework Playwright</li>
+                </ul>
+              </div>
+            </div>
+            <div class="resume__job">
+              <div class="resume__job-dates">
+                <label>January 2020 - October 2020</label>
               </div>
               <div class="resume__job-info">
                 <h4>Senior Web Engineer</h4>
